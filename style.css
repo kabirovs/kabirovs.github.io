@@ -130,8 +130,9 @@ button:hover {
 .contact-buttons {
     display: none;
     justify-content: center;
-    gap: 100px;
-    margin-top: 70px;
+    align-items: center;
+    gap: 70px !important;
+    margin-top: 30px;
     flex-wrap: wrap;
 }
 
@@ -351,11 +352,13 @@ footer {
 
 @media (max-width: 768px) {
 
-    header {
-        position: sticky;
-        flex-direction: row;
-        padding: 15px 6%;
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
+
+}
 
     .menu-toggle {
         display: block;
