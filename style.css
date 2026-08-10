@@ -429,3 +429,14 @@ footer {
     }
 
 }
+
+.contact-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-buttons i {
+    font-size: 22px;
+}
