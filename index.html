@@ -1,37 +1,54 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>WebPro — Создание сайтов</title>
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
-<header>
+    <!-- HEADER -->
 
-    <h2>WebPro</h2>
+    <header>
 
-    <button class="menu-toggle" onclick="toggleMenu()">
-        ☰
-    </button>
+        <h2>WebPro</h2>
 
-    <nav id="mainNav">
-        <a href="#home">Главная</a>
-        <a href="#services">Услуги</a>
-        <a href="#portfolio">Наши работы</a>
-        <a href="#about">О нас</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
 
-</header>
+        <nav id="mainNav">
+
+            <a href="#home">Главная</a>
+
+            <a href="#services">Услуги</a>
+
+            <a href="#portfolio">Наши работы</a>
+
+            <a href="#about">О нас</a>
+
+            <a href="#contacts">Контакты</a>
+
+        </nav>
+
+    </header>
+
 
     <main>
 
+        <!-- HERO -->
+
         <section id="home" class="hero">
-            <h1>Создаём сайты для бизнеса</h1>
+
+            <h1>
+                Создаём сайты для бизнеса
+            </h1>
 
             <p>
                 Современные, быстрые и удобные сайты
@@ -42,162 +59,303 @@
                 Заказать сайт
             </button>
 
+
+            <!-- CONTACT BUTTONS -->
+
             <div id="contactButtons" class="contact-buttons">
 
-                <a href="https://t.me/kbrv8" target="_blank">
-    <i class="fa-brands fa-telegram"></i>
-    Telegram
-</a>
+                <a
+                    href="https://t.me/kbrv8"
+                    target="_blank"
+                >
+                    📲 Telegram
+                </a>
 
-            <a href="https://wa.me/992974008118" target="_blank">
-    <i class="fa-brands fa-whatsapp"></i>
-    WhatsApp
-</a>
-                <a href="https://instagram.com/kabirov.dev" target="_blank">
-    <i class="fa-brands fa-instagram"></i>
-    Instagram
-</a>
+                <a
+                    href="https://wa.me/992974008118"
+                    target="_blank"
+                >
+                    📱 WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/kabirov.dev"
+                    target="_blank"
+                >
+                    📸 Instagram
+                </a>
 
             </div>
+
         </section>
 
 
+        <!-- SERVICES -->
+
         <section id="services" class="services">
 
-            <h2>Наши услуги</h2>
+            <h2>
+                Наши услуги
+            </h2>
 
             <div class="cards">
 
                 <div class="card">
-                    <h3>Сайт-визитка</h3>
+
+                    <h3>
+                        Сайт-визитка
+                    </h3>
+
                     <p>
                         Простой сайт для компании,
                         специалиста или услуги.
                     </p>
+
                 </div>
 
+
                 <div class="card">
-                    <h3>Интернет-магазин</h3>
+
+                    <h3>
+                        Интернет-магазин
+                    </h3>
+
                     <p>
                         Сайт для продажи товаров
                         и приёма заказов.
                     </p>
+
                 </div>
 
+
                 <div class="card">
-                    <h3>Landing Page</h3>
+
+                    <h3>
+                        Landing Page
+                    </h3>
+
                     <p>
                         Одностраничный сайт
                         для продвижения продукта.
                     </p>
+
                 </div>
 
             </div>
 
         </section>
 
-<section class="portfolio">
 
-    <h2>Наши работы</h2>
+        <!-- PORTFOLIO -->
 
-    <div class="cards">
+        <section id="portfolio" class="portfolio">
 
-        <div class="card">
-    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600"
-         alt="Кафе">
+            <h2>
+                Наши работы
+            </h2>
 
-    <h3>Сайт кафе</h3>
+            <div class="cards">
 
-    <p>Современный сайт для кафе и ресторанов.</p>
-</div>
+                <div class="card">
 
-        <div class="card">
-    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600"
-         alt="Магазин">
+                    <img
+                        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600"
+                        alt="Кафе"
+                    >
 
-    <h3>Интернет-магазин</h3>
+                    <h3>
+                        Сайт кафе
+                    </h3>
 
-    <p>Онлайн-магазин для продажи товаров.</p>
-</div>
+                    <p>
+                        Современный сайт для кафе
+                        и ресторанов.
+                    </p>
 
-        <div class="card">
-    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600"
-         alt="Компания">
+                </div>
 
-    <h3>Сайт компании</h3>
 
-    <p>Корпоративный сайт для бизнеса.</p>
-</div>
+                <div class="card">
 
-    </div>
+                    <img
+                        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600"
+                        alt="Магазин"
+                    >
 
-</section>
-<section class="about">
+                    <h3>
+                        Интернет-магазин
+                    </h3>
 
-    <h2>О нас</h2>
+                    <p>
+                        Онлайн-магазин для
+                        продажи товаров.
+                    </p>
 
-    <p>
-        Мы создаём современные и быстрые сайты
-        для бизнеса, магазинов и личных брендов.
-    </p>
+                </div>
 
-    <p>
-        Красивый дизайн, адаптация под телефоны
-        и поддержка клиентов после запуска сайта.
-    </p>
 
-</section>
-<section class="advantages">
+                <div class="card">
 
-    <h2>Почему выбирают нас</h2>
+                    <img
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600"
+                        alt="Компания"
+                    >
 
-    <div class="advantage-cards">
+                    <h3>
+                        Сайт компании
+                    </h3>
 
-        <div class="advantage-card">
-            <div class="advantage-icon">⚡</div>
-            <h3>Быстрое выполнение</h3>
-            <p>Стараемся выполнить работу качественно и в согласованные сроки.</p>
-        </div>
+                    <p>
+                        Корпоративный сайт
+                        для бизнеса.
+                    </p>
 
-        <div class="advantage-card">
-            <div class="advantage-icon">📱</div>
-            <h3>Адаптация под телефон</h3>
-            <p>Сайт удобно работает на компьютере, планшете и смартфоне.</p>
-        </div>
+                </div>
 
-        <div class="advantage-card">
-            <div class="advantage-icon">🎨</div>
-            <h3>Современный дизайн</h3>
-            <p>Создаём аккуратный, современный и удобный интерфейс.</p>
-        </div>
+            </div>
 
-        <div class="advantage-card">
-            <div class="advantage-icon">🤝</div>
-            <h3>Поддержка клиентов</h3>
-            <p>Остаёмся на связи и помогаем после создания сайта.</p>
-        </div>
+        </section>
 
-    </div>
 
-</section>
+        <!-- ABOUT -->
+
+        <section id="about" class="about">
+
+            <h2>
+                О нас
+            </h2>
+
+            <p>
+                Мы создаём современные и быстрые сайты
+                для бизнеса, магазинов и личных брендов.
+            </p>
+
+            <p>
+                Красивый дизайн, адаптация под телефоны
+                и поддержка клиентов после запуска сайта.
+            </p>
+
+        </section>
+
+
+        <!-- ADVANTAGES -->
+
+        <section class="advantages">
+
+            <h2>
+                Почему выбирают нас
+            </h2>
+
+            <div class="advantage-cards">
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Быстрое выполнение
+                    </h3>
+
+                    <p>
+                        Стараемся выполнить работу
+                        качественно и в согласованные сроки.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Адаптация под телефон
+                    </h3>
+
+                    <p>
+                        Сайт удобно работает на компьютере,
+                        планшете и смартфоне.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        🎨
+                    </div>
+
+                    <h3>
+                        Современный дизайн
+                    </h3>
+
+                    <p>
+                        Создаём аккуратный,
+                        современный и удобный интерфейс.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        🤝
+                    </div>
+
+                    <h3>
+                        Поддержка клиентов
+                    </h3>
+
+                    <p>
+                        Остаёмся на связи и помогаем
+                        после создания сайта.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACTS -->
 
         <section id="contacts" class="contacts">
 
-            <h2>Связаться с нами</h2>
+            <h2>
+                Связаться с нами
+            </h2>
 
-            <p>Выберите удобный способ связи</p>
+            <p>
+                Выберите удобный способ связи
+            </p>
 
             <div class="social-buttons">
 
-                <a href="https://t.me/kbrv8" target="_blank">
-                    ✈️ Telegram
+                <a
+                    href="https://t.me/kbrv8"
+                    target="_blank"
+                >
+                    📲 Telegram
                 </a>
 
-                <a href="https://wa.me/992974008118" target="_blank">
+                <a
+                    href="https://wa.me/992974008118"
+                    target="_blank"
+                >
                     📱 WhatsApp
                 </a>
 
-                <a href="https://instagram.com/kabirov.dev" target="_blank">
+                <a
+                    href="https://instagram.com/kabirov.dev"
+                    target="_blank"
+                >
                     📸 Instagram
                 </a>
 
@@ -208,24 +366,22 @@
     </main>
 
 
+    <!-- FOOTER -->
+
     <footer>
-        <p>© 2026 WebPro. Все права защищены.</p>
+
+        <p>
+            © 2026 WebPro. Все права защищены.
+        </p>
+
     </footer>
 
 
-    <script>
-        function showContacts() {
+    <!-- JAVASCRIPT -->
 
-            const buttons = document.getElementById("contactButtons");
-
-            if (buttons.style.display === "flex") {
-                buttons.style.display = "none";
-            } else {
-                buttons.style.display = "flex";
-            }
-
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
+```
