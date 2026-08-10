@@ -130,8 +130,8 @@ button:hover {
 .contact-buttons {
     display: none;
     justify-content: center;
-    gap: 50px;
-    margin-top: 45px;
+    gap: 100px;
+    margin-top: 70px;
     flex-wrap: wrap;
 }
 
