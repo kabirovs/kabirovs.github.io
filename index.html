@@ -3,11 +3,19 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>WebPro — Создание сайтов</title>
+
+<!-- Font Awesome -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
 
 <link rel="stylesheet" href="style.css">
 ```
@@ -23,25 +31,40 @@
 
     <h2>WebPro</h2>
 
-    <button class="menu-toggle" onclick="toggleMenu()">
+    <button
+        class="menu-toggle"
+        onclick="toggleMenu()"
+    >
         ☰
     </button>
 
+
     <nav id="mainNav">
 
-        <a href="#home">Главная</a>
+        <a href="#home">
+            Главная
+        </a>
 
-        <a href="#services">Услуги</a>
+        <a href="#services">
+            Услуги
+        </a>
 
-        <a href="#portfolio">Наши работы</a>
+        <a href="#portfolio">
+            Наши работы
+        </a>
 
-        <a href="#about">О нас</a>
+        <a href="#about">
+            О нас
+        </a>
 
-        <a href="#contacts">Контакты</a>
+        <a href="#contacts">
+            Контакты
+        </a>
 
     </nav>
 
 </header>
+
 
 
 <main>
@@ -49,62 +72,91 @@
 
     <!-- HERO -->
 
-    <section id="home" class="hero">
+    <section
+        id="home"
+        class="hero"
+    >
 
         <h1>
             Создаём сайты для бизнеса
         </h1>
+
 
         <p>
             Современные, быстрые и удобные сайты
             для ваших клиентов.
         </p>
 
-        <button onclick="showContacts()">
+
+        <button
+            onclick="showContacts()"
+        >
             Заказать сайт
         </button>
 
 
+
         <!-- CONTACT BUTTONS -->
 
-       <div id="contactButtons" class="contact-buttons-wrapper">
+        <div
+            id="contactButtons"
+            class="contact-buttons"
+        >
 
-    <div class="contact-title">
 
-        <h3>🚀 Готовы обсудить ваш проект?</h3>
+            <a
+                href="https://t.me/kbrv8"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
 
-        <p>📨 Напишите нам удобным для вас способом</p>
+                <i class="fa-brands fa-telegram"></i>
 
-        <div class="contact-arrow">
-            ↓
+                Telegram
+
+            </a>
+
+
+
+            <a
+                href="https://wa.me/992974008118"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp
+
+            </a>
+
+
+
+            <a
+                href="https://instagram.com/kabirov.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-instagram"></i>
+
+                Instagram
+
+            </a>
+
+
         </div>
 
-    </div>
-
-    <div class="contact-buttons">
-
-        <a href="https://t.me/kbrv8" target="_blank">
-            📲 Telegram
-        </a>
-
-        <a href="https://wa.me/992974008118" target="_blank">
-            📱 WhatsApp
-        </a>
-
-        <a href="https://instagram.com/kabirov.dev" target="_blank">
-            📸 Instagram
-        </a>
-
-    </div>
-
-</div>
     </section>
 
 
 
     <!-- SERVICES -->
 
-    <section id="services" class="services">
+    <section
+        id="services"
+        class="services"
+    >
 
         <h2>
             Наши услуги
@@ -166,7 +218,10 @@
 
     <!-- PORTFOLIO -->
 
-    <section id="portfolio" class="portfolio">
+    <section
+        id="portfolio"
+        class="portfolio"
+    >
 
         <h2>
             Наши работы
@@ -243,7 +298,10 @@
 
     <!-- ABOUT -->
 
-    <section id="about" class="about">
+    <section
+        id="about"
+        class="about"
+    >
 
         <h2>
             О нас
@@ -360,11 +418,15 @@
 
     <!-- CONTACTS -->
 
-    <section id="contacts" class="contacts">
+    <section
+        id="contacts"
+        class="contacts"
+    >
 
         <h2>
             Связаться с нами
         </h2>
+
 
         <p>
             Выберите удобный способ связи
@@ -377,8 +439,13 @@
             <a
                 href="https://t.me/kbrv8"
                 target="_blank"
+                rel="noopener noreferrer"
             >
-                📲 Telegram
+
+                <i class="fa-brands fa-telegram"></i>
+
+                Telegram
+
             </a>
 
 
@@ -386,8 +453,13 @@
             <a
                 href="https://wa.me/992974008118"
                 target="_blank"
+                rel="noopener noreferrer"
             >
-                📱 WhatsApp
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp
+
             </a>
 
 
@@ -395,8 +467,13 @@
             <a
                 href="https://instagram.com/kabirov.dev"
                 target="_blank"
+                rel="noopener noreferrer"
             >
-                📸 Instagram
+
+                <i class="fa-brands fa-instagram"></i>
+
+                Instagram
+
             </a>
 
 
