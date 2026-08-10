@@ -436,3 +436,87 @@ footer {
         max-width: 350px;
     }
 }
+/* CONTACT BLOCK */
+
+.contact-buttons-wrapper {
+display: none;
+margin-top: 35px;
+}
+
+.contact-title {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.contact-title h3 {
+font-size: 30px;
+margin-bottom: 10px;
+color: white;
+}
+
+.contact-title p {
+font-size: 18px;
+color: rgba(255,255,255,0.9);
+}
+
+.contact-arrow {
+font-size: 38px;
+margin-top: 10px;
+animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+
+0%,100% {
+transform: translateY(0);
+}
+
+50% {
+transform: translateY(8px);
+}
+
+}
+
+.contact-buttons {
+justify-content: center;
+gap: 15px;
+margin-top: 20px;
+flex-wrap: wrap;
+}
+
+.contact-buttons a {
+text-decoration: none;
+color: white;
+
+padding: 15px 26px;
+
+border-radius: 14px;
+
+font-weight: 600;
+
+box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+transition: 0.3s;
+}
+
+.contact-buttons a:nth-child(1) {
+background: linear-gradient(135deg,#229ED9,#0088cc);
+}
+
+.contact-buttons a:nth-child(2) {
+background: linear-gradient(135deg,#25D366,#128C7E);
+}
+
+.contact-buttons a:nth-child(3) {
+background: linear-gradient(
+135deg,
+#f58529,
+#dd2a7b,
+#8134af,
+#515bd4
+);
+}
+
+.contact-buttons a:hover {
+transform: translateY(-5px) scale(1.05);
+}
