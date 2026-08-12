@@ -144,33 +144,105 @@ nav a:hover {
 }
 
 
-/* MOBILE MENU */
+/* =========================
+   MOBILE MENU
+========================= */
 
-.menu-toggle {
-    display: none;
+nav {
+    display: flex;
 
-    border: none;
-    outline: none;
+    position: absolute;
 
-    background: transparent;
+    top: calc(100% + 10px);
+    left: 6%;
+    right: 6%;
+
+    width: auto;
+
+    flex-direction: column;
+
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 1px solid rgba(7, 151, 213, 0.12);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.12);
+
+    /* Меню скрыто */
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-12px)
+        scale(0.98);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        visibility 0.35s ease;
+}
+
+/* Меню открыто */
+
+nav.active {
+    display: flex;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+/* Пункты меню */
+
+nav a {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 13px 18px;
+
+    text-align: center;
+
+    border-radius: 14px;
 
     color: #172033;
 
-    font-size: 26px;
+    font-size: 16px;
 
-    cursor: pointer;
-
-    padding: 6px 10px;
-
-    transition: 0.3s;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
-.menu-toggle:hover {
+/* Наведение */
+
+nav a:hover {
     color: #0797d5;
 
-    background: transparent;
+    background: rgba(7, 151, 213, 0.08);
 
-    transform: none;
+    transform: translateX(3px);
+}
+
+/* Убираем старую линию */
+
+nav a::after {
+    display: none;
 }
 
 
