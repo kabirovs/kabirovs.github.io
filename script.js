@@ -22,7 +22,7 @@ function showContacts() {
     } else {
         buttons.style.display = "flex";
 
-        orderButton.style.transition = "transform 0.8s ease";
+        orderButton.style.transition = "transform 1.5s ease";
 
         setTimeout(function () {
             orderButton.style.transform = "translateY(-20px)";
