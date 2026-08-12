@@ -415,17 +415,37 @@ CONTACT BUTTONS
 ========================= */
 
 .contact-buttons {
-    display: none;
+    display: flex;
 
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
-    margin-top: 35px;
+    margin-top: 25px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        max-height 0.8s ease,
+        visibility 0.8s ease;
 }
 
 .contact-buttons.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+
+    max-height: 300px;
+}
     display: flex;
 
     animation:
