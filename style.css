@@ -1,5 +1,5 @@
 /* =========================
-   RESET
+RESET
 ========================= */
 
 * {
@@ -27,13 +27,12 @@ body {
     );
 
     background-size: 400% 400%;
-
     animation: liveBackground 18s ease infinite;
 }
 
 
 /* =========================
-   HEADER
+HEADER
 ========================= */
 
 header {
@@ -59,7 +58,9 @@ header {
 }
 
 
-/* LOGO */
+/* =========================
+LOGO
+========================= */
 
 .logo {
     text-decoration: none;
@@ -71,7 +72,7 @@ header {
 
     letter-spacing: -1px;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .logo:hover {
@@ -80,13 +81,13 @@ header {
 
 
 /* =========================
-   NAVIGATION — DESKTOP
+NAVIGATION
 ========================= */
 
 nav {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
     padding: 6px;
 
@@ -99,16 +100,25 @@ nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+    box-shadow:
+        0 5px 20px rgba(15, 23, 42, 0.05);
 }
+
+
+/* =========================
+NAV LINKS
+========================= */
 
 nav a {
     position: relative;
 
+    display: block;
+
     text-decoration: none;
+
     color: #172033;
 
-    margin-left: 0;
+    margin: 0;
 
     padding: 10px 15px;
 
@@ -117,18 +127,24 @@ nav a {
     font-size: 15px;
     font-weight: 600;
 
+    opacity: 1;
+    transform: translateY(0);
+
     transition:
         background 0.35s ease,
         color 0.35s ease,
         transform 0.35s ease,
-        box-shadow 0.35s ease;
+        box-shadow 0.35s ease,
+        opacity 0.45s ease;
 }
+
 
 /* Убираем старую линию */
 
 nav a::after {
     display: none;
 }
+
 
 /* Наведение */
 
@@ -145,30 +161,44 @@ nav a:hover {
 
 
 /* =========================
-MOBILE MENU ITEMS
-Появляются все вместе
+MOBILE MENU BUTTON
 ========================= */
 
-nav a {
-    opacity: 1;
-    transform: translateY(0);
+.menu-toggle {
+    display: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #172033;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    padding: 6px 10px;
+
+    border-radius: 12px;
 
     transition:
+        color 0.3s ease,
         background 0.3s ease,
-        color 0.3s ease;
+        transform 0.3s ease;
 }
 
-nav.active a {
-    opacity: 1;
-    transform: translateY(0);
+.menu-toggle:hover {
+    color: #0797d5;
+
+    background: rgba(7, 151, 213, 0.08);
+
+    transform: none;
 }
 
-nav a {
-    ...
-}
 
 /* =========================
-   HERO
+HERO
 ========================= */
 
 .hero {
@@ -246,6 +276,8 @@ nav a {
         floatingLight 15s ease-in-out infinite reverse;
 }
 
+
+/* HERO CONTENT */
 
 .hero-content {
     position: relative;
@@ -331,7 +363,7 @@ nav a {
 
 
 /* =========================
-   BUTTON
+BUTTON
 ========================= */
 
 .order-button {
@@ -379,7 +411,7 @@ nav a {
 
 
 /* =========================
-   CONTACT BUTTONS
+CONTACT BUTTONS
 ========================= */
 
 .contact-buttons {
@@ -461,7 +493,7 @@ nav a {
 
 
 /* =========================
-   SECTIONS
+SECTIONS
 ========================= */
 
 .services,
@@ -473,7 +505,7 @@ nav a {
 
 
 /* =========================
-   SECTION HEADING
+SECTION HEADING
 ========================= */
 
 .section-heading {
@@ -522,7 +554,7 @@ nav a {
 
 
 /* =========================
-   CARDS
+CARDS
 ========================= */
 
 .cards {
@@ -623,6 +655,9 @@ nav a {
     font-size: 24px;
 }
 
+
+/* CARD TEXT */
+
 .card h3 {
     margin-bottom: 13px;
 
@@ -651,8 +686,23 @@ nav a {
 }
 
 
+/* CARD IMAGES */
+
+.card img {
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+.card:hover img {
+    transform: scale(1.04);
+
+    filter: brightness(1.05);
+}
+
+
 /* =========================
-   PORTFOLIO
+PORTFOLIO
 ========================= */
 
 .portfolio {
@@ -721,7 +771,7 @@ nav a {
 
 
 /* =========================
-   ABOUT
+ABOUT
 ========================= */
 
 .about {
@@ -867,7 +917,7 @@ nav a {
 
 
 /* =========================
-   ADVANTAGES
+ADVANTAGES
 ========================= */
 
 .advantages {
@@ -1057,7 +1107,7 @@ nav a {
 
 
 /* =========================
-   CONTACTS
+CONTACTS
 ========================= */
 
 .contacts {
@@ -1120,7 +1170,7 @@ nav a {
 
 
 /* =========================
-   FOOTER
+FOOTER
 ========================= */
 
 footer {
@@ -1211,7 +1261,7 @@ footer p {
 
 
 /* =========================
-   BODY LIGHTS
+BODY LIGHTS
 ========================= */
 
 body::before,
@@ -1258,7 +1308,7 @@ body::after {
 
 
 /* =========================
-   ANIMATIONS
+ANIMATIONS
 ========================= */
 
 @keyframes liveBackground {
@@ -1473,50 +1523,122 @@ body::after {
 
 
 /* =========================
-   MOBILE
+MOBILE MENU ANIMATION
+========================= */
+
+@keyframes menuOpen {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-12px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+MOBILE
 ========================= */
 
 @media (max-width: 768px) {
 
     header {
+        position: sticky;
+
         padding: 15px 6%;
     }
+
+
+    /* LOGO */
 
     .logo {
         font-size: 26px;
     }
 
+
+    /* MENU BUTTON */
+
     .menu-toggle {
         display: block;
     }
 
-    nav {
-        display: none;
 
+    /* NAVIGATION */
+
+    nav {
         position: absolute;
 
-        top: 100%;
-        left: 0;
+        top: calc(100% + 8px);
+        left: 6%;
+        right: 6%;
 
-        width: 100%;
+        width: auto;
+
+        display: flex;
 
         flex-direction: column;
 
-        padding: 18px 0;
+        gap: 5px;
+
+        padding: 10px;
 
         background:
             rgba(255, 255, 255, 0.96);
+
+        border:
+            1px solid rgba(7, 151, 213, 0.12);
+
+        border-radius: 20px;
 
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
 
         box-shadow:
-            0 12px 25px rgba(15, 23, 42, 0.10);
+            0 15px 35px rgba(15, 23, 42, 0.14);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform:
+            translateY(-12px)
+            scale(0.98);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.45s ease,
+            transform 0.45s ease,
+            visibility 0.45s ease;
     }
 
+
+    /* OPEN MENU */
+
     nav.active {
-        display: flex;
+        opacity: 1;
+
+        visibility: visible;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        pointer-events: auto;
     }
+
+
+    /* MOBILE LINKS */
 
     nav a {
         width: 100%;
@@ -1528,10 +1650,63 @@ body::after {
         text-align: center;
 
         font-size: 17px;
+
+        border-radius: 14px;
+
+        opacity: 0;
+
+        transform:
+            translateY(-12px);
+
+        transition:
+            opacity 0.45s ease,
+            transform 0.45s ease,
+            background 0.3s ease,
+            color 0.3s ease;
     }
 
-    nav a::after {
-        display: none;
+
+    /* LINKS APPEAR ONE BY ONE */
+
+    nav.active a {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+
+    nav.active a:nth-child(1) {
+        transition-delay: 0.10s;
+    }
+
+    nav.active a:nth-child(2) {
+        transition-delay: 0.18s;
+    }
+
+    nav.active a:nth-child(3) {
+        transition-delay: 0.26s;
+    }
+
+    nav.active a:nth-child(4) {
+        transition-delay: 0.34s;
+    }
+
+    nav.active a:nth-child(5) {
+        transition-delay: 0.42s;
+    }
+
+
+    /* MOBILE HOVER */
+
+    nav a:hover {
+        transform:
+            translateY(0);
+
+        background:
+            rgba(7, 151, 213, 0.09);
+
+        box-shadow: none;
     }
 
 
@@ -1640,6 +1815,11 @@ body::after {
     }
 
 
+    .card img {
+        height: 190px;
+    }
+
+
     /* ABOUT */
 
     .about {
@@ -1707,7 +1887,7 @@ body::after {
 
 
 /* =========================
-   SMALL PHONES
+SMALL PHONES
 ========================= */
 
 @media (max-width: 400px) {
@@ -1726,5 +1906,10 @@ body::after {
 
     .order-button {
         padding: 14px 30px;
+    }
+
+    nav {
+        left: 4%;
+        right: 4%;
     }
 }
