@@ -1195,3 +1195,7 @@ footer p {
 
 }
 ```
+
+.contact-buttons.show {
+    display: flex;
+}
