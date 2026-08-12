@@ -145,49 +145,24 @@ nav a:hover {
 
 
 /* =========================
-   MOBILE MENU ITEMS
-   Появляются по очереди
+MOBILE MENU ITEMS
+Появляются все вместе
 ========================= */
 
 nav a {
-    opacity: 0;
-    transform: translateY(-10px);
+    opacity: 1;
+    transform: translateY(0);
 
     transition:
-        opacity 0.45s ease,
-        transform 0.45s ease,
         background 0.3s ease,
         color 0.3s ease;
 }
-
-/* Когда меню открыто */
 
 nav.active a {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Каждый пункт появляется немного позже */
-
-nav.active a:nth-child(1) {
-    transition-delay: 0.10s;
-}
-
-nav.active a:nth-child(2) {
-    transition-delay: 0.18s;
-}
-
-nav.active a:nth-child(3) {
-    transition-delay: 0.26s;
-}
-
-nav.active a:nth-child(4) {
-    transition-delay: 0.34s;
-}
-
-nav.active a:nth-child(5) {
-    transition-delay: 0.42s;
-}
 nav a {
     ...
 }
