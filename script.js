@@ -1,10 +1,8 @@
 ```javascript
 function toggleMenu() {
     const nav = document.getElementById("mainNav");
-
     nav.classList.toggle("active");
 }
-
 
 function showContacts() {
     const buttons = document.getElementById("contactButtons");
