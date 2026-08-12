@@ -1702,31 +1702,31 @@ body::after {
 /* Иконка */
 
 .advantage-icon {
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
 
-    margin: 0 auto 22px;
+    margin: 0 auto 25px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 18px;
+    border-radius: 50%;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0, 191, 255, 0.12),
-            rgba(123, 97, 255, 0.12)
-        );
+    background: linear-gradient(135deg, #00bfff, #0077ff);
 
-    font-size: 30px;
+    color: white;
 
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
+    font-size: 34px;
+
+    box-shadow: 0 10px 25px rgba(0,191,255,0.35);
+
+    transition: 0.4s;
 }
 
+.advantage-card:hover .advantage-icon {
+    transform: scale(1.1) rotate(8deg);
+}
 
 /* Анимация иконки */
 
