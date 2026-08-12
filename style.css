@@ -1958,3 +1958,88 @@ body::after {
     }
 
 }
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer {
+    position: relative;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07131f,
+            #0b2435
+        );
+
+    color: rgba(255, 255, 255, 0.7);
+
+    border-top: 1px solid
+        rgba(255, 255, 255, 0.08);
+
+    overflow: hidden;
+}
+
+
+/* Нури нарм */
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -130px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(0, 191, 255, 0.12);
+
+    filter: blur(60px);
+
+    pointer-events: none;
+}
+
+
+/* Текст */
+
+footer p {
+    position: relative;
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    z-index: 1;
+}
+
+
+/* WebPro */
+
+footer p::first-line {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* Телефон */
+
+@media (max-width: 768px) {
+
+    footer {
+        padding: 25px 15px;
+    }
+
+    footer p {
+        font-size: 13px;
+    }
+
+}
