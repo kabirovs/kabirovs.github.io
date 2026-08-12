@@ -1294,7 +1294,63 @@ body::after {
     50% {
         transform: translate(-180px, -100px);
     }
+/* ============================= */
+/* АНИМАЦИЯ ДЛЯ БЛОКОВ */
+/* ============================= */
 
+.card,
+.advantage-card {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.card:hover,
+.advantage-card:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Плавное появление */
+
+.services,
+.portfolio,
+.about,
+.advantages,
+.contacts {
+    animation: sectionAppear 1s ease both;
+}
+
+@keyframes sectionAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Небольшой эффект для заголовков */
+
+.services h2,
+.portfolio h2,
+.about h2,
+.advantages h2,
+.contacts h2 {
+    transition: transform 0.3s ease;
+}
+
+.services h2:hover,
+.portfolio h2:hover,
+.about h2:hover,
+.advantages h2:hover,
+.contacts h2:hover {
+    transform: translateY(-3px);
+}
     100% {
         transform: translate(-60px, -280px);
     }
