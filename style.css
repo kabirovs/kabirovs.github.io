@@ -1,1 +1,1197 @@
+```css
+/* =========================
+   RESET
+========================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background: #eef4f8;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 8%;
+
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+    box-shadow: 0 5px 25px rgba(15, 23, 42, 0.08);
+}
+
+
+/* LOGO */
+
+.logo {
+    text-decoration: none;
+    color: #0797d5;
+
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+
+    transition: 0.3s;
+}
+
+.logo:hover {
+    color: #006fa6;
+}
+
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    position: relative;
+
+    text-decoration: none;
+    color: #172033;
+
+    margin-left: 28px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #0797d5;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #0797d5;
+
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-toggle {
+    display: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: #172033;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    padding: 6px 10px;
+
+    transition: 0.3s;
+}
+
+.menu-toggle:hover {
+    color: #0797d5;
+    background: transparent;
+    transform: none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+
+    min-height: 700px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 100px 20px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(3, 18, 35, 0.88),
+            rgba(0, 94, 140, 0.72),
+            rgba(5, 35, 70, 0.88)
+        );
+
+    background-size: 300% 300%;
+
+    animation: heroGradient 18s ease infinite;
+
+    overflow: hidden;
+}
+
+
+/* Soft light */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 191, 255, 0.14);
+
+    filter: blur(80px);
+
+    top: -150px;
+    left: -120px;
+
+    animation: floatingLight 12s ease-in-out infinite;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 140, 255, 0.12);
+
+    filter: blur(80px);
+
+    bottom: -150px;
+    right: -100px;
+
+    animation: floatingLight 15s ease-in-out infinite reverse;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    animation: fadeUp 1s ease forwards;
+}
+
+
+/* BADGE */
+
+.hero-badge {
+    display: inline-block;
+
+    margin-bottom: 22px;
+
+    padding: 8px 17px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* HERO TITLE */
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.12;
+
+    margin-bottom: 25px;
+
+    letter-spacing: -1.5px;
+}
+
+.hero h1 span {
+    color: #55d6ff;
+}
+
+
+/* HERO TEXT */
+
+.hero p {
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.86);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.order-button {
+    border: none;
+    outline: none;
+
+    padding: 16px 36px;
+
+    border-radius: 40px;
+
+    background: #00bfff;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 191, 255, 0.25);
+
+    transition: 0.3s ease;
+}
+
+.order-button:hover {
+    background: #009ed1;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 191, 255, 0.35);
+}
+
+.order-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   CONTACT BUTTONS
+========================= */
+
+.contact-buttons {
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 30px;
+
+    animation: contactAppear 0.4s ease forwards;
+}
+
+
+/* TITLE */
+
+.contact-title {
+    margin-bottom: 22px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.95);
+}
+
+
+/* LINKS CONTAINER */
+
+.contact-links {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* CONTACT LINK */
+
+.contact-links a {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-width: 145px;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: 0.3s ease;
+}
+
+.contact-links a i {
+    font-size: 20px;
+}
+
+.contact-links a:hover {
+    transform: translateY(-4px);
+
+    background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.services,
+.portfolio,
+.advantages,
+.contacts {
+    padding: 100px 8%;
+}
+
+
+/* SECTION HEADING */
+
+.section-heading {
+    text-align: center;
+
+    max-width: 750px;
+
+    margin: 0 auto 55px;
+}
+
+.section-heading > span {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #0797d5;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+
+    margin-bottom: 18px;
+
+    color: #172033;
+}
+
+.section-heading p {
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    color: #64748b;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 28px;
+
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+
+    padding: 32px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.07);
+
+    transition: 0.35s ease;
+
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.13);
+}
+
+
+/* CARD ICON */
+
+.card-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border-radius: 15px;
+
+    background: rgba(0, 191, 255, 0.10);
+
+    color: #0797d5;
+
+    font-size: 24px;
+}
+
+
+/* CARD TEXT */
+
+.card h3 {
+    margin-bottom: 13px;
+
+    font-size: 21px;
+
+    color: #172033;
+}
+
+.card p {
+    color: #64748b;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   PORTFOLIO
+========================= */
+
+.portfolio {
+    background:
+        linear-gradient(
+            135deg,
+            #edf7fb,
+            #e8f1f7,
+            #f4f8fb
+        );
+
+    background-size: 300% 300%;
+
+    animation: portfolioGradient 20s ease infinite;
+}
+
+.portfolio-card {
+    padding: 0;
+
+    overflow: hidden;
+}
+
+.portfolio-card img {
+    display: block;
+
+    width: 100%;
+    height: 200px;
+
+    object-fit: cover;
+
+    transition: 0.5s ease;
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.06);
+}
+
+.portfolio-info {
+    padding: 25px;
+}
+
+.portfolio-info > span {
+    color: #0797d5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.portfolio-info h3 {
+    margin: 10px 0;
+
+    font-size: 21px;
+}
+
+.portfolio-info p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    position: relative;
+
+    padding: 110px 10%;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(4, 23, 43, 0.94),
+            rgba(0, 102, 145, 0.85),
+            rgba(4, 31, 58, 0.94)
+        );
+
+    background-size: 300% 300%;
+
+    animation: aboutGradient 18s ease infinite;
+
+    overflow: hidden;
+}
+
+.about::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 191, 255, 0.13);
+
+    filter: blur(70px);
+
+    top: -100px;
+    right: -80px;
+}
+
+.about-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.about-heading {
+    margin-bottom: 35px;
+}
+
+.about-heading > span {
+    color: #55d6ff;
+}
+
+.about-heading h2 {
+    color: white;
+}
+
+.about p {
+    max-width: 800px;
+
+    margin: 18px auto;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.84);
+}
+
+
+/* =========================
+   ADVANTAGES
+========================= */
+
+.advantages {
+    background: #f3f7fa;
+}
+
+.advantage-cards {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.advantage-card {
+    width: 260px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid rgba(15, 23, 42, 0.05);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06);
+
+    transition: 0.35s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+
+/* ADVANTAGE ICON */
+
+.advantage-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 18px;
+
+    background: rgba(0, 191, 255, 0.10);
+
+    color: #0797d5;
+
+    font-size: 25px;
+}
+
+.advantage-card h3 {
+    margin-bottom: 14px;
+
+    font-size: 19px;
+
+    color: #172033;
+}
+
+.advantage-card p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CONTACTS
+========================= */
+
+.contacts {
+    text-align: center;
+
+    background: white;
+}
+
+.social-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+}
+
+.social-buttons a {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    min-width: 160px;
+
+    padding: 14px 23px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: #172033;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.social-buttons a i {
+    font-size: 19px;
+}
+
+.social-buttons a:hover {
+    background: #0797d5;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(7, 151, 213, 0.2);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    background: #0b1424;
+
+    color: #94a3b8;
+}
+
+.footer-logo {
+    margin-bottom: 10px;
+
+    color: #55d6ff;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+footer p {
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.footer-line {
+    width: 80px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.copyright {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes heroGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes portfolioGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes aboutGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatingLight {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(80px, 50px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contactAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px 6%;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 18px 0;
+
+        background: rgba(255, 255, 255, 0.96);
+
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+
+        box-shadow:
+            0 12px 25px rgba(15, 23, 42, 0.10);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        width: 100%;
+
+        margin: 0;
+
+        padding: 13px 20px;
+
+        text-align: center;
+
+        font-size: 17px;
+    }
+
+    nav a::after {
+        display: none;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 650px;
+
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+
+        letter-spacing: -0.8px;
+    }
+
+    .hero p {
+        font-size: 17px;
+
+        line-height: 1.6;
+    }
+
+    .hero-badge {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* CONTACT */
+
+    .contact-links {
+        flex-direction: column;
+
+        gap: 12px;
+
+        width: 100%;
+    }
+
+    .contact-links a {
+        width: 220px;
+    }
+
+    .contact-title {
+        font-size: 14px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* SECTIONS */
+
+    .services,
+    .portfolio,
+    .advantages,
+    .contacts {
+        padding: 75px 6%;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .section-heading p {
+        font-size: 15px;
+    }
+
+
+    /* CARDS */
+
+    .cards {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+    .card {
+        width: 100%;
+
+        max-width: 360px;
+    }
+
+
+    /* PORTFOLIO */
+
+    .portfolio-card img {
+        height: 210px;
+    }
+
+
+    /* ABOUT */
+
+    .about {
+        padding: 80px 7%;
+    }
+
+    .about p {
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+
+
+    /* ADVANTAGES */
+
+    .advantage-cards {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+    .advantage-card {
+        width: 100%;
+
+        max-width: 360px;
+    }
+
+
+    /* CONTACTS */
+
+    .social-buttons {
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+    .social-buttons a {
+        width: 220px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 33px;
+    }
+
+    .hero {
+        min-height: 620px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .order-button {
+        padding: 14px 30px;
+    }
+
+}
+```
