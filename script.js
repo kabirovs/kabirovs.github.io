@@ -1,7 +1,3 @@
-// ===============================
-// МОБИЛЬНОЕ МЕНЮ
-// ===============================
-
 function toggleMenu() {
     const nav = document.getElementById("mainNav");
 
@@ -11,26 +7,21 @@ function toggleMenu() {
 }
 
 
-// ===============================
-// ЗАКАЗАТЬ САЙТ
-// ===============================
-
 function showContacts() {
     const buttons = document.getElementById("contactButtons");
 
-    if (!buttons) return;
+    if (!buttons) {
+        console.log("contactButtons не найден");
+        return;
+    }
 
-    if (buttons.classList.contains("show")) {
-        buttons.classList.remove("show");
+    if (buttons.style.display === "flex") {
+        buttons.style.display = "none";
     } else {
-        buttons.classList.add("show");
+        buttons.style.display = "flex";
     }
 }
 
-
-// ===============================
-// ЗАКРЫТИЕ МЕНЮ ПОСЛЕ НАЖАТИЯ
-// ===============================
 
 document.addEventListener("DOMContentLoaded", function () {
 
