@@ -18,7 +18,6 @@ body {
     overflow-x: hidden;
     position: relative;
 
-    /* Живой фон */
     background: linear-gradient(
         -45deg,
         #eef7ff,
@@ -28,6 +27,7 @@ body {
     );
 
     background-size: 400% 400%;
+
     animation: liveBackground 18s ease infinite;
 }
 
@@ -48,12 +48,14 @@ header {
     padding: 18px 8%;
 
     background: rgba(255, 255, 255, 0.82);
+
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
-    box-shadow: 0 5px 25px rgba(15, 23, 42, 0.08);
+    box-shadow:
+        0 5px 25px rgba(15, 23, 42, 0.08);
 }
 
 
@@ -61,10 +63,12 @@ header {
 
 .logo {
     text-decoration: none;
+
     color: #0797d5;
 
     font-size: 30px;
     font-weight: 800;
+
     letter-spacing: -1px;
 
     transition: 0.3s;
@@ -86,6 +90,7 @@ nav a {
     position: relative;
 
     text-decoration: none;
+
     color: #172033;
 
     margin-left: 28px;
@@ -121,7 +126,7 @@ nav a:hover::after {
 }
 
 
-/* MOBILE MENU BUTTON */
+/* MOBILE MENU */
 
 .menu-toggle {
     display: none;
@@ -130,6 +135,7 @@ nav a:hover::after {
     outline: none;
 
     background: transparent;
+
     color: #172033;
 
     font-size: 26px;
@@ -143,7 +149,9 @@ nav a:hover::after {
 
 .menu-toggle:hover {
     color: #0797d5;
+
     background: transparent;
+
     transform: none;
 }
 
@@ -183,7 +191,7 @@ nav a:hover::after {
 }
 
 
-/* Soft light */
+/* HERO LIGHT */
 
 .hero::before {
     content: "";
@@ -202,7 +210,8 @@ nav a:hover::after {
     top: -150px;
     left: -120px;
 
-    animation: floatingLight 12s ease-in-out infinite;
+    animation:
+        floatingLight 12s ease-in-out infinite;
 }
 
 .hero::after {
@@ -222,17 +231,20 @@ nav a:hover::after {
     bottom: -150px;
     right: -100px;
 
-    animation: floatingLight 15s ease-in-out infinite reverse;
+    animation:
+        floatingLight 15s ease-in-out infinite reverse;
 }
 
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
     max-width: 900px;
 
-    animation: fadeUp 1s ease forwards;
+    animation:
+        fadeUp 1s ease forwards;
 }
 
 
@@ -268,9 +280,11 @@ nav a:hover::after {
     max-width: 900px;
 
     font-size: clamp(38px, 6vw, 64px);
+
     line-height: 1.1;
 
     font-weight: 700;
+
     letter-spacing: -1px;
 
     margin-bottom: 25px;
@@ -278,7 +292,8 @@ nav a:hover::after {
     text-shadow:
         0 5px 25px rgba(0, 0, 0, 0.35);
 
-    animation: heroTitle 1s ease both;
+    animation:
+        heroTitle 1s ease both;
 }
 
 .hero h1 span {
@@ -299,7 +314,8 @@ nav a:hover::after {
 
     color: rgba(255, 255, 255, 0.92);
 
-    animation: heroText 1s ease 0.2s both;
+    animation:
+        heroText 1s ease 0.2s both;
 }
 
 
@@ -308,8 +324,6 @@ nav a:hover::after {
 ========================= */
 
 .order-button {
-    position: relative;
-
     border: none;
     outline: none;
 
@@ -318,6 +332,7 @@ nav a:hover::after {
     border-radius: 50px;
 
     background: #00bfff;
+
     color: white;
 
     font-size: 17px;
@@ -330,20 +345,25 @@ nav a:hover::after {
 
     transition: 0.3s ease;
 
-    animation: heroButton 1s ease 0.4s both;
+    animation:
+        heroButton 1s ease 0.4s both;
 }
 
 .order-button:hover {
     background: #009ed1;
 
-    transform: translateY(-3px) scale(1.03);
+    transform:
+        translateY(-3px)
+        scale(1.03);
 
     box-shadow:
         0 15px 35px rgba(0, 191, 255, 0.45);
 }
 
 .order-button:active {
-    transform: translateY(0) scale(1);
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 
@@ -354,21 +374,20 @@ nav a:hover::after {
 .contact-buttons {
     display: none;
 
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
-
-    gap: 12px;
 
     margin-top: 25px;
 }
 
 .contact-buttons.show {
     display: flex;
-    animation: contactAppear 0.4s ease forwards;
+
+    animation:
+        contactAppear 0.4s ease forwards;
 }
-
-
-/* TITLE */
 
 .contact-title {
     margin-bottom: 22px;
@@ -379,9 +398,6 @@ nav a:hover::after {
     color: rgba(255, 255, 255, 0.95);
 }
 
-
-/* LINKS CONTAINER */
-
 .contact-links {
     display: flex;
 
@@ -390,9 +406,6 @@ nav a:hover::after {
 
     gap: 18px;
 }
-
-
-/* CONTACT LINK */
 
 .contact-links a {
     display: flex;
@@ -448,7 +461,9 @@ nav a:hover::after {
 }
 
 
-/* SECTION HEADING */
+/* =========================
+   SECTION HEADING
+========================= */
 
 .section-heading {
     text-align: center;
@@ -478,7 +493,8 @@ nav a:hover::after {
 
     color: #172033;
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease;
 }
 
 .section-heading h2:hover {
@@ -510,6 +526,7 @@ nav a:hover::after {
 
 .card {
     position: relative;
+
     overflow: hidden;
 
     width: 300px;
@@ -529,12 +546,7 @@ nav a:hover::after {
         transform 0.4s ease,
         box-shadow 0.4s ease,
         border-color 0.4s ease;
-
-    animation: fadeUp 0.8s ease forwards;
 }
-
-
-/* Светлая полоска */
 
 .card::before {
     content: "";
@@ -547,20 +559,20 @@ nav a:hover::after {
     width: 100%;
     height: 3px;
 
-    background: linear-gradient(
-        90deg,
-        #00bfff,
-        #7b61ff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #00bfff,
+            #7b61ff
+        );
 
     transform: scaleX(0);
+
     transform-origin: left;
 
-    transition: transform 0.4s ease;
+    transition:
+        transform 0.4s ease;
 }
-
-
-/* CARD HOVER */
 
 .card:hover {
     transform: translateY(-10px);
@@ -592,15 +604,13 @@ nav a:hover::after {
 
     border-radius: 15px;
 
-    background: rgba(0, 191, 255, 0.10);
+    background:
+        rgba(0, 191, 255, 0.10);
 
     color: #0797d5;
 
     font-size: 24px;
 }
-
-
-/* CARD TEXT */
 
 .card h3 {
     margin-bottom: 13px;
@@ -617,7 +627,8 @@ nav a:hover::after {
 .card:hover h3 {
     color: #00aeea;
 
-    transform: translateX(3px);
+    transform:
+        translateX(3px);
 }
 
 .card p {
@@ -626,21 +637,6 @@ nav a:hover::after {
     line-height: 1.7;
 
     font-size: 15px;
-}
-
-
-/* CARD IMAGES */
-
-.card img {
-    transition:
-        transform 0.6s ease,
-        filter 0.6s ease;
-}
-
-.card:hover img {
-    transform: scale(1.04);
-
-    filter: brightness(1.05);
 }
 
 
@@ -659,7 +655,8 @@ nav a:hover::after {
 
     background-size: 300% 300%;
 
-    animation: portfolioGradient 20s ease infinite;
+    animation:
+        portfolioGradient 20s ease infinite;
 }
 
 .portfolio-card {
@@ -676,7 +673,8 @@ nav a:hover::after {
 
     object-fit: cover;
 
-    transition: 0.5s ease;
+    transition:
+        transform 0.5s ease;
 }
 
 .portfolio-card:hover img {
@@ -717,13 +715,17 @@ nav a:hover::after {
 
 .about {
     position: relative;
+
     overflow: hidden;
 
     min-height: 430px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 100px 10%;
@@ -741,13 +743,9 @@ nav a:hover::after {
         url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600");
 
     background-size: cover;
+
     background-position: center;
-
-    animation: aboutGradient 18s ease infinite;
 }
-
-
-/* ABOUT LIGHT */
 
 .about::before {
     content: "";
@@ -759,7 +757,8 @@ nav a:hover::after {
 
     border-radius: 50%;
 
-    background: rgba(0, 191, 255, 0.15);
+    background:
+        rgba(0, 191, 255, 0.15);
 
     filter: blur(80px);
 
@@ -768,9 +767,9 @@ nav a:hover::after {
 
     pointer-events: none;
 
-    animation: aboutGlow 12s ease-in-out infinite alternate;
+    animation:
+        aboutGlow 12s ease-in-out infinite alternate;
 }
-
 
 .about-content {
     position: relative;
@@ -781,9 +780,6 @@ nav a:hover::after {
 
     margin: auto;
 }
-
-
-/* ABOUT HEADING */
 
 .about-heading {
     margin-bottom: 35px;
@@ -808,12 +804,7 @@ nav a:hover::after {
 
     text-shadow:
         0 5px 25px rgba(0, 0, 0, 0.3);
-
-    z-index: 1;
 }
-
-
-/* UNDERLINE */
 
 .about h2::after {
     content: "";
@@ -827,15 +818,13 @@ nav a:hover::after {
 
     border-radius: 10px;
 
-    background: linear-gradient(
-        90deg,
-        #00bfff,
-        #7b61ff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #00bfff,
+            #7b61ff
+        );
 }
-
-
-/* ABOUT TEXT */
 
 .about p {
     position: relative;
@@ -844,7 +833,8 @@ nav a:hover::after {
 
     margin: 12px auto;
 
-    color: rgba(255, 255, 255, 0.9);
+    color:
+        rgba(255, 255, 255, 0.9);
 
     font-size: 19px;
 
@@ -858,7 +848,8 @@ nav a:hover::after {
 }
 
 .about p:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     color: white;
 }
@@ -884,6 +875,7 @@ nav a:hover::after {
 
 .advantage-card {
     position: relative;
+
     overflow: hidden;
 
     width: 260px;
@@ -907,9 +899,6 @@ nav a:hover::after {
         border-color 0.4s ease;
 }
 
-
-/* Светлая полоска */
-
 .advantage-card::before {
     content: "";
 
@@ -921,23 +910,24 @@ nav a:hover::after {
     width: 100%;
     height: 3px;
 
-    background: linear-gradient(
-        90deg,
-        #00bfff,
-        #7b61ff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #00bfff,
+            #7b61ff
+        );
 
     transform: scaleX(0);
+
     transform-origin: left;
 
-    transition: transform 0.4s ease;
+    transition:
+        transform 0.4s ease;
 }
 
-
-/* HOVER */
-
 .advantage-card:hover {
-    transform: translateY(-10px);
+    transform:
+        translateY(-10px);
 
     border-color:
         rgba(0, 191, 255, 0.25);
@@ -966,12 +956,6 @@ nav a:hover::after {
 
     border-radius: 50%;
 
-    background: linear-gradient(
-        135deg,
-        #00bfff,
-        #0077ff
-    );
-
     color: white;
 
     font-size: 34px;
@@ -979,78 +963,61 @@ nav a:hover::after {
     box-shadow:
         0 10px 25px rgba(0, 191, 255, 0.35);
 
-    transition: 0.4s;
-}
-
-
-/* SVG ICON */
-
-.advantage-icon svg {
-    width: 32px;
-    height: 32px;
-
-    fill: none;
-
-    stroke: #ffffff;
-
-    stroke-width: 1.8;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
     transition:
-        transform 0.4s ease,
-        stroke 0.4s ease;
+        0.4s ease;
 }
 
-.advantage-card:hover .advantage-icon {
+
+/* ICON COLORS */
+
+.advantage-card:nth-child(1)
+.advantage-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #FFD700,
+            #ffae00
+        );
+}
+
+.advantage-card:nth-child(2)
+.advantage-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #00BFFF,
+            #0077ff
+        );
+}
+
+.advantage-card:nth-child(3)
+.advantage-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #FF4D6D,
+            #e11d48
+        );
+}
+
+.advantage-card:nth-child(4)
+.advantage-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #22C55E,
+            #16a34a
+        );
+}
+
+.advantage-card:hover
+.advantage-icon {
     transform:
         translateY(-4px)
         scale(1.08);
 
     box-shadow:
         0 8px 25px rgba(0, 191, 255, 0.25);
-}
-
-.advantage-card:hover .advantage-icon svg {
-    transform: scale(1.12);
-
-    stroke: #ffffff;
-}
-
-
-/* DIFFERENT ICON COLORS */
-
-.advantage-card:nth-child(1) .advantage-icon {
-    background: linear-gradient(
-        135deg,
-        #FFD700,
-        #ffae00
-    );
-}
-
-.advantage-card:nth-child(2) .advantage-icon {
-    background: linear-gradient(
-        135deg,
-        #00BFFF,
-        #0077ff
-    );
-}
-
-.advantage-card:nth-child(3) .advantage-icon {
-    background: linear-gradient(
-        135deg,
-        #FF4D6D,
-        #e11d48
-    );
-}
-
-.advantage-card:nth-child(4) .advantage-icon {
-    background: linear-gradient(
-        135deg,
-        #22C55E,
-        #16a34a
-    );
 }
 
 
@@ -1067,7 +1034,8 @@ nav a:hover::after {
 .advantage-card:hover h3 {
     color: #00aeea;
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .advantage-card p {
@@ -1121,7 +1089,8 @@ nav a:hover::after {
     font-size: 15px;
     font-weight: 600;
 
-    transition: 0.3s ease;
+    transition:
+        0.3s ease;
 }
 
 .social-buttons a i {
@@ -1131,7 +1100,8 @@ nav a:hover::after {
 .social-buttons a:hover {
     background: #0797d5;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     box-shadow:
         0 10px 25px rgba(7, 151, 213, 0.2);
@@ -1144,6 +1114,7 @@ nav a:hover::after {
 
 footer {
     position: relative;
+
     overflow: hidden;
 
     padding: 30px 20px;
@@ -1157,14 +1128,12 @@ footer {
             #0b2435
         );
 
-    color: rgba(255, 255, 255, 0.7);
+    color:
+        rgba(255, 255, 255, 0.7);
 
     border-top:
         1px solid rgba(255, 255, 255, 0.08);
 }
-
-
-/* FOOTER LIGHT */
 
 footer::before {
     content: "";
@@ -1177,17 +1146,16 @@ footer::before {
     top: -130px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    background: rgba(0, 191, 255, 0.12);
+    background:
+        rgba(0, 191, 255, 0.12);
 
     filter: blur(60px);
 
     pointer-events: none;
 }
-
-
-/* FOOTER TEXT */
 
 footer p {
     position: relative;
@@ -1220,7 +1188,8 @@ footer p {
 
     margin: 25px auto;
 
-    background: rgba(255, 255, 255, 0.15);
+    background:
+        rgba(255, 255, 255, 0.15);
 }
 
 .copyright {
@@ -1255,7 +1224,8 @@ body::after {
 }
 
 body::before {
-    background: rgba(0, 191, 255, 0.35);
+    background:
+        rgba(0, 191, 255, 0.35);
 
     top: 10%;
     left: -120px;
@@ -1265,7 +1235,8 @@ body::before {
 }
 
 body::after {
-    background: rgba(130, 80, 255, 0.25);
+    background:
+        rgba(130, 80, 255, 0.25);
 
     bottom: 5%;
     right: -120px;
@@ -1276,24 +1247,11 @@ body::after {
 
 
 /* =========================
-   SECTION ANIMATION
-========================= */
-
-.services,
-.portfolio,
-.about,
-.advantages,
-.contacts {
-    animation:
-        sectionAppear 1s ease both;
-}
-
-
-/* =========================
    ANIMATIONS
 ========================= */
 
 @keyframes liveBackground {
+
     0% {
         background-position: 0% 50%;
     }
@@ -1309,6 +1267,7 @@ body::after {
 
 
 @keyframes heroGradient {
+
     0% {
         background-position: 0% 50%;
     }
@@ -1324,21 +1283,7 @@ body::after {
 
 
 @keyframes portfolioGradient {
-    0% {
-        background-position: 0% 50%;
-    }
 
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-@keyframes aboutGradient {
     0% {
         background-position: 0% 50%;
     }
@@ -1354,135 +1299,164 @@ body::after {
 
 
 @keyframes floatingLight {
+
     0% {
-        transform: translate(0, 0);
+        transform:
+            translate(0, 0);
     }
 
     50% {
-        transform: translate(80px, 50px);
+        transform:
+            translate(80px, 50px);
     }
 
     100% {
-        transform: translate(0, 0);
+        transform:
+            translate(0, 0);
     }
 }
 
 
 @keyframes glowMoveOne {
+
     0% {
-        transform: translate(0, 0);
+        transform:
+            translate(0, 0);
     }
 
     50% {
-        transform: translate(180px, 120px);
+        transform:
+            translate(180px, 120px);
     }
 
     100% {
-        transform: translate(60px, 300px);
+        transform:
+            translate(60px, 300px);
     }
 }
 
 
 @keyframes glowMoveTwo {
+
     0% {
-        transform: translate(0, 0);
+        transform:
+            translate(0, 0);
     }
 
     50% {
-        transform: translate(-180px, -100px);
+        transform:
+            translate(-180px, -100px);
     }
 
     100% {
-        transform: translate(-60px, -280px);
+        transform:
+            translate(-60px, -280px);
     }
 }
 
 
 @keyframes aboutGlow {
+
     from {
-        transform: translate(0, 0);
+        transform:
+            translate(0, 0);
     }
 
     to {
-        transform: translate(180px, 120px);
+        transform:
+            translate(180px, 120px);
     }
 }
 
 
 @keyframes fadeUp {
+
     from {
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+            translateY(25px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 
 @keyframes contactAppear {
+
     from {
         opacity: 0;
-        transform: translateY(10px);
+
+        transform:
+            translateY(10px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-
-@keyframes sectionAppear {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 }
 
 
 @keyframes heroTitle {
+
     from {
         opacity: 0;
-        transform: translateY(30px);
+
+        transform:
+            translateY(30px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 
 @keyframes heroText {
+
     from {
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+            translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 
 @keyframes heroButton {
+
     from {
         opacity: 0;
-        transform: translateY(20px) scale(0.95);
+
+        transform:
+            translateY(20px)
+            scale(0.95);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
@@ -1519,7 +1493,8 @@ body::after {
 
         padding: 18px 0;
 
-        background: rgba(255, 255, 255, 0.96);
+        background:
+            rgba(255, 255, 255, 0.96);
 
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
@@ -1642,7 +1617,8 @@ body::after {
     }
 
     .card:hover {
-        transform: translateY(-5px);
+        transform:
+            translateY(-5px);
     }
 
 
@@ -1650,10 +1626,6 @@ body::after {
 
     .portfolio-card img {
         height: 210px;
-    }
-
-    .card img {
-        height: 190px;
     }
 
 
@@ -1693,7 +1665,8 @@ body::after {
     }
 
     .advantage-card:hover {
-        transform: translateY(-5px);
+        transform:
+            translateY(-5px);
     }
 
 
