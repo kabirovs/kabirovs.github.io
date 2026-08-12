@@ -1355,3 +1355,165 @@ body::after {
         transform: translate(-60px, -280px);
     }
 }
+/* ============================= */
+/* ПРОФЕССИОНАЛЬНЫЙ HERO */
+/* ============================= */
+
+.hero {
+    position: relative;
+    min-height: 620px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 120px 20px;
+
+    overflow: hidden;
+}
+
+
+/* Заголовок */
+
+.hero h1 {
+    max-width: 900px;
+
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.1;
+
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.35);
+
+    animation: heroTitle 1s ease both;
+}
+
+
+/* Описание */
+
+.hero p {
+    max-width: 700px;
+
+    font-size: clamp(18px, 2.5vw, 22px);
+    line-height: 1.6;
+
+    margin-bottom: 35px;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    animation: heroText 1s ease 0.2s both;
+}
+
+
+/* Кнопка */
+
+.hero > button {
+    position: relative;
+
+    padding: 16px 38px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 191, 255, 0.30);
+
+    animation: heroButton 1s ease 0.4s both;
+}
+
+
+/* Эффект при наведении */
+
+.hero > button:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 15px 35px rgba(0, 191, 255, 0.45);
+}
+
+
+/* Анимация заголовка */
+
+@keyframes heroTitle {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Анимация текста */
+
+@keyframes heroText {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Анимация кнопки */
+
+@keyframes heroButton {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* Телефон */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 560px;
+        padding: 90px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+        line-height: 1.15;
+    }
+
+    .hero p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .hero > button {
+        padding: 14px 32px;
+        font-size: 16px;
+    }
+
+}
