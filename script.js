@@ -15,11 +15,7 @@ function showContacts() {
         return;
     }
 
-    if (buttons.style.display === "flex") {
-        buttons.style.display = "none";
-    } else {
-        buttons.style.display = "flex";
-    }
+    buttons.classList.toggle("show");
 }
 
 
