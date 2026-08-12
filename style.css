@@ -646,6 +646,10 @@ CARDS
     border-color:
         rgba(0, 191, 255, 0.25);
 }
+.card:hover::before,
+.card:active::before {
+    transform: scaleX(1);
+}
 
 .card:hover::before {
     transform: scaleX(1);
