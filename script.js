@@ -8,24 +8,25 @@ function toggleMenu() {
 
 
 function showContacts() {
+
     const buttons = document.getElementById("contactButtons");
     const orderButton = document.querySelector(".order-button");
 
     if (!buttons || !orderButton) {
+        console.log("Элемент найден не был");
         return;
     }
 
-    if (buttons.style.display === "flex") {
-        buttons.style.display = "none";
+    buttons.classList.toggle("show");
+
+    if (buttons.classList.contains("show")) {
+
+        orderButton.style.transform = "translateY(-8px)";
+        orderButton.style.transition = "transform 0.8s ease";
+
+    } else {
 
         orderButton.style.transform = "translateY(0)";
-    } else {
-        buttons.style.display = "flex";
 
-        orderButton.style.transition = "transform 1.5s ease";
-
-        setTimeout(function () {
-            orderButton.style.transform = "translateY(-20px)";
-        }, 50);
     }
 }
