@@ -1,1 +1,529 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebPro — Создание сайтов</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="#home" class="logo">
+            WebPro
+        </a>
+
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Открыть меню">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="#home">Главная</a>
+
+            <a href="#services">Услуги</a>
+
+            <a href="#portfolio">Наши работы</a>
+
+            <a href="#about">О нас</a>
+
+            <a href="#contacts">Контакты</a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    WEB DEVELOPMENT
+                </div>
+
+                <h1>
+                    Создаём сайты<br>
+                    <span>для вашего бизнеса</span>
+                </h1>
+
+                <p>
+                    Современные, быстрые и удобные сайты,
+                    которые помогают вашему бизнесу развиваться.
+                </p>
+
+                <button class="order-button" onclick="showContacts()">
+                    Заказать сайт
+                </button>
+
+
+                <!-- CONTACT BUTTONS -->
+
+                <div id="contactButtons" class="contact-buttons">
+
+                    <div class="contact-title">
+                        Напишите нам удобным для вас способом
+                    </div>
+
+                    <div class="contact-links">
+
+                        <a href="https://t.me/kbrv8"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="telegram">
+
+                            <i class="fa-brands fa-telegram"></i>
+
+                            <span>Telegram</span>
+
+                        </a>
+
+
+                        <a href="https://wa.me/992974008118"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="whatsapp">
+
+                            <i class="fa-brands fa-whatsapp"></i>
+
+                            <span>WhatsApp</span>
+
+                        </a>
+
+
+                        <a href="https://instagram.com/kabirov.dev"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="instagram">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                            <span>Instagram</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERVICES -->
+
+        <section id="services" class="services">
+
+            <div class="section-heading">
+
+                <span>ЧТО МЫ ДЕЛАЕМ</span>
+
+                <h2>Наши услуги</h2>
+
+                <p>
+                    Создаём решения, которые подходят
+                    именно вашему бизнесу.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+
+                    <h3>
+                        Сайт-визитка
+                    </h3>
+
+                    <p>
+                        Современный сайт для компании,
+                        специалиста или личного бренда.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+
+                    <h3>
+                        Интернет-магазин
+                    </h3>
+
+                    <p>
+                        Удобный сайт для продажи товаров
+                        и приёма заказов онлайн.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+
+                    <h3>
+                        Landing Page
+                    </h3>
+
+                    <p>
+                        Одностраничный сайт для продвижения
+                        продукта, услуги или предложения.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PORTFOLIO -->
+
+        <section id="portfolio" class="portfolio">
+
+            <div class="section-heading">
+
+                <span>ПРИМЕРЫ РАБОТ</span>
+
+                <h2>Наши работы</h2>
+
+                <p>
+                    Примеры современных решений
+                    для разных направлений бизнеса.
+                </p>
+
+            </div>
+
+
+            <div class="cards portfolio-cards">
+
+                <div class="card portfolio-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800"
+                        alt="Сайт кафе"
+                    >
+
+                    <div class="portfolio-info">
+
+                        <span>RESTAURANT</span>
+
+                        <h3>
+                            Сайт кафе
+                        </h3>
+
+                        <p>
+                            Современный сайт для кафе
+                            и ресторана.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card portfolio-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800"
+                        alt="Интернет-магазин"
+                    >
+
+                    <div class="portfolio-info">
+
+                        <span>ONLINE STORE</span>
+
+                        <h3>
+                            Интернет-магазин
+                        </h3>
+
+                        <p>
+                            Онлайн-магазин для продажи
+                            товаров и приёма заказов.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card portfolio-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800"
+                        alt="Сайт компании"
+                    >
+
+                    <div class="portfolio-info">
+
+                        <span>BUSINESS</span>
+
+                        <h3>
+                            Сайт компании
+                        </h3>
+
+                        <p>
+                            Корпоративный сайт
+                            для современного бизнеса.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section id="about" class="about">
+
+            <div class="about-content">
+
+                <div class="section-heading about-heading">
+
+                    <span>О КОМПАНИИ</span>
+
+                    <h2>
+                        О нас
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    Мы создаём современные и быстрые сайты
+                    для бизнеса, магазинов и личных брендов.
+                </p>
+
+
+                <p>
+                    Наша задача — сделать сайт не только
+                    красивым, но и удобным для ваших клиентов.
+                </p>
+
+
+                <p>
+                    Мы уделяем внимание дизайну, скорости,
+                    адаптации под мобильные устройства
+                    и удобству использования.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADVANTAGES -->
+
+        <section class="advantages">
+
+            <div class="section-heading">
+
+                <span>НАШИ ПРЕИМУЩЕСТВА</span>
+
+                <h2>
+                    Почему выбирают нас
+                </h2>
+
+            </div>
+
+
+            <div class="advantage-cards">
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <h3>
+                        Быстрое выполнение
+                    </h3>
+
+                    <p>
+                        Стараемся выполнять работу
+                        качественно и в согласованные сроки.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+
+                    <h3>
+                        Адаптация под телефон
+                    </h3>
+
+                    <p>
+                        Сайт удобно работает на компьютере,
+                        планшете и смартфоне.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+
+                    <h3>
+                        Современный дизайн
+                    </h3>
+
+                    <p>
+                        Создаём аккуратный, современный
+                        и удобный интерфейс.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage-card">
+
+                    <div class="advantage-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <h3>
+                        Поддержка клиентов
+                    </h3>
+
+                    <p>
+                        Остаёмся на связи и помогаем
+                        после создания сайта.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACTS -->
+
+        <section id="contacts" class="contacts">
+
+            <div class="section-heading">
+
+                <span>КОНТАКТЫ</span>
+
+                <h2>
+                    Связаться с нами
+                </h2>
+
+                <p>
+                    Выберите удобный способ связи
+                    и расскажите нам о вашем проекте.
+                </p>
+
+            </div>
+
+
+            <div class="social-buttons">
+
+                <a href="https://t.me/kbrv8"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    <i class="fa-brands fa-telegram"></i>
+
+                    <span>Telegram</span>
+
+                </a>
+
+
+                <a href="https://wa.me/992974008118"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    <span>WhatsApp</span>
+
+                </a>
+
+
+                <a href="https://instagram.com/kabirov.dev"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                    <span>Instagram</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            WebPro
+        </div>
+
+        <p>
+            Создаём современные сайты для бизнеса.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <p class="copyright">
+            © 2026 WebPro. Все права защищены.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
