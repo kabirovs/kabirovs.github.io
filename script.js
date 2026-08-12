@@ -30,3 +30,19 @@ function showContacts() {
 
     }
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    const navLinks = document.querySelectorAll("#mainNav a");
+    const nav = document.getElementById("mainNav");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            nav.classList.remove("active");
+
+        });
+
+    });
+
+});
