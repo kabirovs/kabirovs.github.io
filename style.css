@@ -1236,3 +1236,66 @@ body {
     }
 
 }
+/* ============================= */
+/* НУРҲОИ НАРМ ДАР ФОН */
+/* ============================= */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(80px);
+    opacity: 0.35;
+}
+
+body::before {
+    background: rgba(0, 191, 255, 0.35);
+    top: 10%;
+    left: -120px;
+    animation: glowMoveOne 18s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: rgba(130, 80, 255, 0.25);
+    bottom: 5%;
+    right: -120px;
+    animation: glowMoveTwo 22s ease-in-out infinite alternate;
+}
+
+@keyframes glowMoveOne {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(180px, 120px);
+    }
+
+    100% {
+        transform: translate(60px, 300px);
+    }
+}
+
+@keyframes glowMoveTwo {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-180px, -100px);
+    }
+
+    100% {
+        transform: translate(-60px, -280px);
+    }
+}
