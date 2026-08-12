@@ -9,31 +9,23 @@ function toggleMenu() {
 
 function showContacts() {
     const buttons = document.getElementById("contactButtons");
+    const orderButton = document.querySelector(".order-button");
 
-    if (!buttons) {
-        console.log("contactButtons не найден");
+    if (!buttons || !orderButton) {
         return;
     }
 
-    buttons.classList.toggle("show");
+    if (buttons.style.display === "flex") {
+        buttons.style.display = "none";
+
+        orderButton.style.transform = "translateY(0)";
+    } else {
+        buttons.style.display = "flex";
+
+        orderButton.style.transition = "transform 0.8s ease";
+
+        setTimeout(function () {
+            orderButton.style.transform = "translateY(-20px)";
+        }, 50);
+    }
 }
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const navLinks = document.querySelectorAll("#mainNav a");
-    const nav = document.getElementById("mainNav");
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            if (nav) {
-                nav.classList.remove("active");
-            }
-
-        });
-
-    });
-
-});
