@@ -79,50 +79,68 @@ header {
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION — DESKTOP
+========================= */
 
 nav {
     display: flex;
     align-items: center;
+    gap: 10px;
+
+    padding: 6px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    border: 1px solid rgba(7, 151, 213, 0.10);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
 }
 
 nav a {
     position: relative;
 
     text-decoration: none;
-
     color: #172033;
 
-    margin-left: 28px;
+    margin-left: 0;
 
-    font-size: 16px;
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    font-size: 15px;
     font-weight: 600;
 
-    transition: 0.3s;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
+
+/* Убираем старую линию */
+
+nav a::after {
+    display: none;
+}
+
+/* Наведение */
 
 nav a:hover {
     color: #0797d5;
-}
 
-nav a::after {
-    content: "";
+    background: rgba(7, 151, 213, 0.09);
 
-    position: absolute;
+    transform: translateY(-2px);
 
-    left: 0;
-    bottom: -7px;
-
-    width: 0;
-    height: 2px;
-
-    background: #0797d5;
-
-    transition: 0.3s;
-}
-
-nav a:hover::after {
-    width: 100%;
+    box-shadow:
+        0 6px 15px rgba(7, 151, 213, 0.08);
 }
 
 
