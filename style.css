@@ -1842,7 +1842,8 @@ nav.active a:nth-child(5) {
         rgba(0, 191, 255, 0.25);
 }
 
-.card:hover::before {
+.card:hover::before,
+.card:active::before {
     transform: scaleX(1);
 }
 
