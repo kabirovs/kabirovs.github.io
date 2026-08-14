@@ -1581,7 +1581,16 @@ MOBILE
 
         padding: 15px 6%;
     }
+    /* АНИМАЦИЯ КАРТОЧЕК НА ТЕЛЕФОНЕ */
+ .card:active {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow:
+            0 20px 45px rgba(15, 23, 42, 0.13);
+    }
 
+    .card:active::before {
+        transform: scaleX(1);
+    }
 
     /* LOGO */
 
