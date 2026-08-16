@@ -215,18 +215,7 @@ HERO
     padding: 100px 20px;
 
     color: white;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(3, 18, 35, 0.88),
-            rgba(0, 94, 140, 0.72),
-            rgba(5, 35, 70, 0.88)
-        );
-
-    background-size: 300% 300%;
-
-    animation: heroGradient 18s ease infinite;
+background: transparent;
 
     overflow: hidden;
 }
