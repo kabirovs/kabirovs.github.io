@@ -2145,3 +2145,17 @@ SMALL PHONES
         height: 270px;
     }
 }
+
+/* Контент всегда поверх анимации */
+
+header,
+section,
+.hero,
+.container,
+.service-card,
+.advantage-card,
+.contact,
+footer {
+    position: relative;
+    z-index: 1;
+}
