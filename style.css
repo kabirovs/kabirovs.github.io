@@ -1963,7 +1963,7 @@ SMALL PHONES
     }
 }
 
-/* ===== WEBPRO LIVE BACKGROUND ANIMATION ===== */
+/* ===== WEBPRO LIVE BACKGROUND ===== */
 
 .webpro-animation {
     position: fixed;
@@ -1972,7 +1972,8 @@ SMALL PHONES
     height: 100%;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
+    background: #050b18;
 }
 
 .webpro-animation::before,
@@ -1980,104 +1981,118 @@ SMALL PHONES
     content: "";
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.35;
-    animation: webproFloat 12s ease-in-out infinite alternate;
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: webproGlow 12s ease-in-out infinite alternate;
 }
 
 .webpro-animation::before {
-    width: 420px;
-    height: 420px;
-    top: -120px;
-    left: -100px;
-    background: rgba(0, 180, 255, 0.35);
+    width: 520px;
+    height: 520px;
+    top: -180px;
+    left: -150px;
+
+    background: rgba(0, 140, 255, 0.65);
 }
 
 .webpro-animation::after {
-    width: 380px;
-    height: 380px;
-    right: -100px;
-    bottom: -120px;
-    background: rgba(130, 70, 255, 0.3);
-    animation-delay: -5s;
+    width: 500px;
+    height: 500px;
+    right: -180px;
+    bottom: -180px;
+
+    background: rgba(0, 90, 255, 0.55);
+
+    animation-delay: -6s;
 }
 
-/* Доираҳои шишагӣ */
+/* Шарҳои кабуди зинда */
 
 .webpro-bubble {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.025);
+
+    background: rgba(0, 150, 255, 0.12);
+
+    border: 1px solid rgba(80, 190, 255, 0.45);
+
+    box-shadow:
+        0 0 25px rgba(0, 150, 255, 0.35),
+        0 0 70px rgba(0, 120, 255, 0.2),
+        inset 0 0 25px rgba(100, 210, 255, 0.12);
+
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    box-shadow:
-        0 0 25px rgba(0, 190, 255, 0.15),
-        inset 0 0 20px rgba(255, 255, 255, 0.04);
 
     animation: webproBubble 14s ease-in-out infinite;
 }
 
 .webpro-bubble:nth-child(1) {
-    width: 180px;
-    height: 180px;
-    top: 18%;
-    left: 7%;
+    width: 260px;
+    height: 260px;
+    top: 10%;
+    left: 5%;
     animation-delay: -2s;
 }
 
 .webpro-bubble:nth-child(2) {
-    width: 120px;
-    height: 120px;
-    top: 55%;
-    right: 12%;
+    width: 180px;
+    height: 180px;
+    top: 45%;
+    right: 10%;
     animation-duration: 11s;
     animation-delay: -5s;
 }
 
 .webpro-bubble:nth-child(3) {
-    width: 260px;
-    height: 260px;
-    bottom: -90px;
-    left: 42%;
+    width: 360px;
+    height: 360px;
+    bottom: -130px;
+    left: 38%;
     animation-duration: 18s;
     animation-delay: -8s;
 }
 
 .webpro-bubble:nth-child(4) {
-    width: 90px;
-    height: 90px;
+    width: 130px;
+    height: 130px;
     top: 30%;
-    right: 30%;
+    right: 28%;
     animation-duration: 10s;
     animation-delay: -3s;
 }
 
-@keyframes webproFloat {
+/* Нури кабуд ҳаракат мекунад */
+
+@keyframes webproGlow {
+
     0% {
         transform: translate3d(0, 0, 0) scale(1);
     }
 
     50% {
-        transform: translate3d(35px, -25px, 0) scale(1.08);
+        transform: translate3d(40px, -30px, 0) scale(1.08);
     }
 
     100% {
-        transform: translate3d(-20px, 30px, 0) scale(0.95);
+        transform: translate3d(-30px, 40px, 0) scale(0.95);
     }
 }
 
+/* Ҳаракати доираҳо */
+
 @keyframes webproBubble {
+
     0% {
         transform: translate3d(0, 0, 0) rotate(0deg);
     }
 
     50% {
-        transform: translate3d(25px, -35px, 0) rotate(12deg);
+        transform: translate3d(35px, -45px, 0) rotate(10deg);
     }
 
     100% {
-        transform: translate3d(-20px, 20px, 0) rotate(-8deg);
+        transform: translate3d(-25px, 25px, 0) rotate(-8deg);
     }
 }
 
@@ -2086,33 +2101,33 @@ SMALL PHONES
 @media (max-width: 600px) {
 
     .webpro-animation::before {
-        width: 260px;
-        height: 260px;
+        width: 300px;
+        height: 300px;
     }
 
     .webpro-animation::after {
-        width: 240px;
-        height: 240px;
+        width: 280px;
+        height: 280px;
     }
 
     .webpro-bubble:nth-child(1) {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
     }
 
     .webpro-bubble:nth-child(2) {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 
     .webpro-bubble:nth-child(3) {
-        width: 180px;
-        height: 180px;
+        width: 210px;
+        height: 210px;
     }
 
     .webpro-bubble:nth-child(4) {
-        width: 60px;
-        height: 60px;
+        width: 75px;
+        height: 75px;
     }
 }
 
@@ -2121,23 +2136,12 @@ SMALL PHONES
 @media (min-width: 601px) and (max-width: 1024px) {
 
     .webpro-bubble:nth-child(1) {
-        width: 150px;
-        height: 150px;
+        width: 190px;
+        height: 190px;
     }
 
     .webpro-bubble:nth-child(3) {
-        width: 220px;
-        height: 220px;
-    }
-}
-
-/* Барои одамоне, ки ҳаракати камтар мехоҳанд */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .webpro-animation *,
-    .webpro-animation::before,
-    .webpro-animation::after {
-        animation: none !important;
+        width: 270px;
+        height: 270px;
     }
 }
