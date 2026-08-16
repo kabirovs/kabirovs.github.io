@@ -2146,3 +2146,23 @@ footer {
     position: relative;
     z-index: 1;
 }
+
+/* =========================
+   MOBILE MENU ABOVE ANIMATION
+========================= */
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        position: relative;
+        z-index: 1100;
+    }
+
+    header nav {
+        z-index: 1100;
+    }
+
+    header nav.active {
+        z-index: 1100;
+    }
+}
