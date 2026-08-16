@@ -1589,9 +1589,9 @@ MOBILE
     /* NAVIGATION */
 
     nav {
-        position: absolute;
+        position: fixed;
 
-        top: calc(100% + 8px);
+        top: 75px;
         left: 6%;
         right: 6%;
 
