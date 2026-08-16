@@ -719,18 +719,9 @@ PORTFOLIO
 ========================= */
 
 .portfolio {
-    background:
-        linear-gradient(
-            135deg,
-            #edf7fb,
-            #e8f1f7,
-            #f4f8fb
-        );
-
-    background-size: 300% 300%;
-
-    animation:
-        portfolioGradient 20s ease infinite;
+    position: relative;
+    background: transparent;
+    overflow: hidden;
 }
 
 .portfolio-card {
