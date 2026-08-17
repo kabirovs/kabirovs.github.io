@@ -1,6 +1,6 @@
-/* =========================
-RESET
-========================= */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -31,9 +31,9 @@ body {
 }
 
 
-/* =========================
-HEADER
-========================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header {
     position: sticky;
@@ -58,9 +58,9 @@ header {
 }
 
 
-/* =========================
-LOGO
-========================= */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
     text-decoration: none;
@@ -80,11 +80,11 @@ LOGO
 }
 
 
-/* =========================
-NAVIGATION
-========================= */
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
 
-nav {
+header nav {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -105,11 +105,11 @@ nav {
 }
 
 
-/* =========================
-NAV LINKS
-========================= */
+/* =========================================================
+   NAV LINKS
+========================================================= */
 
-nav a {
+header nav a {
     position: relative;
 
     display: block;
@@ -117,8 +117,6 @@ nav a {
     text-decoration: none;
 
     color: #172033;
-
-    margin: 0;
 
     padding: 10px 15px;
 
@@ -128,27 +126,27 @@ nav a {
     font-weight: 600;
 
     opacity: 1;
+
     transform: translateY(0);
 
     transition:
         background 0.35s ease,
         color 0.35s ease,
         transform 0.35s ease,
-        box-shadow 0.35s ease,
-        opacity 0.45s ease;
+        box-shadow 0.35s ease;
 }
 
 
 /* Убираем старую линию */
 
-nav a::after {
+header nav a::after {
     display: none;
 }
 
 
 /* Наведение */
 
-nav a:hover {
+header nav a:hover {
     color: #0797d5;
 
     background: rgba(7, 151, 213, 0.09);
@@ -160,9 +158,9 @@ nav a:hover {
 }
 
 
-/* =========================
-MOBILE MENU BUTTON
-========================= */
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
 
 .menu-toggle {
     display: none;
@@ -182,6 +180,9 @@ MOBILE MENU BUTTON
 
     border-radius: 12px;
 
+    position: relative;
+    z-index: 1200;
+
     transition:
         color 0.3s ease,
         background 0.3s ease,
@@ -192,14 +193,12 @@ MOBILE MENU BUTTON
     color: #0797d5;
 
     background: rgba(7, 151, 213, 0.08);
-
-    transform: none;
 }
 
 
-/* =========================
-HERO
-========================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
     position: relative;
@@ -215,7 +214,8 @@ HERO
     padding: 100px 20px;
 
     color: white;
-background: transparent;
+
+    background: transparent;
 
     overflow: hidden;
 }
@@ -240,8 +240,9 @@ background: transparent;
     top: -150px;
     left: -120px;
 
-    animation:
-        floatingLight 12s ease-in-out infinite;
+    animation: floatingLight 12s ease-in-out infinite;
+
+    pointer-events: none;
 }
 
 .hero::after {
@@ -261,8 +262,9 @@ background: transparent;
     bottom: -150px;
     right: -100px;
 
-    animation:
-        floatingLight 15s ease-in-out infinite reverse;
+    animation: floatingLight 15s ease-in-out infinite reverse;
+
+    pointer-events: none;
 }
 
 
@@ -275,8 +277,7 @@ background: transparent;
 
     max-width: 900px;
 
-    animation:
-        fadeUp 1s ease forwards;
+    animation: fadeUp 1s ease forwards;
 }
 
 
@@ -324,8 +325,7 @@ background: transparent;
     text-shadow:
         0 5px 25px rgba(0, 0, 0, 0.35);
 
-    animation:
-        heroTitle 1s ease both;
+    animation: heroTitle 1s ease both;
 }
 
 .hero h1 span {
@@ -346,14 +346,13 @@ background: transparent;
 
     color: rgba(255, 255, 255, 0.92);
 
-    animation:
-        heroText 1s ease 0.2s both;
+    animation: heroText 1s ease 0.2s both;
 }
 
 
-/* =========================
-BUTTON
-========================= */
+/* =========================================================
+   ORDER BUTTON
+========================================================= */
 
 .order-button {
     border: none;
@@ -377,8 +376,7 @@ BUTTON
 
     transition: 0.3s ease;
 
-    animation:
-        heroButton 1s ease 0.4s both;
+    animation: heroButton 1s ease 0.4s both;
 }
 
 .order-button:hover {
@@ -399,9 +397,9 @@ BUTTON
 }
 
 
-/* =========================
-CONTACT BUTTONS
-========================= */
+/* =========================================================
+   CONTACT BUTTONS
+========================================================= */
 
 .contact-buttons {
     display: flex;
@@ -418,6 +416,7 @@ CONTACT BUTTONS
     transform: translateY(15px);
 
     max-height: 0;
+
     overflow: hidden;
 
     transition:
@@ -429,16 +428,14 @@ CONTACT BUTTONS
 
 .contact-buttons.show {
     opacity: 1;
+
     visibility: visible;
 
     transform: translateY(0);
 
     max-height: 300px;
-}
-    display: flex;
 
-    animation:
-        contactAppear 0.4s ease forwards;
+    animation: contactAppear 0.4s ease forwards;
 }
 
 .contact-title {
@@ -501,9 +498,9 @@ CONTACT BUTTONS
 }
 
 
-/* =========================
-SECTIONS
-========================= */
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .services,
 .portfolio,
@@ -513,9 +510,9 @@ SECTIONS
 }
 
 
-/* =========================
-SECTION HEADING
-========================= */
+/* =========================================================
+   SECTION HEADING
+========================================================= */
 
 .section-heading {
     text-align: center;
@@ -545,8 +542,7 @@ SECTION HEADING
 
     color: #172033;
 
-    transition:
-        transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .section-heading h2:hover {
@@ -562,9 +558,9 @@ SECTION HEADING
 }
 
 
-/* =========================
-CARDS
-========================= */
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards {
     display: flex;
@@ -585,7 +581,7 @@ CARDS
 
     padding: 32px;
 
-   background: #ffffff;
+    background: #ffffff;
 
     border: 1px solid rgba(0, 191, 255, 0.08);
 
@@ -622,8 +618,7 @@ CARDS
 
     transform-origin: left;
 
-    transition:
-        transform 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .card:hover {
@@ -634,10 +629,6 @@ CARDS
 
     border-color:
         rgba(0, 191, 255, 0.25);
-}
-.card:hover::before,
-.card:active::before {
-    transform: scaleX(1);
 }
 
 .card:hover::before {
@@ -660,8 +651,7 @@ CARDS
 
     border-radius: 15px;
 
-    background:
-        rgba(0, 191, 255, 0.10);
+    background: rgba(0, 191, 255, 0.10);
 
     color: #0797d5;
 
@@ -686,8 +676,7 @@ CARDS
 .card:hover h3 {
     color: #00aeea;
 
-    transform:
-        translateX(3px);
+    transform: translateX(3px);
 }
 
 .card p {
@@ -714,13 +703,15 @@ CARDS
 }
 
 
-/* =========================
-PORTFOLIO
-========================= */
+/* =========================================================
+   PORTFOLIO
+========================================================= */
 
 .portfolio {
     position: relative;
+
     background: transparent;
+
     overflow: hidden;
 }
 
@@ -738,8 +729,7 @@ PORTFOLIO
 
     object-fit: cover;
 
-    transition:
-        transform 0.5s ease;
+    transition: transform 0.5s ease;
 }
 
 .portfolio-card:hover img {
@@ -774,9 +764,9 @@ PORTFOLIO
 }
 
 
-/* =========================
-ABOUT
-========================= */
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about {
     position: relative;
@@ -822,8 +812,7 @@ ABOUT
 
     border-radius: 50%;
 
-    background:
-        rgba(0, 191, 255, 0.15);
+    background: rgba(0, 191, 255, 0.15);
 
     filter: blur(80px);
 
@@ -898,8 +887,7 @@ ABOUT
 
     margin: 12px auto;
 
-    color:
-        rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9);
 
     font-size: 19px;
 
@@ -913,16 +901,15 @@ ABOUT
 }
 
 .about p:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     color: white;
 }
 
 
-/* =========================
-ADVANTAGES
-========================= */
+/* =========================================================
+   ADVANTAGES
+========================================================= */
 
 .advantages {
     background: #f3f7fa;
@@ -986,13 +973,11 @@ ADVANTAGES
 
     transform-origin: left;
 
-    transition:
-        transform 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .advantage-card:hover {
-    transform:
-        translateY(-10px);
+    transform: translateY(-10px);
 
     border-color:
         rgba(0, 191, 255, 0.25);
@@ -1028,15 +1013,13 @@ ADVANTAGES
     box-shadow:
         0 10px 25px rgba(0, 191, 255, 0.35);
 
-    transition:
-        0.4s ease;
+    transition: 0.4s ease;
 }
 
 
 /* ICON COLORS */
 
-.advantage-card:nth-child(1)
-.advantage-icon {
+.advantage-card:nth-child(1) .advantage-icon {
     background:
         linear-gradient(
             135deg,
@@ -1045,8 +1028,7 @@ ADVANTAGES
         );
 }
 
-.advantage-card:nth-child(2)
-.advantage-icon {
+.advantage-card:nth-child(2) .advantage-icon {
     background:
         linear-gradient(
             135deg,
@@ -1055,8 +1037,7 @@ ADVANTAGES
         );
 }
 
-.advantage-card:nth-child(3)
-.advantage-icon {
+.advantage-card:nth-child(3) .advantage-icon {
     background:
         linear-gradient(
             135deg,
@@ -1065,8 +1046,7 @@ ADVANTAGES
         );
 }
 
-.advantage-card:nth-child(4)
-.advantage-icon {
+.advantage-card:nth-child(4) .advantage-icon {
     background:
         linear-gradient(
             135deg,
@@ -1075,8 +1055,7 @@ ADVANTAGES
         );
 }
 
-.advantage-card:hover
-.advantage-icon {
+.advantage-card:hover .advantage-icon {
     transform:
         translateY(-4px)
         scale(1.08);
@@ -1099,8 +1078,7 @@ ADVANTAGES
 .advantage-card:hover h3 {
     color: #00aeea;
 
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .advantage-card p {
@@ -1110,9 +1088,9 @@ ADVANTAGES
 }
 
 
-/* =========================
-CONTACTS
-========================= */
+/* =========================================================
+   CONTACTS
+========================================================= */
 
 .contacts {
     text-align: center;
@@ -1154,8 +1132,7 @@ CONTACTS
     font-size: 15px;
     font-weight: 600;
 
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
 
 .social-buttons a i {
@@ -1165,17 +1142,16 @@ CONTACTS
 .social-buttons a:hover {
     background: #0797d5;
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
     box-shadow:
         0 10px 25px rgba(7, 151, 213, 0.2);
 }
 
 
-/* =========================
-FOOTER
-========================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
     position: relative;
@@ -1193,8 +1169,7 @@ footer {
             #0b2435
         );
 
-    color:
-        rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7);
 
     border-top:
         1px solid rgba(255, 255, 255, 0.08);
@@ -1211,8 +1186,7 @@ footer::before {
     top: -130px;
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     background:
         rgba(0, 191, 255, 0.12);
@@ -1264,9 +1238,9 @@ footer p {
 }
 
 
-/* =========================
-BODY LIGHTS
-========================= */
+/* =========================================================
+   BODY LIGHTS
+========================================================= */
 
 body::before,
 body::after {
@@ -1311,43 +1285,144 @@ body::after {
 }
 
 
-/* =========================
-ANIMATIONS
-========================= */
+/* =========================================================
+   WEBPRO LIVE BACKGROUND
+========================================================= */
+
+.webpro-animation {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    background: #050b18;
+}
+
+.webpro-animation::before,
+.webpro-animation::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    opacity: 0.75;
+
+    animation:
+        webproGlow 12s ease-in-out infinite alternate;
+}
+
+.webpro-animation::before {
+    width: 520px;
+    height: 520px;
+
+    top: -180px;
+    left: -150px;
+
+    background:
+        rgba(0, 140, 255, 0.65);
+}
+
+.webpro-animation::after {
+    width: 500px;
+    height: 500px;
+
+    right: -180px;
+    bottom: -180px;
+
+    background:
+        rgba(0, 90, 255, 0.55);
+
+    animation-delay: -6s;
+}
+
+
+/* =========================================================
+   WEBPRO BUBBLES
+========================================================= */
+
+.webpro-bubble {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 150, 255, 0.12);
+
+    border:
+        1px solid rgba(80, 190, 255, 0.45);
+
+    box-shadow:
+        0 0 25px rgba(0, 150, 255, 0.35),
+        0 0 70px rgba(0, 120, 255, 0.2),
+        inset 0 0 25px rgba(100, 210, 255, 0.12);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    animation:
+        webproBubble 14s ease-in-out infinite;
+}
+
+.webpro-bubble:nth-child(1) {
+    width: 260px;
+    height: 260px;
+
+    top: 10%;
+    left: 5%;
+
+    animation-delay: -2s;
+}
+
+.webpro-bubble:nth-child(2) {
+    width: 180px;
+    height: 180px;
+
+    top: 45%;
+    right: 10%;
+
+    animation-duration: 11s;
+    animation-delay: -5s;
+}
+
+.webpro-bubble:nth-child(3) {
+    width: 360px;
+    height: 360px;
+
+    bottom: -130px;
+    left: 38%;
+
+    animation-duration: 18s;
+    animation-delay: -8s;
+}
+
+.webpro-bubble:nth-child(4) {
+    width: 130px;
+    height: 130px;
+
+    top: 30%;
+    right: 28%;
+
+    animation-duration: 10s;
+    animation-delay: -3s;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 @keyframes liveBackground {
-
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-@keyframes heroGradient {
-
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-@keyframes portfolioGradient {
 
     0% {
         background-position: 0% 50%;
@@ -1366,18 +1441,15 @@ ANIMATIONS
 @keyframes floatingLight {
 
     0% {
-        transform:
-            translate(0, 0);
+        transform: translate(0, 0);
     }
 
     50% {
-        transform:
-            translate(80px, 50px);
+        transform: translate(80px, 50px);
     }
 
     100% {
-        transform:
-            translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
@@ -1385,18 +1457,15 @@ ANIMATIONS
 @keyframes glowMoveOne {
 
     0% {
-        transform:
-            translate(0, 0);
+        transform: translate(0, 0);
     }
 
     50% {
-        transform:
-            translate(180px, 120px);
+        transform: translate(180px, 120px);
     }
 
     100% {
-        transform:
-            translate(60px, 300px);
+        transform: translate(60px, 300px);
     }
 }
 
@@ -1404,18 +1473,15 @@ ANIMATIONS
 @keyframes glowMoveTwo {
 
     0% {
-        transform:
-            translate(0, 0);
+        transform: translate(0, 0);
     }
 
     50% {
-        transform:
-            translate(-180px, -100px);
+        transform: translate(-180px, -100px);
     }
 
     100% {
-        transform:
-            translate(-60px, -280px);
+        transform: translate(-60px, -280px);
     }
 }
 
@@ -1423,13 +1489,11 @@ ANIMATIONS
 @keyframes aboutGlow {
 
     from {
-        transform:
-            translate(0, 0);
+        transform: translate(0, 0);
     }
 
     to {
-        transform:
-            translate(180px, 120px);
+        transform: translate(180px, 120px);
     }
 }
 
@@ -1439,15 +1503,13 @@ ANIMATIONS
     from {
         opacity: 0;
 
-        transform:
-            translateY(25px);
+        transform: translateY(25px);
     }
 
     to {
         opacity: 1;
 
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -1457,15 +1519,13 @@ ANIMATIONS
     from {
         opacity: 0;
 
-        transform:
-            translateY(10px);
+        transform: translateY(10px);
     }
 
     to {
         opacity: 1;
 
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -1475,15 +1535,13 @@ ANIMATIONS
     from {
         opacity: 0;
 
-        transform:
-            translateY(30px);
+        transform: translateY(30px);
     }
 
     to {
         opacity: 1;
 
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -1493,15 +1551,13 @@ ANIMATIONS
     from {
         opacity: 0;
 
-        transform:
-            translateY(20px);
+        transform: translateY(20px);
     }
 
     to {
         opacity: 1;
 
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -1526,10 +1582,6 @@ ANIMATIONS
 }
 
 
-/* =========================
-MOBILE MENU ANIMATION
-========================= */
-
 @keyframes menuOpen {
 
     from {
@@ -1550,27 +1602,80 @@ MOBILE MENU ANIMATION
 }
 
 
-/* =========================
-MOBILE
-========================= */
+@keyframes webproGlow {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(40px, -30px, 0)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            translate3d(-30px, 40px, 0)
+            scale(0.95);
+    }
+}
+
+
+@keyframes webproBubble {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translate3d(35px, 40px, 0)
+            rotate(5deg);
+    }
+
+    50% {
+        transform:
+            translate3d(0, 80px, 0)
+            rotate(10deg);
+    }
+
+    75% {
+        transform:
+            translate3d(-35px, 40px, 0)
+            rotate(5deg);
+    }
+
+    100% {
+        transform:
+            translate3d(0, 0, 0)
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
+
+    /* HEADER */
 
     header {
         position: sticky;
 
+        top: 0;
+
         padding: 15px 6%;
-    }
-    /* АНИМАЦИЯ КАРТОЧЕК НА ТЕЛЕФОНЕ */
- .card:active {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow:
-            0 20px 45px rgba(15, 23, 42, 0.13);
+
+        z-index: 1000;
     }
 
-    .card:active::before {
-        transform: scaleX(1);
-    }
 
     /* LOGO */
 
@@ -1583,15 +1688,22 @@ MOBILE
 
     .menu-toggle {
         display: block;
+
+        position: relative;
+
+        z-index: 1200;
     }
 
 
-    /* NAVIGATION */
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
 
-    nav {
+    header nav {
         position: fixed;
 
-        top: 75px;
+        top: 76px;
+
         left: 6%;
         right: 6%;
 
@@ -1601,12 +1713,14 @@ MOBILE
 
         flex-direction: column;
 
+        align-items: stretch;
+
         gap: 5px;
 
         padding: 10px;
 
         background:
-            rgba(255, 255, 255, 0.96);
+            rgba(255, 255, 255, 0.97);
 
         border:
             1px solid rgba(7, 151, 213, 0.12);
@@ -1617,28 +1731,30 @@ MOBILE
         -webkit-backdrop-filter: blur(15px);
 
         box-shadow:
-            0 15px 35px rgba(15, 23, 42, 0.14);
+            0 15px 35px rgba(15, 23, 42, 0.18);
 
         opacity: 0;
 
         visibility: hidden;
 
         transform:
-            translateY(-12px)
+            translateY(-15px)
             scale(0.98);
 
         pointer-events: none;
 
+        z-index: 1100;
+
         transition:
-            opacity 0.45s ease,
-            transform 0.45s ease,
-            visibility 0.45s ease;
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
     }
 
 
-    /* OPEN MENU */
+    /* OPEN */
 
-    nav.active {
+    header nav.active {
         opacity: 1;
 
         visibility: visible;
@@ -1648,17 +1764,21 @@ MOBILE
             scale(1);
 
         pointer-events: auto;
+
+        z-index: 1100;
     }
 
 
     /* MOBILE LINKS */
 
-    nav a {
+    header nav a {
         width: 100%;
+
+        display: block;
 
         margin: 0;
 
-        padding: 13px 20px;
+        padding: 14px 20px;
 
         text-align: center;
 
@@ -1666,61 +1786,26 @@ MOBILE
 
         border-radius: 14px;
 
-        opacity: 0;
+        opacity: 1;
 
-        transform:
-            translateY(-12px);
+        transform: none;
+
+        color: #172033;
+
+        background: transparent;
+
+        box-shadow: none;
 
         transition:
-            opacity 0.45s ease,
-            transform 0.45s ease,
-            background 0.3s ease,
-            color 0.3s ease;
+            background 0.25s ease,
+            color 0.25s ease;
     }
 
 
-   /* =========================
-   MOBILE MENU — SMOOTH
-========================= */
+    header nav a:hover {
+        transform: none;
 
-nav a {
-    width: 100%;
-
-    margin: 0;
-    padding: 13px 20px;
-
-    text-align: center;
-
-    font-size: 17px;
-    border-radius: 14px;
-
-    opacity: 1;
-    transform: translateY(0);
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease;
-}
-
-nav.active a {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Без задержки для каждого пункта */
-nav.active a:nth-child(1),
-nav.active a:nth-child(2),
-nav.active a:nth-child(3),
-nav.active a:nth-child(4),
-nav.active a:nth-child(5) {
-    transition-delay: 0s;
-}
-
-    /* MOBILE HOVER */
-
-    nav a:hover {
-        transform:
-            translateY(0);
+        color: #0797d5;
 
         background:
             rgba(7, 151, 213, 0.09);
@@ -1729,7 +1814,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* HERO */
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero {
         min-height: 560px;
@@ -1762,7 +1849,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* CONTACT */
+    /* =====================================================
+       CONTACT
+    ===================================================== */
 
     .contact-links {
         flex-direction: column;
@@ -1783,7 +1872,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* SECTIONS */
+    /* =====================================================
+       SECTIONS
+    ===================================================== */
 
     .services,
     .portfolio,
@@ -1805,7 +1896,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* CARDS */
+    /* =====================================================
+       CARDS
+    ===================================================== */
 
     .cards {
         flex-direction: column;
@@ -1821,35 +1914,36 @@ nav.active a:nth-child(5) {
         max-width: 360px;
     }
 
-   .card:hover {
-    transform: translateY(-10px) scale(1.02);
+    .card:active {
+        transform:
+            translateY(-8px)
+            scale(1.03);
 
-    box-shadow:
-        0 20px 45px rgba(15, 23, 42, 0.13);
+        box-shadow:
+            0 20px 45px rgba(15, 23, 42, 0.13);
+    }
 
-    border-color:
-        rgba(0, 191, 255, 0.25);
-}
-
-.card:hover::before,
-.card:active::before {
-    transform: scaleX(1);
-}
+    .card:active::before {
+        transform: scaleX(1);
+    }
 
 
-    /* PORTFOLIO */
+    /* =====================================================
+       PORTFOLIO
+    ===================================================== */
 
     .portfolio-card img {
         height: 210px;
     }
-
 
     .card img {
         height: 190px;
     }
 
 
-    /* ABOUT */
+    /* =====================================================
+       ABOUT
+    ===================================================== */
 
     .about {
         min-height: 450px;
@@ -1868,7 +1962,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* ADVANTAGES */
+    /* =====================================================
+       ADVANTAGES
+    ===================================================== */
 
     .advantage-cards {
         flex-direction: column;
@@ -1890,7 +1986,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* CONTACTS */
+    /* =====================================================
+       CONTACTS
+    ===================================================== */
 
     .social-buttons {
         flex-direction: column;
@@ -1903,7 +2001,9 @@ nav.active a:nth-child(5) {
     }
 
 
-    /* FOOTER */
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
     footer {
         padding: 25px 15px;
@@ -1912,180 +2012,11 @@ nav.active a:nth-child(5) {
     footer p {
         font-size: 13px;
     }
-}
 
 
-/* =========================
-SMALL PHONES
-========================= */
-
-@media (max-width: 400px) {
-
-    .hero {
-        min-height: 620px;
-    }
-
-    .hero h1 {
-        font-size: 33px;
-    }
-
-    .section-heading h2 {
-        font-size: 30px;
-    }
-
-    .order-button {
-        padding: 14px 30px;
-    }
-
-    nav {
-        left: 4%;
-        right: 4%;
-    }
-}
-
-/* ===== WEBPRO LIVE BACKGROUND ===== */
-
-.webpro-animation {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: -1;
-    background: #050b18;
-}
-
-.webpro-animation::before,
-.webpro-animation::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.75;
-    animation: webproGlow 12s ease-in-out infinite alternate;
-}
-
-.webpro-animation::before {
-    width: 520px;
-    height: 520px;
-    top: -180px;
-    left: -150px;
-
-    background: rgba(0, 140, 255, 0.65);
-}
-
-.webpro-animation::after {
-    width: 500px;
-    height: 500px;
-    right: -180px;
-    bottom: -180px;
-
-    background: rgba(0, 90, 255, 0.55);
-
-    animation-delay: -6s;
-}
-
-/* Шарҳои кабуди зинда */
-
-.webpro-bubble {
-    position: absolute;
-    border-radius: 50%;
-
-    background: rgba(0, 150, 255, 0.12);
-
-    border: 1px solid rgba(80, 190, 255, 0.45);
-
-    box-shadow:
-        0 0 25px rgba(0, 150, 255, 0.35),
-        0 0 70px rgba(0, 120, 255, 0.2),
-        inset 0 0 25px rgba(100, 210, 255, 0.12);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-
-    animation: webproBubble 14s ease-in-out infinite;
-}
-
-.webpro-bubble:nth-child(1) {
-    width: 260px;
-    height: 260px;
-    top: 10%;
-    left: 5%;
-    animation-delay: -2s;
-}
-
-.webpro-bubble:nth-child(2) {
-    width: 180px;
-    height: 180px;
-    top: 45%;
-    right: 10%;
-    animation-duration: 11s;
-    animation-delay: -5s;
-}
-
-.webpro-bubble:nth-child(3) {
-    width: 360px;
-    height: 360px;
-    bottom: -130px;
-    left: 38%;
-    animation-duration: 18s;
-    animation-delay: -8s;
-}
-
-.webpro-bubble:nth-child(4) {
-    width: 130px;
-    height: 130px;
-    top: 30%;
-    right: 28%;
-    animation-duration: 10s;
-    animation-delay: -3s;
-}
-
-/* Нури кабуд ҳаракат мекунад */
-
-@keyframes webproGlow {
-
-    0% {
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-
-    50% {
-        transform: translate3d(40px, -30px, 0) scale(1.08);
-    }
-
-    100% {
-        transform: translate3d(-30px, 40px, 0) scale(0.95);
-    }
-}
-
-/* Ҳаракати доираҳо */
-
-@keyframes webproBubble {
-
-    0% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-    }
-
-    25% {
-        transform: translate3d(35px, 40px, 0) rotate(5deg);
-    }
-
-    50% {
-        transform: translate3d(0, 80px, 0) rotate(10deg);
-    }
-
-    75% {
-        transform: translate3d(-35px, 40px, 0) rotate(5deg);
-    }
-
-    100% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-    }
-}
-/* Телефон */
-
-@media (max-width: 600px) {
+    /* =====================================================
+       BACKGROUND ON PHONE
+    ===================================================== */
 
     .webpro-animation::before {
         width: 300px;
@@ -2118,7 +2049,41 @@ SMALL PHONES
     }
 }
 
-/* Планшет */
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    header nav {
+        top: 70px;
+
+        left: 4%;
+        right: 4%;
+    }
+
+    .hero {
+        min-height: 620px;
+    }
+
+    .hero h1 {
+        font-size: 33px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .order-button {
+        padding: 14px 30px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (min-width: 601px) and (max-width: 1024px) {
 
@@ -2130,39 +2095,5 @@ SMALL PHONES
     .webpro-bubble:nth-child(3) {
         width: 270px;
         height: 270px;
-    }
-}
-
-/* Контент всегда поверх анимации */
-
-header,
-section,
-.hero,
-.container,
-.service-card,
-.advantage-card,
-.contact,
-footer {
-    position: relative;
-    z-index: 1;
-}
-
-/* =========================
-   MOBILE MENU ABOVE ANIMATION
-========================= */
-
-@media (max-width: 768px) {
-
-    .menu-toggle {
-        position: relative;
-        z-index: 1100;
-    }
-
-    header nav {
-        z-index: 1100;
-    }
-
-    header nav.active {
-        z-index: 1100;
     }
 }
