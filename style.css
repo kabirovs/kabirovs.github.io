@@ -37,8 +37,8 @@ body {
 
 
 /* =========================================================
-   WEBPRO — AMBIENT LIGHT BACKGROUND
-   ========================================================= */
+   WEBPRO AURORA WAVES
+========================================================= */
 
 .webpro-animation {
     position: fixed;
@@ -54,251 +54,320 @@ body {
 
     background:
         linear-gradient(
-            125deg,
-            #050b18,
-            #071a2b,
-            #0b1230,
-            #061827
+            120deg,
+            #020817,
+            #06152a,
+            #090b25,
+            #031522
         );
-
-    background-size: 300% 300%;
-
-    animation:
-        ambientBackground 18s ease-in-out infinite;
 }
 
 
 /* =========================================================
-   MAIN LIGHTS
-   ========================================================= */
+   AURORA LIGHT 1
+========================================================= */
 
-.webpro-animation::before,
+.webpro-animation::before {
+    content: "";
+
+    position: absolute;
+
+    width: 75vw;
+    height: 45vh;
+
+    left: -15vw;
+    top: 10vh;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 210, 255, 0.45),
+            rgba(0, 120, 255, 0.28),
+            transparent
+        );
+
+    filter: blur(55px);
+
+    transform:
+        rotate(-18deg);
+
+    animation:
+        auroraOne 10s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   AURORA LIGHT 2
+========================================================= */
+
 .webpro-animation::after {
     content: "";
 
     position: absolute;
 
+    width: 70vw;
+    height: 40vh;
+
+    right: -15vw;
+    top: 35vh;
+
     border-radius: 50%;
 
-    filter: blur(100px);
-
-    pointer-events: none;
-}
-
-
-/* BLUE LIGHT */
-
-.webpro-animation::before {
-    width: 520px;
-    height: 520px;
-
-    top: -180px;
-    left: -150px;
-
     background:
-        rgba(0, 170, 255, 0.30);
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(125, 70, 255, 0.40),
+            rgba(0, 190, 255, 0.28),
+            transparent
+        );
+
+    filter: blur(60px);
+
+    transform:
+        rotate(20deg);
 
     animation:
-        ambientBlue 14s ease-in-out infinite alternate;
-}
-
-
-/* PURPLE LIGHT */
-
-.webpro-animation::after {
-    width: 480px;
-    height: 480px;
-
-    right: -160px;
-    bottom: -160px;
-
-    background:
-        rgba(110, 70, 255, 0.25);
-
-    animation:
-        ambientPurple 17s ease-in-out infinite alternate;
+        auroraTwo 13s ease-in-out infinite alternate;
 }
 
 
 /* =========================================================
-   SMALL LIGHT ORBS
-   ========================================================= */
+   EXTRA LIGHT WAVES
+========================================================= */
 
-.webpro-bubble {
+.webpro-animation .webpro-bubble {
     position: absolute;
 
     border-radius: 50%;
 
-    background:
-        rgba(80, 190, 255, 0.07);
-
-    border:
-        1px solid rgba(100, 210, 255, 0.16);
-
-    box-shadow:
-        0 0 35px rgba(0, 170, 255, 0.12);
-
-    filter: blur(1px);
-
     pointer-events: none;
 
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 210, 255, 0.20),
+            rgba(80, 90, 255, 0.08),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
     animation:
-        softFloat 16s ease-in-out infinite;
+        auroraBubble 12s ease-in-out infinite;
 }
 
 
-/* ORB 1 */
+/* =========================================================
+   WAVE 1
+========================================================= */
 
 .webpro-bubble:nth-child(1) {
-    width: 170px;
-    height: 170px;
+    width: 300px;
+    height: 300px;
 
-    top: 15%;
-    left: 8%;
+    top: 5%;
+    left: 15%;
 
-    animation-delay: -3s;
-}
-
-
-/* ORB 2 */
-
-.webpro-bubble:nth-child(2) {
-    width: 110px;
-    height: 110px;
-
-    top: 45%;
-    right: 13%;
-
-    animation-duration: 13s;
-    animation-delay: -6s;
-}
-
-
-/* ORB 3 */
-
-.webpro-bubble:nth-child(3) {
-    width: 210px;
-    height: 210px;
-
-    bottom: -70px;
-    left: 40%;
-
-    animation-duration: 20s;
-    animation-delay: -9s;
-}
-
-
-/* ORB 4 */
-
-.webpro-bubble:nth-child(4) {
-    width: 80px;
-    height: 80px;
-
-    top: 28%;
-    right: 32%;
-
-    animation-duration: 11s;
     animation-delay: -2s;
 }
 
 
 /* =========================================================
-   BACKGROUND ANIMATION
-   ========================================================= */
+   WAVE 2
+========================================================= */
 
-@keyframes ambientBackground {
+.webpro-bubble:nth-child(2) {
+    width: 240px;
+    height: 240px;
+
+    top: 40%;
+    right: 15%;
+
+    animation-delay: -5s;
+
+    animation-duration: 15s;
+}
+
+
+/* =========================================================
+   WAVE 3
+========================================================= */
+
+.webpro-bubble:nth-child(3) {
+    width: 380px;
+    height: 380px;
+
+    bottom: -160px;
+    left: 35%;
+
+    animation-delay: -8s;
+
+    animation-duration: 18s;
+}
+
+
+/* =========================================================
+   WAVE 4
+========================================================= */
+
+.webpro-bubble:nth-child(4) {
+    width: 180px;
+    height: 180px;
+
+    top: 25%;
+    right: 35%;
+
+    animation-delay: -4s;
+
+    animation-duration: 10s;
+}
+
+
+/* =========================================================
+   AURORA ANIMATION 1
+========================================================= */
+
+@keyframes auroraOne {
 
     0% {
-        background-position: 0% 50%;
+        transform:
+            translate3d(-10%, -10%, 0)
+            rotate(-18deg)
+            scale(0.9);
     }
 
     50% {
-        background-position: 100% 50%;
+        transform:
+            translate3d(25%, 15%, 0)
+            rotate(-8deg)
+            scale(1.15);
     }
 
     100% {
-        background-position: 0% 50%;
+        transform:
+            translate3d(5%, 30%, 0)
+            rotate(8deg)
+            scale(1);
     }
 }
 
 
 /* =========================================================
-   BLUE LIGHT ANIMATION
-   ========================================================= */
+   AURORA ANIMATION 2
+========================================================= */
 
-@keyframes ambientBlue {
+@keyframes auroraTwo {
 
     0% {
         transform:
-            translate3d(0, 0, 0)
-            scale(1);
+            translate3d(15%, 10%, 0)
+            rotate(20deg)
+            scale(0.9);
     }
 
     50% {
         transform:
-            translate3d(100px, 70px, 0)
-            scale(1.08);
+            translate3d(-25%, -15%, 0)
+            rotate(8deg)
+            scale(1.2);
     }
 
     100% {
         transform:
-            translate3d(40px, 150px, 0)
+            translate3d(-5%, 20%, 0)
+            rotate(-10deg)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   SMALL LIGHT MOVEMENT
+========================================================= */
+
+@keyframes auroraBubble {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(0.8);
+        opacity: 0.35;
+    }
+
+    25% {
+        transform:
+            translate3d(80px, -50px, 0)
+            scale(1.1);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform:
+            translate3d(-30px, 100px, 0)
+            scale(1.25);
+        opacity: 0.45;
+    }
+
+    75% {
+        transform:
+            translate3d(-100px, 30px, 0)
             scale(0.95);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(0.8);
+        opacity: 0.35;
     }
 }
 
 
 /* =========================================================
-   PURPLE LIGHT ANIMATION
-   ========================================================= */
+   MOBILE
+========================================================= */
 
-@keyframes ambientPurple {
+@media (max-width: 600px) {
 
-    0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
+    .webpro-animation::before {
+        width: 110vw;
+        height: 35vh;
+
+        filter: blur(45px);
     }
 
-    50% {
-        transform:
-            translate3d(-100px, -70px, 0)
-            scale(1.08);
+    .webpro-animation::after {
+        width: 100vw;
+        height: 32vh;
+
+        filter: blur(50px);
     }
 
-    100% {
-        transform:
-            translate3d(-50px, -140px, 0)
-            scale(0.95);
-    }
-}
-
-
-/* =========================================================
-   SMALL ORB ANIMATION
-   ========================================================= */
-
-@keyframes softFloat {
-
-    0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
+    .webpro-bubble:nth-child(1) {
+        width: 180px;
+        height: 180px;
     }
 
-    50% {
-        transform:
-            translate3d(35px, -25px, 0)
-            scale(1.05);
+    .webpro-bubble:nth-child(2) {
+        width: 140px;
+        height: 140px;
     }
 
-    100% {
-        transform:
-            translate3d(-20px, 30px, 0)
-            scale(0.98);
+    .webpro-bubble:nth-child(3) {
+        width: 230px;
+        height: 230px;
+    }
+
+    .webpro-bubble:nth-child(4) {
+        width: 100px;
+        height: 100px;
     }
 }
-
 
 /* =========================================================
    MOBILE
