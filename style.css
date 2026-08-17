@@ -676,6 +676,150 @@ nav a:hover {
         fadeUp 1s ease forwards;
 }
 
+/* =========================================================
+   HERO ACTIONS
+========================================================= */
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   HERO BUTTON
+========================================================= */
+
+.order-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: none;
+    outline: none;
+
+    padding: 16px 28px 16px 32px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #00bfff,
+        #0878ff
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 35px rgba(0, 150, 255, 0.28);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.order-button i {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    font-size: 14px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.order-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 45px rgba(0, 150, 255, 0.38);
+}
+
+.order-button:hover i {
+    transform: translateX(4px);
+
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.order-button:active {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   MOBILE HERO
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+        line-height: 1.12;
+    }
+
+    .hero h1 span {
+        display: block;
+        margin-top: 8px;
+    }
+
+    .hero p {
+        max-width: 500px;
+
+        font-size: 17px;
+        line-height: 1.6;
+
+        padding: 0 5px;
+    }
+
+    .order-button {
+        padding: 14px 24px 14px 27px;
+
+        font-size: 15px;
+    }
+
+    .order-button i {
+        width: 29px;
+        height: 29px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 33px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .order-button {
+        width: auto;
+        max-width: 100%;
+    }
+}
 
 /* =========================================================
    HERO BADGE
