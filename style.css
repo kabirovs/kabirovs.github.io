@@ -37,7 +37,7 @@ body {
 
 
 /* =========================================================
-   LIVE BACKGROUND
+   WEBPRO — AMBIENT LIGHT BACKGROUND
    ========================================================= */
 
 .webpro-animation {
@@ -54,13 +54,23 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #06111d,
+            125deg,
+            #050b18,
             #071a2b,
-            #061522,
-            #081b2b
+            #0b1230,
+            #061827
         );
+
+    background-size: 300% 300%;
+
+    animation:
+        ambientBackground 18s ease-in-out infinite;
 }
+
+
+/* =========================================================
+   MAIN LIGHTS
+   ========================================================= */
 
 .webpro-animation::before,
 .webpro-animation::after {
@@ -70,13 +80,13 @@ body {
 
     border-radius: 50%;
 
-    filter: blur(90px);
+    filter: blur(100px);
 
-    opacity: 0.75;
-
-    animation:
-        webproGlow 12s ease-in-out infinite alternate;
+    pointer-events: none;
 }
+
+
+/* BLUE LIGHT */
 
 .webpro-animation::before {
     width: 520px;
@@ -86,25 +96,32 @@ body {
     left: -150px;
 
     background:
-        rgba(0, 140, 255, 0.65);
+        rgba(0, 170, 255, 0.30);
+
+    animation:
+        ambientBlue 14s ease-in-out infinite alternate;
 }
 
-.webpro-animation::after {
-    width: 500px;
-    height: 500px;
 
-    right: -180px;
-    bottom: -180px;
+/* PURPLE LIGHT */
+
+.webpro-animation::after {
+    width: 480px;
+    height: 480px;
+
+    right: -160px;
+    bottom: -160px;
 
     background:
-        rgba(0, 90, 255, 0.55);
+        rgba(110, 70, 255, 0.25);
 
-    animation-delay: -6s;
+    animation:
+        ambientPurple 17s ease-in-out infinite alternate;
 }
 
 
 /* =========================================================
-   BACKGROUND BUBBLES
+   SMALL LIGHT ORBS
    ========================================================= */
 
 .webpro-bubble {
@@ -113,64 +130,215 @@ body {
     border-radius: 50%;
 
     background:
-        rgba(0, 150, 255, 0.12);
+        rgba(80, 190, 255, 0.07);
 
     border:
-        1px solid rgba(80, 190, 255, 0.45);
+        1px solid rgba(100, 210, 255, 0.16);
 
     box-shadow:
-        0 0 25px rgba(0, 150, 255, 0.35),
-        0 0 70px rgba(0, 120, 255, 0.20),
-        inset 0 0 25px rgba(100, 210, 255, 0.12);
+        0 0 35px rgba(0, 170, 255, 0.12);
 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    filter: blur(1px);
+
+    pointer-events: none;
 
     animation:
-        webproBubble 14s ease-in-out infinite;
+        softFloat 16s ease-in-out infinite;
 }
 
+
+/* ORB 1 */
+
 .webpro-bubble:nth-child(1) {
-    width: 260px;
-    height: 260px;
+    width: 170px;
+    height: 170px;
 
-    top: 10%;
-    left: 5%;
+    top: 15%;
+    left: 8%;
 
+    animation-delay: -3s;
+}
+
+
+/* ORB 2 */
+
+.webpro-bubble:nth-child(2) {
+    width: 110px;
+    height: 110px;
+
+    top: 45%;
+    right: 13%;
+
+    animation-duration: 13s;
+    animation-delay: -6s;
+}
+
+
+/* ORB 3 */
+
+.webpro-bubble:nth-child(3) {
+    width: 210px;
+    height: 210px;
+
+    bottom: -70px;
+    left: 40%;
+
+    animation-duration: 20s;
+    animation-delay: -9s;
+}
+
+
+/* ORB 4 */
+
+.webpro-bubble:nth-child(4) {
+    width: 80px;
+    height: 80px;
+
+    top: 28%;
+    right: 32%;
+
+    animation-duration: 11s;
     animation-delay: -2s;
 }
 
-.webpro-bubble:nth-child(2) {
-    width: 180px;
-    height: 180px;
 
-    top: 45%;
-    right: 10%;
+/* =========================================================
+   BACKGROUND ANIMATION
+   ========================================================= */
 
-    animation-duration: 11s;
-    animation-delay: -5s;
+@keyframes ambientBackground {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-.webpro-bubble:nth-child(3) {
-    width: 360px;
-    height: 360px;
 
-    bottom: -130px;
-    left: 38%;
+/* =========================================================
+   BLUE LIGHT ANIMATION
+   ========================================================= */
 
-    animation-duration: 18s;
-    animation-delay: -8s;
+@keyframes ambientBlue {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(100px, 70px, 0)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            translate3d(40px, 150px, 0)
+            scale(0.95);
+    }
 }
 
-.webpro-bubble:nth-child(4) {
-    width: 130px;
-    height: 130px;
 
-    top: 30%;
-    right: 28%;
+/* =========================================================
+   PURPLE LIGHT ANIMATION
+   ========================================================= */
 
-    animation-duration: 10s;
-    animation-delay: -3s;
+@keyframes ambientPurple {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(-100px, -70px, 0)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            translate3d(-50px, -140px, 0)
+            scale(0.95);
+    }
+}
+
+
+/* =========================================================
+   SMALL ORB ANIMATION
+   ========================================================= */
+
+@keyframes softFloat {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(35px, -25px, 0)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            translate3d(-20px, 30px, 0)
+            scale(0.98);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .webpro-animation::before {
+        width: 300px;
+        height: 300px;
+
+        filter: blur(75px);
+    }
+
+    .webpro-animation::after {
+        width: 280px;
+        height: 280px;
+
+        filter: blur(75px);
+    }
+
+    .webpro-bubble:nth-child(1) {
+        width: 110px;
+        height: 110px;
+    }
+
+    .webpro-bubble:nth-child(2) {
+        width: 75px;
+        height: 75px;
+    }
+
+    .webpro-bubble:nth-child(3) {
+        width: 150px;
+        height: 150px;
+    }
+
+    .webpro-bubble:nth-child(4) {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 
