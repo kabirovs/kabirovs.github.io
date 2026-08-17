@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="google-site-verification" content="RW8qWEQlyFZeDk7CiNI5V2hp8IbROasLWzNdFAjpQ_Y" />
+    <meta name="google-site-verification" content="RW8qWEQlyFZeDk7CiNI5V2hp8IbROasLWzNdFAjpQ_Y">
 
     <meta name="description"
         content="WebPro — создание современных сайтов для бизнеса. Разрабатываем быстрые, удобные и адаптивные сайты для компаний и личных брендов.">
@@ -20,25 +20,30 @@
     <title>WebPro — создание сайтов для бизнеса</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
+    <!-- =========================
+         BACKGROUND ANIMATION
+    ========================== -->
+
     <div class="webpro-animation">
+
         <div class="webpro-bubble"></div>
         <div class="webpro-bubble"></div>
         <div class="webpro-bubble"></div>
         <div class="webpro-bubble"></div>
+
     </div>
 
-    <!-- Your existing WebPro code -->
-
-</body>
 
     <!-- =========================
          HEADER
@@ -50,32 +55,53 @@
             WebPro
         </a>
 
-        <button class="menu-toggle"
+
+        <button
+            class="menu-toggle"
             onclick="toggleMenu()"
-            aria-label="Открыть меню">
+            aria-label="Открыть меню"
+            aria-controls="mainNav"
+            aria-expanded="false">
 
             <i class="fa-solid fa-bars"></i>
 
         </button>
 
+
         <nav id="mainNav">
 
-            <a href="#home">Главная</a>
+            <a href="#home">
+                Главная
+            </a>
 
-            <a href="#services">Услуги</a>
+            <a href="#services">
+                Услуги
+            </a>
 
-            <a href="#portfolio">Наши работы</a>
+            <a href="#portfolio">
+                Наши работы
+            </a>
 
-            <a href="#about">О нас</a>
+            <a href="#about">
+                О нас
+            </a>
 
-            <a href="#contacts">Контакты</a>
+            <a href="#contacts">
+                Контакты
+            </a>
 
         </nav>
 
     </header>
 
 
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main>
+
 
         <!-- =========================
              HERO
@@ -89,17 +115,21 @@
                     WEB DEVELOPMENT
                 </div>
 
-               <h1>
-    WebPro<br>
-    <span>Создаём сайты для бизнеса</span>
-</h1>
+
+                <h1>
+                    WebPro<br>
+                    <span>Создаём сайты для бизнеса</span>
+                </h1>
+
 
                 <p>
                     Современные, быстрые и удобные сайты,
                     которые помогают вашему бизнесу развиваться.
                 </p>
 
-                <button class="order-button"
+
+                <button
+                    class="order-button"
                     onclick="showContacts()">
 
                     Заказать сайт
@@ -111,46 +141,58 @@
 
                 <div id="contactButtons" class="contact-buttons">
 
-                   <div class="contact-title">
-    Выберите удобный способ связи
-</div>
+                    <div class="contact-title">
+                        Выберите удобный способ связи
+                    </div>
+
 
                     <div class="contact-links">
 
-                        <a href="https://t.me/kbrv8"
+
+                        <a
+                            href="https://t.me/kbrv8"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="telegram">
 
                             <i class="fa-brands fa-telegram"></i>
 
-                            <span>Telegram</span>
+                            <span>
+                                Telegram
+                            </span>
 
                         </a>
 
 
-                        <a href="https://wa.me/992974008118"
+                        <a
+                            href="https://wa.me/992974008118"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="whatsapp">
 
                             <i class="fa-brands fa-whatsapp"></i>
 
-                            <span>WhatsApp</span>
+                            <span>
+                                WhatsApp
+                            </span>
 
                         </a>
 
 
-                        <a href="https://instagram.com/kabirov.dev"
+                        <a
+                            href="https://instagram.com/kabirov.dev"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="instagram">
 
                             <i class="fa-brands fa-instagram"></i>
 
-                            <span>Instagram</span>
+                            <span>
+                                Instagram
+                            </span>
 
                         </a>
+
 
                     </div>
 
@@ -161,6 +203,7 @@
         </section>
 
 
+
         <!-- =========================
              SERVICES
         ========================== -->
@@ -169,9 +212,13 @@
 
             <div class="section-heading">
 
-                <span>ЧТО МЫ ДЕЛАЕМ</span>
+                <span>
+                    ЧТО МЫ ДЕЛАЕМ
+                </span>
 
-                <h2>Наши услуги</h2>
+                <h2>
+                    Наши услуги
+                </h2>
 
                 <p>
                     Создаём решения, которые подходят
@@ -182,6 +229,7 @@
 
 
             <div class="cards">
+
 
                 <!-- CARD 1 -->
 
@@ -201,6 +249,7 @@
                     </p>
 
                 </div>
+
 
 
                 <!-- CARD 2 -->
@@ -223,6 +272,7 @@
                 </div>
 
 
+
                 <!-- CARD 3 -->
 
                 <div class="card">
@@ -242,9 +292,11 @@
 
                 </div>
 
+
             </div>
 
         </section>
+
 
 
         <!-- =========================
@@ -255,9 +307,13 @@
 
             <div class="section-heading">
 
-                <span>ПРИМЕРЫ РАБОТ</span>
+                <span>
+                    ПРИМЕРЫ РАБОТ
+                </span>
 
-                <h2>Наши работы</h2>
+                <h2>
+                    Наши работы
+                </h2>
 
                 <p>
                     Примеры современных решений
@@ -269,6 +325,7 @@
 
             <div class="cards portfolio-cards">
 
+
                 <!-- PORTFOLIO 1 -->
 
                 <div class="card portfolio-card">
@@ -279,7 +336,9 @@
 
                     <div class="portfolio-info">
 
-                        <span>RESTAURANT</span>
+                        <span>
+                            RESTAURANT
+                        </span>
 
                         <h3>
                             Сайт кафе
@@ -295,6 +354,7 @@
                 </div>
 
 
+
                 <!-- PORTFOLIO 2 -->
 
                 <div class="card portfolio-card">
@@ -305,7 +365,9 @@
 
                     <div class="portfolio-info">
 
-                        <span>ONLINE STORE</span>
+                        <span>
+                            ONLINE STORE
+                        </span>
 
                         <h3>
                             Интернет-магазин
@@ -321,6 +383,7 @@
                 </div>
 
 
+
                 <!-- PORTFOLIO 3 -->
 
                 <div class="card portfolio-card">
@@ -331,7 +394,9 @@
 
                     <div class="portfolio-info">
 
-                        <span>BUSINESS</span>
+                        <span>
+                            BUSINESS
+                        </span>
 
                         <h3>
                             Сайт компании
@@ -346,9 +411,11 @@
 
                 </div>
 
+
             </div>
 
         </section>
+
 
 
         <!-- =========================
@@ -361,7 +428,9 @@
 
                 <div class="section-heading about-heading">
 
-                    <span>О КОМПАНИИ</span>
+                    <span>
+                        О КОМПАНИИ
+                    </span>
 
                     <h2>
                         О нас
@@ -393,6 +462,7 @@
         </section>
 
 
+
         <!-- =========================
              ADVANTAGES
         ========================== -->
@@ -401,7 +471,9 @@
 
             <div class="section-heading">
 
-                <span>ПОЧЕМУ МЫ</span>
+                <span>
+                    ПОЧЕМУ МЫ
+                </span>
 
                 <h2>
                     Наши преимущества
@@ -417,7 +489,8 @@
 
             <div class="advantage-cards">
 
-                <!-- 1 -->
+
+                <!-- ADVANTAGE 1 -->
 
                 <div class="advantage-card">
 
@@ -439,7 +512,8 @@
                 </div>
 
 
-                <!-- 2 -->
+
+                <!-- ADVANTAGE 2 -->
 
                 <div class="advantage-card">
 
@@ -461,7 +535,8 @@
                 </div>
 
 
-                <!-- 3 -->
+
+                <!-- ADVANTAGE 3 -->
 
                 <div class="advantage-card">
 
@@ -483,7 +558,8 @@
                 </div>
 
 
-                <!-- 4 -->
+
+                <!-- ADVANTAGE 4 -->
 
                 <div class="advantage-card">
 
@@ -504,9 +580,11 @@
 
                 </div>
 
+
             </div>
 
         </section>
+
 
 
         <!-- =========================
@@ -517,7 +595,9 @@
 
             <div class="section-heading">
 
-                <span>КОНТАКТЫ</span>
+                <span>
+                    КОНТАКТЫ
+                </span>
 
                 <h2>
                     Связаться с нами
@@ -533,43 +613,56 @@
 
             <div class="social-buttons">
 
-                <a href="https://t.me/kbrv8"
+
+                <a
+                    href="https://t.me/kbrv8"
                     target="_blank"
                     rel="noopener noreferrer">
 
                     <i class="fa-brands fa-telegram"></i>
 
-                    <span>Telegram</span>
+                    <span>
+                        Telegram
+                    </span>
 
                 </a>
 
 
-                <a href="https://wa.me/992974008118"
+                <a
+                    href="https://wa.me/992974008118"
                     target="_blank"
                     rel="noopener noreferrer">
 
                     <i class="fa-brands fa-whatsapp"></i>
 
-                    <span>WhatsApp</span>
+                    <span>
+                        WhatsApp
+                    </span>
 
                 </a>
 
 
-                <a href="https://instagram.com/kabirov.dev"
+                <a
+                    href="https://instagram.com/kabirov.dev"
                     target="_blank"
                     rel="noopener noreferrer">
 
                     <i class="fa-brands fa-instagram"></i>
 
-                    <span>Instagram</span>
+                    <span>
+                        Instagram
+                    </span>
 
                 </a>
+
 
             </div>
 
         </section>
 
+
     </main>
+
 
 
     <!-- =========================
@@ -595,7 +688,10 @@
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script src="script.js"></script>
 
