@@ -3983,3 +3983,138 @@ footer p {
     }
 
 }
+
+/* =========================================================
+   ABOUT — MOBILE FIX
+========================================================= */
+
+.about-stats {
+    display: flex !important;
+
+    width: 100%;
+
+    justify-content: center;
+    align-items: stretch;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-top: 40px;
+
+    position: relative;
+    z-index: 5;
+}
+
+.stat-card {
+    display: flex !important;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 220px;
+    min-height: 150px;
+
+    padding: 28px 20px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: relative;
+    z-index: 10;
+
+    transition: transform 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.stat-card h3 {
+    display: block !important;
+
+    margin: 0 0 10px;
+
+    font-size: 38px;
+
+    color: #55d6ff;
+}
+
+.stat-card p {
+    display: block !important;
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ABOUT — PHONE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .about {
+        min-height: auto;
+
+        padding: 80px 20px;
+    }
+
+    .about-content {
+        width: 100%;
+
+        max-width: 100%;
+
+        position: relative;
+        z-index: 5;
+    }
+
+    .about-text {
+        width: 100%;
+
+        margin-bottom: 35px;
+
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+
+    .about-stats {
+        display: flex !important;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        width: 100%;
+
+        gap: 16px;
+
+        margin-top: 35px;
+    }
+
+    .stat-card {
+        display: flex !important;
+
+        width: 100%;
+
+        max-width: 330px;
+
+        min-height: 135px;
+    }
+}
