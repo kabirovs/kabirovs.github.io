@@ -1380,7 +1380,7 @@ nav a:hover {
 }
 
 
-.portfolio-image img {
+.portfolio-image video {
     display: block;
 
     width: 100%;
@@ -1393,13 +1393,10 @@ nav a:hover {
         filter 0.7s ease;
 }
 
+.portfolio-item:hover .portfolio-image video {
+    transform: scale(1.07);
 
-.portfolio-item:hover .portfolio-image img {
-    transform:
-        scale(1.07);
-
-    filter:
-        brightness(0.78);
+    filter: brightness(0.78);
 }
 
 
