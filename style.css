@@ -1988,10 +1988,12 @@ nav a:hover {
 
 
 /* =========================================================
-   ADVANTAGE ICON
+   ADVANTAGE ICON — PREMIUM ANIMATION
    ========================================================= */
 
 .advantage-icon {
+    position: relative;
+
     width: 80px;
     height: 80px;
 
@@ -2008,13 +2010,105 @@ nav a:hover {
 
     font-size: 34px;
 
+    z-index: 1;
+
     box-shadow:
-        0 10px 25px rgba(0, 191, 255, 0.35);
+        0 10px 25px rgba(0, 191, 255, 0.25);
 
     transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
+        transform 0.6s cubic-bezier(.16, 1, .3, 1),
+        box-shadow 0.6s ease;
 }
+
+
+/* -----------------------------------------
+   SOFT OUTER LIGHT
+----------------------------------------- */
+
+.advantage-icon::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    border-radius: 50%;
+
+    border: 1px solid currentColor;
+
+    opacity: 0.18;
+
+    transform: scale(0.92);
+
+    transition:
+        transform 0.7s cubic-bezier(.16, 1, .3, 1),
+        opacity 0.6s ease;
+
+    pointer-events: none;
+}
+
+
+/* -----------------------------------------
+   ROTATING LIGHT RING
+----------------------------------------- */
+
+.advantage-icon::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 220deg,
+            currentColor 285deg,
+            transparent 335deg,
+            transparent 360deg
+        );
+
+    -webkit-mask:
+        radial-gradient(
+            farthest-side,
+            transparent calc(100% - 2px),
+            #000 calc(100% - 1px)
+        );
+
+    mask:
+        radial-gradient(
+            farthest-side,
+            transparent calc(100% - 2px),
+            #000 calc(100% - 1px)
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* -----------------------------------------
+   ICON
+----------------------------------------- */
+
+.advantage-icon i {
+    position: relative;
+
+    z-index: 3;
+
+    transition:
+        transform 0.65s cubic-bezier(.16, 1, .3, 1),
+        filter 0.5s ease;
+}
+
+
+/* -----------------------------------------
+   DIFFERENT COLORS
+----------------------------------------- */
 
 .advantage-card:nth-child(1) .advantage-icon {
     background:
@@ -2023,6 +2117,8 @@ nav a:hover {
             #FFD700,
             #ffae00
         );
+
+    color: #ffffff;
 }
 
 .advantage-card:nth-child(2) .advantage-icon {
@@ -2032,6 +2128,8 @@ nav a:hover {
             #00BFFF,
             #0077ff
         );
+
+    color: #ffffff;
 }
 
 .advantage-card:nth-child(3) .advantage-icon {
@@ -2041,6 +2139,8 @@ nav a:hover {
             #FF4D6D,
             #e11d48
         );
+
+    color: #ffffff;
 }
 
 .advantage-card:nth-child(4) .advantage-icon {
@@ -2050,355 +2150,100 @@ nav a:hover {
             #22C55E,
             #16a34a
         );
+
+    color: #ffffff;
 }
+
+
+/* -----------------------------------------
+   HOVER — CARD
+----------------------------------------- */
 
 .advantage-card:hover .advantage-icon {
+
     transform:
-        translateY(-4px)
-        scale(1.08);
+        translateY(-8px)
+        scale(1.06);
 
     box-shadow:
-        0 8px 25px rgba(0, 191, 255, 0.25);
+        0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
 
-/* =========================================================
-   ADVANTAGE TEXT
-   ========================================================= */
+/* -----------------------------------------
+   HOVER — OUTER RING
+----------------------------------------- */
 
-.advantage-card h3 {
-    margin-bottom: 12px;
+.advantage-card:hover .advantage-icon::before {
 
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.advantage-card:hover h3 {
-    color: #00aeea;
+    opacity: 0.45;
 
     transform:
-        translateY(-2px);
-}
-
-.advantage-card p {
-    color: #64748b;
-
-    line-height: 1.7;
+        scale(1.18);
 }
 
 
-/* =========================================================
-   CONTACTS
-   ========================================================= */
+/* -----------------------------------------
+   HOVER — ROTATING RING
+----------------------------------------- */
 
-.contacts {
-    text-align: center;
+.advantage-card:hover .advantage-icon::after {
 
-    background: white;
+    opacity: 0.9;
+
+    animation:
+        advantageIconRing 2s linear infinite;
 }
 
-.social-buttons {
-    display: flex;
 
-    align-items: center;
-    justify-content: center;
+/* -----------------------------------------
+   HOVER — ICON
+----------------------------------------- */
 
-    gap: 18px;
-
-    flex-wrap: wrap;
-}
-
-.social-buttons a {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 11px;
-
-    min-width: 160px;
-
-    padding: 14px 23px;
-
-    border-radius: 12px;
-
-    text-decoration: none;
-
-    color: white;
-
-    background: #172033;
-
-    font-size: 15px;
-    font-weight: 600;
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.social-buttons a i {
-    font-size: 19px;
-}
-
-.social-buttons a:hover {
-    background: #0797d5;
+.advantage-card:hover .advantage-icon i {
 
     transform:
-        translateY(-4px);
+        scale(1.16)
+        rotate(-7deg);
 
-    box-shadow:
-        0 10px 25px rgba(7, 151, 213, 0.20);
+    filter:
+        drop-shadow(0 0 9px rgba(255, 255, 255, 0.85));
 }
 
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* -----------------------------------------
+   ROTATION
+----------------------------------------- */
 
-footer {
-    position: relative;
+@keyframes advantageIconRing {
 
-    padding:
-        30px 20px;
-
-    overflow: hidden;
-
-    text-align: center;
-
-    color:
-        rgba(255, 255, 255, 0.70);
-
-    background:
-        linear-gradient(
-            135deg,
-            #07131f,
-            #0b2435
-        );
-
-    border-top:
-        1px solid rgba(255, 255, 255, 0.08);
-}
-
-footer::before {
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    top: -130px;
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        rgba(0, 191, 255, 0.12);
-
-    filter: blur(60px);
-
-    pointer-events: none;
-}
-
-footer p {
-    position: relative;
-
-    z-index: 1;
-
-    margin: 0;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-.footer-logo {
-    position: relative;
-
-    z-index: 1;
-
-    margin-bottom: 10px;
-
-    color: #55d6ff;
-
-    font-size: 25px;
-    font-weight: 800;
-}
-
-.footer-line {
-    width: 80px;
-    height: 1px;
-
-    margin:
-        25px auto;
-
-    background:
-        rgba(255, 255, 255, 0.15);
-}
-
-.copyright {
-    color: #64748b;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes webproGlow {
-    0% {
+    from {
         transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translate3d(40px, -30px, 0)
-            scale(1.08);
-    }
-
-    100% {
-        transform:
-            translate3d(-30px, 40px, 0)
-            scale(0.95);
-    }
-}
-
-@keyframes webproBubble {
-    0% {
-        transform:
-            translate3d(0, 0, 0)
             rotate(0deg);
     }
 
-    25% {
-        transform:
-            translate3d(35px, 40px, 0)
-            rotate(5deg);
-    }
-
-    50% {
-        transform:
-            translate3d(0, 80px, 0)
-            rotate(10deg);
-    }
-
-    75% {
-        transform:
-            translate3d(-35px, 40px, 0)
-            rotate(5deg);
-    }
-
-    100% {
-        transform:
-            translate3d(0, 0, 0)
-            rotate(0deg);
-    }
-}
-
-@keyframes floatingLight {
-    0% {
-        transform:
-            translate(0, 0);
-    }
-
-    50% {
-        transform:
-            translate(80px, 50px);
-    }
-
-    100% {
-        transform:
-            translate(0, 0);
-    }
-}
-
-@keyframes aboutGlow {
-    from {
-        transform:
-            translate(0, 0);
-    }
-
     to {
         transform:
-            translate(180px, 120px);
+            rotate(360deg);
     }
+
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
 
-        transform:
-            translateY(25px);
+/* -----------------------------------------
+   MOBILE
+----------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .advantage-icon {
+        width: 75px;
+        height: 75px;
+
+        font-size: 31px;
     }
 
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
 }
-
-@keyframes heroTitle {
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-@keyframes heroText {
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-@keyframes heroButton {
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
 
 /* =========================================================
    TABLET
