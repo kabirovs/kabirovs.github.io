@@ -848,8 +848,8 @@ nav#mainNav a:not(.nav-cta):hover::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 34px 20px;
+    gap: 8px;
+    padding: 30px 20px;
     border-radius: var(--radius);
     background: rgba(234, 242, 247, 0.04);
     border: 1px solid rgba(234, 242, 247, 0.12);
@@ -857,10 +857,20 @@ nav#mainNav a:not(.nav-cta):hover::after {
     transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
 }
 
-.contact-card i {
-    font-size: 28px;
-    color: var(--teal-400);
+.contact-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(45, 212, 191, 0.1);
     margin-bottom: 6px;
+}
+
+.contact-card-icon i {
+    font-size: 18px;
+    color: var(--teal-400);
 }
 
 .contact-card span {
@@ -871,9 +881,24 @@ nav#mainNav a:not(.nav-cta):hover::after {
 
 .contact-card small {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 12.5px;
     color: var(--light-muted);
 }
+
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(45, 212, 191, 0.12);
+    color: var(--teal-300);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.contact-badge i { font-size: 10px; color: var(--teal-300); }
 
 .contact-card:hover {
     transform: translateY(-6px);
@@ -1020,4 +1045,29 @@ footer {
     .floating-badge { font-size: 11.5px; padding: 8px 12px; }
     .badge-fast { top: 16px; right: -6px; }
     .badge-live { bottom: -14px; left: -6px; }
+
+    .social-buttons { gap: 12px; }
+
+    .contact-card { padding: 20px 10px; gap: 6px; }
+
+    .contact-card-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        margin-bottom: 2px;
+    }
+
+    .contact-card-icon i { font-size: 14px; }
+
+    .contact-card span { font-size: 13px; }
+
+    .contact-card small { display: none; }
+
+    .contact-badge {
+        font-size: 9.5px;
+        padding: 4px 8px;
+        margin-top: 6px;
+        gap: 4px;
+        white-space: nowrap;
+    }
 }
