@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tg">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,10 +79,12 @@
     border-radius: var(--radius);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 50px -24px rgba(0,0,0,.6);
   }
-  .spot{ position:relative; overflow:hidden; }
+  .spot{ position:relative; }
   .spot::before{
     content:''; position:absolute; inset:0; z-index:0; opacity:0; transition:opacity .35s ease;
     background: radial-gradient(320px circle at var(--mx,50%) var(--my,50%), rgba(109,91,255,.18), transparent 70%);
+    border-radius: inherit;
+    overflow: hidden;
   }
   .spot:hover::before{ opacity:1; }
   .spot > *{ position:relative; z-index:1; }
@@ -108,8 +110,10 @@
   .nav-links a:hover{ color:var(--text); }
   .nav-links a::after{ content:''; position:absolute; left:0; bottom:-4px; width:0; height:1px; background:var(--accent-2); transition:width .25s var(--ease); }
   .nav-links a:hover::after{ width:100%; }
-  .lang-toggle{ font-family:var(--mono); font-size:12px; color:var(--accent-2); border:1px solid var(--line); background:transparent; padding:6px 12px; border-radius:999px; cursor:pointer; transition:border-color .2s ease, transform .2s var(--ease); }
-  .lang-toggle:hover{ border-color:var(--accent-2); transform:translateY(-1px); }
+  .lang-switch{ display:flex; align-items:center; gap:3px; border:1px solid var(--line); border-radius:999px; padding:3px; background:transparent; }
+  .lang-btn{ font-family:var(--mono); font-size:12px; color:var(--text-dim); background:transparent; border:none; padding:6px 12px; border-radius:999px; cursor:pointer; transition:background .2s ease, color .2s ease; }
+  .lang-btn:hover{ color:var(--text); }
+  .lang-btn.active{ background:var(--accent-2); color:#04101f; font-weight:600; }
   .nav-cta{ font-family:var(--mono); font-size:13px; background:linear-gradient(135deg,var(--accent),#5145c9); color:#fff; font-weight:600; padding:9px 18px; border-radius:999px; transition:transform .25s var(--ease), box-shadow .25s var(--ease); white-space:nowrap; box-shadow:0 6px 20px -8px rgba(109,91,255,.6); }
   .nav-cta:hover{ transform:translateY(-1px); box-shadow:0 10px 26px -6px rgba(109,91,255,.8); }
   .hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; width:34px; height:34px; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; z-index:2; }
@@ -294,7 +298,7 @@
   .faq-a p{ padding:0 22px 19px; color:var(--text-dim); font-size:14px; }
 
   /* ---------- CONTACT ---------- */
-  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .contact-grid{ display:grid; grid-template-columns:1fr; max-width:520px; margin:0 auto; }
   .contact-list{ margin-top:24px; display:flex; flex-direction:column; gap:14px; }
   .contact-list a{ display:flex; justify-content:space-between; align-items:center; padding:15px 17px; border:1px solid var(--line); border-radius:12px; font-family:var(--mono); font-size:14px; transition:border-color .2s ease, transform .25s var(--ease); background:var(--panel); }
   .contact-list a:hover{ border-color:var(--accent-2); transform:translateX(5px); }
@@ -304,7 +308,6 @@
   form input, form textarea{ background:rgba(0,0,0,.25); border:1px solid var(--line); border-radius:10px; padding:12px 13px; color:var(--text); font-family:var(--body); font-size:14px; outline:none; transition:border-color .2s ease; width:100%; }
   form input:focus, form textarea:focus{ border-color:var(--accent-2); }
   form textarea{ resize:vertical; min-height:90px; }
-  .form-note{ font-size:12px; color:var(--text-dim); font-family:var(--mono); }
 
   /* ---------- FINAL CTA ---------- */
   .final-cta{ padding:64px 44px; text-align:center; position:relative; overflow:hidden; }
@@ -342,7 +345,7 @@
     .nav-panel.open{ max-height:420px; overflow-y:auto; }
     .nav-links{ flex-direction:column; align-items:flex-start; gap:0; padding:8px 24px 4px; }
     .nav-links a{ padding:13px 0; width:100%; border-bottom:1px solid var(--line-soft); }
-    .nav-panel .lang-toggle{ margin:14px 24px; align-self:flex-start; }
+    .nav-panel .lang-switch{ margin:14px 24px; align-self:flex-start; }
     .nav-panel .nav-cta{ margin:0 24px 18px; text-align:center; }
   }
   @media (max-width:560px){
@@ -372,13 +375,18 @@
     <button class="hamburger" id="hamburger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav-panel" id="navPanel">
       <div class="nav-links">
+        <a data-i18n="nav.home" href="#hero">Асосӣ</a>
         <a data-i18n="nav.services" href="#services">Хизматҳо</a>
         <a data-i18n="nav.portfolio" href="#portfolio">Портфолио</a>
         <a data-i18n="nav.pricing" href="#pricing">Тарифҳо</a>
         <a data-i18n="nav.faq" href="#faq">FAQ</a>
         <a data-i18n="nav.contact" href="#contact">Тамос</a>
       </div>
-      <button class="lang-toggle" id="langToggle">RU</button>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="tj">TJ</button>
+      </div>
       <a class="nav-cta" data-i18n="nav.cta" href="#contact">Фармоиш диҳед</a>
     </div>
   </div>
@@ -386,7 +394,7 @@
 
 <!-- 1. HERO -->
 <div class="wrap">
-  <section class="hero">
+  <section class="hero" id="hero">
     <div>
       <div class="hero-pill glass"><span class="dot">●</span> <span data-i18n="hero.pill">Веб-студияи фардӣ</span></div>
       <h1 data-i18n="hero.title">Сомонае, ки <span class="hi">бизнеси шуморо</span> ба сатҳи нав мебарорад</h1>
@@ -651,25 +659,14 @@
     <div class="section-head" data-animate>
       <div class="eyebrow" data-i18n="contact.eyebrow">Тамос</div>
       <h2 data-i18n="contact.title">Барои фармоиш алоқа кунед</h2>
-      <p data-i18n="contact.desc">Дар бораи лоиҳаи худ нависед — дар давоми як рӯз ҷавоб медиҳам.</p>
+      <p data-i18n="contact.desc">Дар бораи лоиҳаи худ нависед — дар давоми як соат ҷавоб медиҳам.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-list" data-animate>
         <a href="https://t.me/webpro" target="_blank" rel="noopener">Telegram: @webpro <span class="arrow">↗</span></a>
         <a href="https://wa.me/992000000000" target="_blank" rel="noopener">WhatsApp: +992 00 000 0000 <span class="arrow">↗</span></a>
         <a href="https://instagram.com/webpro" target="_blank" rel="noopener">Instagram: @webpro <span class="arrow">↗</span></a>
-        <a href="mailto:hello@webpro.tj">Email: hello@webpro.tj <span class="arrow">↗</span></a>
       </div>
-      <form id="contactForm" class="glass" data-animate>
-        <div><label for="name" data-i18n="contact.form.nameLabel">Ном</label>
-          <input id="name" name="name" type="text" data-i18n-placeholder="contact.form.namePh" placeholder="Номи шумо" required></div>
-        <div><label for="contact" data-i18n="contact.form.contactLabel">Telegram / телефон</label>
-          <input id="contact" name="contact" type="text" data-i18n-placeholder="contact.form.contactPh" placeholder="@username ё рақами телефон" required></div>
-        <div><label for="message" data-i18n="contact.form.messageLabel">Тавсифи лоиҳа</label>
-          <textarea id="message" name="message" data-i18n-placeholder="contact.form.messagePh" placeholder="Ба кадом навъи сомона ниёз доред?"></textarea></div>
-        <button class="btn btn-primary" type="submit" data-i18n="contact.form.submit">Дархост фиристодан</button>
-        <span class="form-note" id="formNote" data-i18n="contact.form.note">* Формаро бо хидмате мисли Telegram Bot API ё Formspree пайваст кунед, то дархостҳо воқеан ба шумо расанд.</span>
-      </form>
     </div>
   </div>
 </section>
@@ -687,7 +684,7 @@
 <footer>
   <div class="wrap">
     <span>© <span id="year"></span> WebPro</span>
-    <span data-i18n="footer.tagline">Сохта бо диққат ба ҳар тафсилот</span>
+    <span data-i18n="footer.tagline">Ҳамаи ҳуқуқҳо ҳифз шудаанд</span>
   </div>
 </footer>
 
@@ -725,14 +722,15 @@
 
   const hamburger = document.getElementById('hamburger');
   const navPanel = document.getElementById('navPanel');
+  function closeMobileNav(){
+    navPanel.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', false);
+  }
   hamburger.addEventListener('click', () => {
     const open = navPanel.classList.toggle('open');
     hamburger.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', open);
   });
-  navPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navPanel.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', false);
-  }));
+  navPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
 
   document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-q').addEventListener('click', () => {
@@ -740,13 +738,6 @@
       document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
       if(!isOpen) item.classList.add('open');
     });
-  });
-
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    document.getElementById('formNote').textContent = currentLang === 'tj'
-      ? 'Матн омода аст — то пайваст кардани хидмат, лутфан тавассути Telegram ё WhatsApp дар боло нависед.'
-      : 'Сообщение готово — пока форма не подключена, напишите через Telegram или WhatsApp выше.';
   });
 
   const portfolioScenes = {
@@ -775,7 +766,7 @@
 
   const translations = {
     ru: {
-      'nav.services':'Услуги','nav.portfolio':'Портфолио','nav.pricing':'Тарифы','nav.faq':'FAQ','nav.contact':'Контакты','nav.cta':'Заказать сайт',
+      'nav.home':'Главная','nav.services':'Услуги','nav.portfolio':'Портфолио','nav.pricing':'Тарифы','nav.faq':'FAQ','nav.contact':'Контакты','nav.cta':'Заказать сайт',
       'hero.pill':'Персональная веб-студия',
       'hero.title':'Сайт, который выведет <span class="hi">ваш бизнес</span> на новый уровень',
       'hero.lead':'WebPro — разработка современных, быстрых и адаптивных сайтов под любые устройства.',
@@ -815,16 +806,16 @@
       'faq.q2':'Сколько времени занимает?','faq.a2':'От 3 до 14+ дней, в зависимости от сложности проекта и выбранного тарифа.',
       'faq.q3':'Будет ли работать на телефоне?','faq.a3':'Да, каждый сайт адаптируется под телефон, планшет и компьютер.',
       'faq.q4':'Есть ли поддержка?','faq.a4':'Да, согласно договору в течение 1 года проблемы внутри сайта устраняются бесплатно.',
-      'contact.eyebrow':'Контакты','contact.title':'Свяжитесь, чтобы оформить заказ','contact.desc':'Напишите о своём проекте — отвечу в течение дня.',
+      'contact.eyebrow':'Контакты','contact.title':'Свяжитесь, чтобы оформить заказ','contact.desc':'Напишите о своём проекте — отвечу в течение часа.',
       'contact.form.nameLabel':'Имя','contact.form.namePh':'Ваше имя',
       'contact.form.contactLabel':'Telegram / телефон','contact.form.contactPh':'@username или номер телефона',
       'contact.form.messageLabel':'Описание проекта','contact.form.messagePh':'Какой сайт вам нужен?',
-      'contact.form.submit':'Отправить заявку','contact.form.note':'* Подключите форму к сервису вроде Telegram Bot API или Formspree, чтобы заявки реально приходили к вам.',
+      'contact.form.submit':'Отправить заявку',
       'final.title':'Готовы получить современный сайт для своего бизнеса?','final.cta':'Заказать сайт',
-      'footer.tagline':'Сделано с вниманием к каждой детали'
+      'footer.tagline':'Все права защищены'
     },
     tj: {
-      'nav.services':'Хизматҳо','nav.portfolio':'Портфолио','nav.pricing':'Тарифҳо','nav.faq':'FAQ','nav.contact':'Тамос','nav.cta':'Фармоиш диҳед',
+      'nav.home':'Асосӣ','nav.services':'Хизматҳо','nav.portfolio':'Портфолио','nav.pricing':'Тарифҳо','nav.faq':'FAQ','nav.contact':'Тамос','nav.cta':'Фармоиш диҳед',
       'hero.pill':'Веб-студияи фардӣ',
       'hero.title':'Сомонае, ки <span class="hi">бизнеси шуморо</span> ба сатҳи нав мебарорад',
       'hero.lead':'WebPro — тарҳрезӣ ва сохтани сомонаҳои муосир, зуд ва мутобиқ бо ҳар дастгоҳ.',
@@ -864,19 +855,68 @@
       'faq.q2':'Сохтани сомона чанд вақт мегирад?','faq.a2':'Аз 3 то 14+ рӯз, вобаста ба мураккабии лоиҳа ва тарифи интихобшуда.',
       'faq.q3':'Оё дар телефон кор мекунад?','faq.a3':'Бале, ҳар сомона барои телефон, планшет ва компютер мутобиқ карда мешавад.',
       'faq.q4':'Оё дастгирӣ ҳаст?','faq.a4':'Бале, мутобиқи шартнома дар давоми 1 сол мушкилоти дохили сайт бепул бартараф карда мешавад.',
-      'contact.eyebrow':'Тамос','contact.title':'Барои фармоиш алоқа кунед','contact.desc':'Дар бораи лоиҳаи худ нависед — дар давоми як рӯз ҷавоб медиҳам.',
+      'contact.eyebrow':'Тамос','contact.title':'Барои фармоиш алоқа кунед','contact.desc':'Дар бораи лоиҳаи худ нависед — дар давоми як соат ҷавоб медиҳам.',
       'contact.form.nameLabel':'Ном','contact.form.namePh':'Номи шумо',
       'contact.form.contactLabel':'Telegram / телефон','contact.form.contactPh':'@username ё рақами телефон',
       'contact.form.messageLabel':'Тавсифи лоиҳа','contact.form.messagePh':'Ба кадом навъи сомона ниёз доред?',
-      'contact.form.submit':'Дархост фиристодан','contact.form.note':'* Формаро бо хидмате мисли Telegram Bot API ё Formspree пайваст кунед, то дархостҳо воқеан ба шумо расанд.',
+      'contact.form.submit':'Дархост фиристодан',
       'final.title':'Тайёред, ки барои бизнеси худ сомонаи муосир гиред?','final.cta':'Фармоиш диҳед',
-      'footer.tagline':'Сохта бо диққат ба ҳар тафсилот'
+      'footer.tagline':'Ҳамаи ҳуқуқҳо ҳифз шудаанд'
+    },
+    en: {
+      'nav.home':'Home','nav.services':'Services','nav.portfolio':'Portfolio','nav.pricing':'Pricing','nav.faq':'FAQ','nav.contact':'Contact','nav.cta':'Get a website',
+      'hero.pill':'Independent web studio',
+      'hero.title':'A website that takes <span class="hi">your business</span> to the next level',
+      'hero.lead':'WebPro — building modern, fast, and fully responsive websites for any device.',
+      'hero.ctaPrimary':'Get a website','hero.ctaGhost':'Our work',
+      'why.eyebrow':'Advantages','why.title':'Why choose WebPro',
+      'why.i1.title':'Modern design','why.i1.desc':'A unique style, not a template — every site gets its own look.',
+      'why.i2.title':'Mobile-friendly','why.i2.desc':'Works correctly on any screen.',
+      'why.i3.title':'Fast loading','why.i3.desc':'Your site opens instantly.',
+      'why.i4.title':'SEO optimization','why.i4.desc':'Easier to find on Google.',
+      'why.i5.title':'Support after launch','why.i5.desc':'You\'re never left on your own.',
+      'why.i6.title':'Affordable pricing','why.i6.desc':'Fits your budget.',
+      'services.eyebrow':'Services','services.title':'What kind of sites I build','services.desc':'Every website is designed around your business goal — not a ready-made template.',
+      'services.landing.title':'Landing page','services.landing.desc':'A sales page for a single product or service.',
+      'services.card.title':'Business card site','services.card.desc':'A simple site with your key information.',
+      'services.corp.title':'Corporate website','services.corp.desc':'An official company site with all the sections you need.',
+      'services.store.title':'Online store','services.store.desc':'Product catalog, cart, and online payment.',
+      'services.rest.title':'Restaurant / Menu','services.rest.desc':'Digital menu, online ordering, and table booking.',
+      'portfolio.eyebrow':'Portfolio','portfolio.title':'Design examples','portfolio.desc':'A few style examples — every real project is built around your business.',
+      'portfolio.landing':'Landing page example','portfolio.card':'Business card site example','portfolio.corp':'Company website example','portfolio.store':'Online store example','portfolio.rest':'Restaurant website example',
+      'portfolio.view':'View','modal.desc':'An example of style and structure — the final design is tailored to your brand.',
+      'pricing.eyebrow':'Pricing','pricing.title':'Choose the plan that fits','pricing.popular':'Most popular',
+      'pricing.base.title':'Basic','pricing.base.f1':'1 page (landing or business card)','pricing.base.f2':'Mobile-responsive design','pricing.base.f3':'Contact form','pricing.base.f4':'Timeline: 3–5 days',
+      'pricing.std.title':'Standard','pricing.std.f1':'Up to 5 pages (corporate)','pricing.std.f2':'Basic SEO optimization','pricing.std.f3':'Social media integration','pricing.std.f4':'Timeline: 7–10 days',
+      'pricing.prem.title':'Premium','pricing.prem.f1':'Online store / complex site','pricing.prem.f2':'Custom design','pricing.prem.f3':'SEO + long-term support','pricing.prem.f4':'Timeline: from 14 days',
+      'pricing.cta':'Get a website','pricing.note':'* Prices are examples — replace them with your real prices.',
+      'process.eyebrow':'How I work','process.title':'From request to launch',
+      'process.s1.title':'Request','process.s1.desc':'You send a request, and we discuss the project.',
+      'process.s2.title':'Design','process.s2.desc':'I design the site around your business goals.',
+      'process.s3.title':'Development','process.s3.desc':'I write the code and set up every section — for phone, tablet, and desktop.',
+      'process.s4.title':'Launch','process.s4.desc':'The site goes live, with support afterward if needed.',
+      'about.eyebrow':'About us','about.title':'About WebPro',
+      'about.text':'WebPro builds websites for those who want a presence online — from small companies to restaurants and online stores. Every project is handled with attention to detail and direct contact with you.',
+      'about.t1':'Speed','about.t2':'Quality work','about.t3':'Direct communication',
+      'about.guarantee':'<strong>1-year contract.</strong> Any issue inside the site is fixed free of charge.',
+      'faq.eyebrow':'FAQ','faq.title':'Frequently asked questions',
+      'faq.q1':'How much does a website cost?','faq.a1':'Depending on the type of site — from 400 to 1800+ somoni, see the "Pricing" section for details.',
+      'faq.q2':'How long does it take?','faq.a2':'From 3 to 14+ days, depending on project complexity and the chosen plan.',
+      'faq.q3':'Will it work on mobile?','faq.a3':'Yes, every site is adapted for phone, tablet, and desktop.',
+      'faq.q4':'Is there support?','faq.a4':'Yes, under the contract, issues inside the site are fixed free of charge for 1 year.',
+      'contact.eyebrow':'Contact','contact.title':'Get in touch to place an order','contact.desc':'Write about your project — I\'ll reply within an hour.',
+      'contact.form.nameLabel':'Name','contact.form.namePh':'Your name',
+      'contact.form.contactLabel':'Telegram / phone','contact.form.contactPh':'@username or phone number',
+      'contact.form.messageLabel':'Project description','contact.form.messagePh':'What kind of website do you need?',
+      'contact.form.submit':'Send request',
+      'final.title':'Ready to get a modern website for your business?','final.cta':'Get a website',
+      'footer.tagline':'All rights reserved'
     }
   };
 
-  let currentLang = 'tj';
+  let currentLang = 'ru';
   function applyLang(lang){
-    document.documentElement.lang = lang === 'ru' ? 'ru' : 'tg';
+    document.documentElement.lang = lang === 'tj' ? 'tg' : lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const val = translations[lang][key];
@@ -887,10 +927,18 @@
       const val = translations[lang][key];
       if(val !== undefined) el.setAttribute('placeholder', val);
     });
-    document.getElementById('langToggle').textContent = lang === 'tj' ? 'RU' : 'ТҶ';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
     currentLang = lang;
   }
-  document.getElementById('langToggle').addEventListener('click', () => applyLang(currentLang === 'tj' ? 'ru' : 'tj'));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLang(btn.getAttribute('data-lang'));
+      closeMobileNav();
+    });
+  });
+  applyLang('ru');
 </script>
 
 </body>
