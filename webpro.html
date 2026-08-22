@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebPro — Сомонасозӣ барои бизнес</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #040508;
+    --panel: rgba(255,255,255,0.045);
+    --panel-strong: rgba(255,255,255,0.08);
+    --line: rgba(255,255,255,0.10);
+    --line-soft: rgba(255,255,255,0.06);
+    --text: #f3f5fa;
+    --text-dim: #8d94a8;
+    --accent: #6d5bff;
+    --accent-2: #33e6c9;
+    --accent-3: #ff6bd6;
+    --radius: 20px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --maxw: 1180px;
+    --ease: cubic-bezier(.16,1,.3,1);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+  /* ---------- AURORA BACKGROUND ---------- */
+  .aurora{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .aurora span{
+    position:absolute; border-radius:50%; filter: blur(90px); opacity:.55;
+    animation: auroraMove 26s ease-in-out infinite;
+  }
+  .aurora span:nth-child(1){ width:620px; height:620px; left:-160px; top:-180px; background: radial-gradient(circle, var(--accent), transparent 70%); animation-duration: 24s; }
+  .aurora span:nth-child(2){ width:560px; height:560px; right:-140px; top:-60px; background: radial-gradient(circle, var(--accent-2), transparent 70%); animation-duration: 30s; animation-delay: -6s; }
+  .aurora span:nth-child(3){ width:520px; height:520px; left:30%; bottom:-260px; background: radial-gradient(circle, var(--accent-3), transparent 72%); opacity:.28; animation-duration: 34s; animation-delay: -12s; }
+  .aurora span:nth-child(4){ width:420px; height:420px; right:10%; bottom:-160px; background: radial-gradient(circle, var(--accent), transparent 70%); opacity:.3; animation-duration: 28s; animation-delay: -18s; }
+  @keyframes auroraMove{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    33%{ transform: translate(4%, 6%) scale(1.08); }
+    66%{ transform: translate(-3%, -4%) scale(0.96); }
+  }
+  .grid-bg{
+    position: fixed; inset:0; z-index:0; pointer-events:none;
+    background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 85%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 85%);
+    opacity:.6;
+  }
+  .noise{
+    position: fixed; inset:0; z-index:2; pointer-events:none; opacity:.035; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- GLASS 2.0 ---------- */
+  .glass{
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid var(--line);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border-radius: var(--radius);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 50px -24px rgba(0,0,0,.6);
+  }
+  .spot{ position:relative; overflow:hidden; }
+  .spot::before{
+    content:''; position:absolute; inset:0; z-index:0; opacity:0; transition:opacity .35s ease;
+    background: radial-gradient(320px circle at var(--mx,50%) var(--my,50%), rgba(109,91,255,.18), transparent 70%);
+  }
+  .spot:hover::before{ opacity:1; }
+  .spot > *{ position:relative; z-index:1; }
+
+  .eyebrow{
+    font-family: var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--accent-2); display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .eyebrow::before{ content:''; width:20px; height:1px; background:var(--accent-2); display:inline-block; }
+  h1,h2,h3{ font-family:var(--display); font-weight:600; letter-spacing:-0.03em; }
+  [data-animate]{ opacity:0; transform:translateY(26px) scale(.985); filter:blur(6px); transition:opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease); }
+  [data-animate].visible{ opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+
+  /* ---------- NAV ---------- */
+  nav.top{ position:sticky; top:0; z-index:80; background:rgba(4,5,8,0.6); backdrop-filter:blur(16px); border-bottom:1px solid var(--line-soft); }
+  nav.top .navwrap{ display:flex; align-items:center; justify-content:space-between; padding:15px 0; position:relative; }
+  .logo{ font-family:var(--display); font-weight:700; font-size:20px; display:flex; align-items:center; gap:2px; z-index:2; letter-spacing:-0.02em; }
+  .logo .cursor{ display:inline-block; width:8px; height:20px; background:var(--accent-2); margin-left:4px; animation:blink 1.1s step-end infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .nav-panel{ display:flex; align-items:center; gap:28px; }
+  .nav-links{ display:flex; align-items:center; gap:24px; }
+  .nav-links a{ font-family:var(--mono); font-size:13px; color:var(--text-dim); transition:color .2s ease; position:relative; }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-links a::after{ content:''; position:absolute; left:0; bottom:-4px; width:0; height:1px; background:var(--accent-2); transition:width .25s var(--ease); }
+  .nav-links a:hover::after{ width:100%; }
+  .lang-toggle{ font-family:var(--mono); font-size:12px; color:var(--accent-2); border:1px solid var(--line); background:transparent; padding:6px 12px; border-radius:999px; cursor:pointer; transition:border-color .2s ease, transform .2s var(--ease); }
+  .lang-toggle:hover{ border-color:var(--accent-2); transform:translateY(-1px); }
+  .nav-cta{ font-family:var(--mono); font-size:13px; background:linear-gradient(135deg,var(--accent),#5145c9); color:#fff; font-weight:600; padding:9px 18px; border-radius:999px; transition:transform .25s var(--ease), box-shadow .25s var(--ease); white-space:nowrap; box-shadow:0 6px 20px -8px rgba(109,91,255,.6); }
+  .nav-cta:hover{ transform:translateY(-1px); box-shadow:0 10px 26px -6px rgba(109,91,255,.8); }
+  .hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; width:34px; height:34px; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; z-index:2; }
+  .hamburger span{ display:block; height:2px; width:16px; background:var(--text); margin:0 auto; transition:transform .25s ease, opacity .25s ease; }
+  .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2){ opacity:0; }
+  .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:110px 0 76px; display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+  .hero-pill{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; color:var(--text-dim);
+    padding:7px 14px 7px 8px; border-radius:999px; margin-bottom:24px;
+  }
+  .hero-pill .dot{ width:16px; height:16px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:inline-flex; align-items:center; justify-content:center; font-size:9px; }
+  .hero h1{ font-size:clamp(38px,5.6vw,68px); line-height:1.03; }
+  .hero h1 .hi{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p.lead{ margin-top:24px; color:var(--text-dim); font-size:clamp(17px,1.6vw,19px); max-width:44ch; }
+  .hero-actions{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ font-family:var(--mono); font-size:14px; padding:14px 26px; border-radius:999px; display:inline-flex; align-items:center; gap:8px; transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s ease, border-color .3s ease; cursor:pointer; border:none; }
+  .btn-primary{ background:linear-gradient(135deg,var(--accent),#5145c9); color:#fff; font-weight:600; box-shadow:0 10px 30px -10px rgba(109,91,255,.7); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 16px 38px -10px rgba(109,91,255,.85); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--text); background:var(--panel); backdrop-filter:blur(10px); }
+  .btn-ghost:hover{ border-color:var(--accent-2); color:var(--accent-2); transform:translateY(-2px); }
+  .btn-lg{ padding:18px 36px; font-size:15px; }
+
+  .blueprint{ position:relative; padding:20px; aspect-ratio:4/3; overflow:hidden; }
+  .blueprint .tick{ position:absolute; width:12px; height:12px; border-color:var(--accent-2); border-style:solid; opacity:.8; z-index:2; }
+  .tick.tl{ top:10px; left:10px; border-width:2px 0 0 2px; } .tick.tr{ top:10px; right:10px; border-width:2px 2px 0 0; }
+  .tick.bl{ bottom:10px; left:10px; border-width:0 0 2px 2px; } .tick.br{ bottom:10px; right:10px; border-width:0 2px 2px 0; }
+  .blueprint svg{ width:100%; height:100%; }
+  .bp-line{ fill:none; stroke:var(--accent-2); stroke-width:1.6; stroke-linecap:round; stroke-dasharray:1400; stroke-dashoffset:1400; animation:draw 2.6s var(--ease) forwards .2s; }
+  .bp-block{ fill:var(--accent); opacity:0; animation:fillin .5s ease forwards; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fillin{ to{ opacity:.85; } }
+  .blueprint::after{ content:''; position:absolute; left:32px; right:32px; height:2px; top:32px; background:linear-gradient(90deg,transparent,var(--accent-2),transparent); opacity:0; animation:scan 3.6s ease-in-out infinite; animation-delay:2.9s; }
+  @keyframes scan{ 0%{ top:32px; opacity:0; } 8%{ opacity:.9; } 50%{ top:calc(100% - 32px); } 92%{ opacity:.9; } 100%{ top:32px; opacity:0; } }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:100px 0; position:relative; z-index:1; }
+  .section-head{ max-width:640px; margin-bottom:48px; }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+  .section-head h2{ font-size:clamp(28px,3.6vw,44px); }
+  .section-head p{ color:var(--text-dim); margin-top:16px; font-size:17px; }
+
+  /* ---------- BENTO WHY US ---------- */
+  .bento-grid{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:18px; }
+  .bento-card{ padding:26px; display:flex; flex-direction:column; justify-content:flex-end; transition:transform .35s var(--ease), border-color .3s ease; }
+  .bento-card:hover{ transform:translateY(-5px); border-color:var(--accent-2); }
+  .bento-1{ grid-column:span 2; grid-row:span 2; justify-content:space-between; }
+  .bento-2{ grid-column:span 2; }
+  .bento-3{ grid-column:span 1; }
+  .bento-4{ grid-column:span 1; }
+  .bento-5{ grid-column:span 2; }
+  .bento-6{ grid-column:span 2; }
+  .bento-card .icon{ width:42px; height:42px; border-radius:12px; background:rgba(109,91,255,.14); display:flex; align-items:center; justify-content:center; color:var(--accent-2); }
+  .bento-card .icon svg{ width:20px; height:20px; }
+  .bento-1 .icon{ width:52px; height:52px; }
+  .bento-1 .icon svg{ width:24px; height:24px; }
+  .bento-card h3{ font-size:17px; margin-top:16px; margin-bottom:6px; }
+  .bento-1 h3{ font-size:22px; }
+  .bento-card p{ color:var(--text-dim); font-size:13.5px; }
+  .bento-1 .glow-orb{ position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:radial-gradient(circle,rgba(109,91,255,.35),transparent 70%); filter:blur(10px); }
+
+  /* ---------- SERVICES / PORTFOLIO shared mockups ---------- */
+  .cards-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+  .service-card{ padding:24px; overflow:hidden; transition:border-color .3s ease, transform .35s var(--ease); }
+  .service-card:hover{ border-color:var(--accent-2); transform:translateY(-5px); }
+  .mini-browser{ border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:18px; background:rgba(0,0,0,0.28); }
+  .mini-browser .bar{ display:flex; gap:5px; padding:8px 9px; border-bottom:1px solid var(--line); }
+  .mini-browser .dot{ width:6px; height:6px; border-radius:50%; background:var(--line); }
+  .mini-browser .scene{ height:76px; position:relative; padding:11px; display:flex; flex-direction:column; gap:6px; }
+  .mini-browser.big .scene{ height:150px; padding:18px; }
+  .mini-browser .bar-block{ height:6px; border-radius:3px; }
+  .service-card h3{ font-size:17px; margin-bottom:6px; letter-spacing:-0.01em; }
+  .service-card p{ color:var(--text-dim); font-size:14px; }
+
+  .scene.company .bar-block{ background:linear-gradient(90deg,var(--line) 20%,var(--accent-2) 40%,var(--line) 60%); background-size:400% 100%; animation:shimmer 2.6s ease-in-out infinite; }
+  .scene.company .bar-block:nth-child(1){ width:40%; } .scene.company .bar-block:nth-child(2){ width:70%; animation-delay:.2s; } .scene.company .bar-block:nth-child(3){ width:55%; animation-delay:.4s; }
+  @keyframes shimmer{ 0%{ background-position:120% 0; } 100%{ background-position:-120% 0; } }
+
+  .scene.store{ flex-direction:row; align-items:flex-end; }
+  .scene.store .price-tag{ background:var(--accent-2); color:#04101f; font-family:var(--mono); font-size:10px; padding:2px 6px; border-radius:3px; position:absolute; top:10px; right:10px; animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.1); } }
+  .scene.store .card-block{ width:22px; height:30px; background:var(--line); border-radius:3px; }
+  .mini-browser.big .scene.store .card-block{ width:38px; height:52px; }
+  .scene.store .card-block:nth-child(2){ animation:bob 2.6s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+
+  .scene.business{ flex-direction:row; align-items:flex-end; gap:5px; }
+  .scene.business .growth{ width:12px; background:var(--accent-2); border-radius:2px 2px 0 0; animation:grow 2.4s ease-in-out infinite alternate; }
+  .mini-browser.big .scene.business .growth{ width:20px; }
+  .scene.business .growth:nth-child(1){ height:20px; } .scene.business .growth:nth-child(2){ height:34px; animation-delay:.2s; }
+  .scene.business .growth:nth-child(3){ height:26px; animation-delay:.4s; } .scene.business .growth:nth-child(4){ height:44px; animation-delay:.6s; }
+  @keyframes grow{ from{ transform:scaleY(.7); } to{ transform:scaleY(1); } }
+
+  .scene.card{ flex-direction:row; align-items:center; gap:10px; }
+  .scene.card .avatar{ width:24px; height:24px; border-radius:50%; background:var(--accent-2); opacity:.5; animation:fadepulse 2.4s ease-in-out infinite; flex-shrink:0; }
+  .mini-browser.big .scene.card .avatar{ width:40px; height:40px; }
+  .scene.card .lines{ display:flex; flex-direction:column; gap:5px; flex:1; }
+  .scene.card .lines span{ height:5px; border-radius:3px; background:var(--line); display:block; }
+  .scene.card .lines span:nth-child(1){ width:70%; animation:fadepulse 2.4s ease-in-out infinite .2s; }
+  .scene.card .lines span:nth-child(2){ width:45%; animation:fadepulse 2.4s ease-in-out infinite .4s; }
+  @keyframes fadepulse{ 0%,100%{ opacity:.35; } 50%{ opacity:1; } }
+
+  .scene.restaurant{ align-items:center; justify-content:center; }
+  .receipt{ width:84px; background:rgba(255,255,255,.05); border:1px dashed var(--line); border-radius:3px; padding:8px 9px; transform:translateY(-34px); opacity:0; animation:print 3.4s ease-in-out infinite; }
+  .mini-browser.big .receipt{ width:130px; padding:14px 16px; }
+  .receipt .rline{ display:block; height:4px; background:var(--line); border-radius:2px; margin-bottom:5px; }
+  .receipt .rline:nth-child(1){ width:75%; } .receipt .rline:nth-child(2){ width:95%; } .receipt .rline:nth-child(3){ width:55%; margin-bottom:6px; }
+  .receipt .rcheck{ display:block; font-family:var(--mono); font-size:10px; color:var(--accent-2); }
+  @keyframes print{ 0%{ transform:translateY(-34px); opacity:0; } 18%{ transform:translateY(0); opacity:1; } 82%{ transform:translateY(0); opacity:1; } 100%{ transform:translateY(10px); opacity:0; } }
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio-card{ overflow:hidden; }
+  .portfolio-card .mini-browser{ margin-bottom:0; border-radius:0; border:none; border-bottom:1px solid var(--line); }
+  .portfolio-body{ padding:18px 20px 22px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .portfolio-body h3{ font-size:15px; }
+  .view-btn{ font-family:var(--mono); font-size:12px; color:var(--accent-2); border:1px solid var(--line); padding:7px 14px; border-radius:999px; cursor:pointer; background:transparent; transition:border-color .2s ease, color .2s ease, transform .2s var(--ease); white-space:nowrap; }
+  .view-btn:hover{ border-color:var(--accent-2); transform:translateY(-1px); }
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay{ position:fixed; inset:0; background:rgba(2,3,7,.78); backdrop-filter:blur(8px); z-index:100; display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity .3s ease; }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal-box{ width:100%; max-width:420px; padding:24px; position:relative; transform:scale(.92) translateY(10px); transition:transform .35s var(--ease); }
+  .modal-overlay.open .modal-box{ transform:scale(1) translateY(0); }
+  .modal-close{ position:absolute; top:14px; right:14px; width:30px; height:30px; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--text); cursor:pointer; }
+  .modal-box h3{ margin-top:16px; font-size:18px; }
+  .modal-box p{ color:var(--text-dim); font-size:14px; margin-top:6px; }
+
+  /* ---------- PRICING ---------- */
+  .pricing-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; align-items:stretch; }
+  .price-card{ padding:30px; display:flex; flex-direction:column; position:relative; transition:transform .35s var(--ease), border-color .3s ease; }
+  .price-card:hover{ transform:translateY(-5px); }
+  .price-card.popular{ border-color:var(--accent-2); box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px var(--accent-2), 0 24px 48px -18px rgba(51,230,201,.3); }
+  .price-badge{ position:absolute; top:-13px; left:30px; background:var(--accent-2); color:#04101f; font-family:var(--mono); font-size:11px; padding:4px 12px; border-radius:999px; font-weight:600; }
+  .price-card h3{ font-size:19px; }
+  .price-card .price{ font-family:var(--display); font-size:36px; margin:16px 0 4px; background:linear-gradient(90deg,var(--accent-2),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .price-list{ list-style:none; margin:20px 0 26px; display:flex; flex-direction:column; gap:12px; flex:1; }
+  .price-list li{ font-size:13.5px; color:var(--text-dim); display:flex; gap:9px; align-items:flex-start; }
+  .price-list li::before{ content:'✓'; color:var(--accent-2); font-family:var(--mono); flex-shrink:0; }
+  .price-note{ margin-top:22px; font-family:var(--mono); font-size:12px; color:var(--text-dim); text-align:center; }
+
+  /* ---------- PROCESS ---------- */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{ content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .timeline::after{ content:''; position:absolute; left:5px; top:6px; width:1px; background:linear-gradient(var(--accent-2),var(--accent)); height:0%; transition:height 1.2s var(--ease); }
+  .timeline.visible::after{ height:100%; }
+  .step{ position:relative; padding-bottom:42px; }
+  .step:last-child{ padding-bottom:0; }
+  .step::before{ content:''; position:absolute; left:-28px; top:4px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--line); transition:border-color .3s ease, background .3s ease, box-shadow .3s ease; }
+  .step.visible::before{ border-color:var(--accent-2); background:var(--accent-2); box-shadow:0 0 12px var(--accent-2); }
+  .step .num{ font-family:var(--mono); font-size:12px; color:var(--accent-2); margin-bottom:6px; display:block; }
+  .step h3{ font-size:19px; margin-bottom:6px; }
+  .step p{ color:var(--text-dim); font-size:15px; max-width:52ch; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .about p.about-text{ color:var(--text-dim); font-size:16px; margin-top:16px; max-width:52ch; }
+  .about-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  .about-tags span{ font-family:var(--mono); font-size:12px; padding:7px 15px; border-radius:999px; border:1px solid var(--line); color:var(--text-dim); }
+  .guarantee-badge{ margin-top:22px; display:flex; align-items:flex-start; gap:12px; padding:17px 19px; max-width:52ch; position:relative; }
+  .guarantee-badge .shield{ flex-shrink:0; width:22px; height:22px; color:var(--accent-2); }
+  .guarantee-badge .ring{ position:absolute; left:17px; top:17px; width:22px; height:22px; border-radius:50%; border:1px solid var(--accent-2); opacity:0; animation:ring 2.8s ease-out infinite; }
+  @keyframes ring{ 0%{ transform:scale(.8); opacity:.6; } 100%{ transform:scale(1.9); opacity:0; } }
+  .guarantee-badge p{ font-size:13.5px; color:var(--text-dim); line-height:1.5; }
+  .guarantee-badge strong{ color:var(--text); font-weight:600; }
+  .about-figure{ aspect-ratio:1/1; position:relative; overflow:hidden; }
+  .about-figure svg{ width:100%; height:100%; }
+  .compass{ transform-origin:50% 50%; animation:spin 22s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{ display:flex; flex-direction:column; gap:14px; max-width:760px; }
+  .faq-item{ overflow:hidden; transition:border-color .3s ease; }
+  .faq-item.open{ border-color:var(--accent-2); }
+  .faq-q{ width:100%; background:none; border:none; color:var(--text); font-family:var(--display); font-size:16px; padding:19px 22px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; text-align:left; gap:14px; }
+  .faq-q .plus{ font-family:var(--mono); color:var(--accent-2); transition:transform .3s var(--ease); flex-shrink:0; }
+  .faq-item.open .faq-q .plus{ transform:rotate(45deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
+  .faq-item.open .faq-a{ max-height:220px; }
+  .faq-a p{ padding:0 22px 19px; color:var(--text-dim); font-size:14px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .contact-list{ margin-top:24px; display:flex; flex-direction:column; gap:14px; }
+  .contact-list a{ display:flex; justify-content:space-between; align-items:center; padding:15px 17px; border:1px solid var(--line); border-radius:12px; font-family:var(--mono); font-size:14px; transition:border-color .2s ease, transform .25s var(--ease); background:var(--panel); }
+  .contact-list a:hover{ border-color:var(--accent-2); transform:translateX(5px); }
+  .contact-list a span.arrow{ color:var(--accent-2); }
+  form{ padding:26px; display:flex; flex-direction:column; gap:15px; }
+  form label{ font-family:var(--mono); font-size:12px; color:var(--text-dim); }
+  form input, form textarea{ background:rgba(0,0,0,.25); border:1px solid var(--line); border-radius:10px; padding:12px 13px; color:var(--text); font-family:var(--body); font-size:14px; outline:none; transition:border-color .2s ease; width:100%; }
+  form input:focus, form textarea:focus{ border-color:var(--accent-2); }
+  form textarea{ resize:vertical; min-height:90px; }
+  .form-note{ font-size:12px; color:var(--text-dim); font-family:var(--mono); }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{ padding:64px 44px; text-align:center; position:relative; overflow:hidden; }
+  .final-cta h2{ font-size:clamp(26px,4vw,42px); max-width:20ch; margin:0 auto; position:relative; z-index:1; }
+  .final-cta .btn{ margin-top:30px; position:relative; z-index:1; }
+
+  footer{ border-top:1px solid var(--line-soft); padding:30px 0; position:relative; z-index:1; }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:12px; color:var(--text-dim); }
+
+  .fab{ position:fixed; right:24px; bottom:24px; width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#5145c9); color:#fff; display:flex; align-items:center; justify-content:center; z-index:70; box-shadow:0 14px 32px -10px rgba(109,91,255,.7); transition:transform .3s var(--ease); }
+  .fab:hover{ transform:translateY(-3px) scale(1.05); }
+  .fab svg{ width:24px; height:24px; }
+  .fab .ring-ping{ position:absolute; inset:0; border-radius:50%; border:2px solid var(--accent-2); animation:ringping 2.4s ease-out infinite; }
+  @keyframes ringping{ 0%{ transform:scale(1); opacity:.6; } 100%{ transform:scale(1.7); opacity:0; } }
+
+  @media (prefers-reduced-motion: reduce){
+    .compass,.grid-bg,.bp-line,.bp-block,.cursor,.blueprint::after,.scene.company .bar-block,.scene.store .price-tag,
+    .scene.store .card-block,.scene.business .growth,.receipt,.ring-ping,.scene.card .avatar,.scene.card .lines span,
+    .aurora span{ animation:none !important; }
+  }
+
+  @media (max-width:900px){
+    .hero{ grid-template-columns:1fr; padding-top:72px; }
+    .about{ grid-template-columns:1fr; }
+    .about-figure{ order:-1; max-width:260px; margin:0 auto; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .bento-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; }
+    .bento-1{ grid-column:span 2; grid-row:span 2; }
+    .bento-2,.bento-5,.bento-6{ grid-column:span 2; }
+    .bento-3,.bento-4{ grid-column:span 1; }
+  }
+  @media (max-width:760px){
+    .hamburger{ display:flex; }
+    .nav-panel{ position:absolute; top:calc(100% + 1px); left:0; right:0; background:rgba(4,5,8,0.97); border-bottom:1px solid var(--line-soft); flex-direction:column; align-items:stretch; gap:0; max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
+    .nav-panel.open{ max-height:420px; overflow-y:auto; }
+    .nav-links{ flex-direction:column; align-items:flex-start; gap:0; padding:8px 24px 4px; }
+    .nav-links a{ padding:13px 0; width:100%; border-bottom:1px solid var(--line-soft); }
+    .nav-panel .lang-toggle{ margin:14px 24px; align-self:flex-start; }
+    .nav-panel .nav-cta{ margin:0 24px 18px; text-align:center; }
+  }
+  @media (max-width:560px){
+    section{ padding:64px 0; }
+    .hero{ padding-top:52px; padding-bottom:44px; }
+    nav.top .navwrap{ padding:12px 0; }
+    .logo{ font-size:17px; }
+    .hero-actions{ flex-direction:column; align-items:stretch; }
+    .cards-grid{ grid-template-columns:1fr; }
+    .bento-grid{ grid-template-columns:1fr; grid-auto-rows:auto; }
+    .bento-card{ grid-column:span 1 !important; grid-row:span 1 !important; min-height:150px; }
+    .final-cta{ padding:44px 24px; }
+    .fab{ right:16px; bottom:16px; width:48px; height:48px; }
+  }
+  :focus-visible{ outline:2px solid var(--accent-2); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+
+<nav class="top">
+  <div class="wrap navwrap">
+    <div class="logo">WebPro<span class="cursor" aria-hidden="true"></span></div>
+    <button class="hamburger" id="hamburger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-panel" id="navPanel">
+      <div class="nav-links">
+        <a data-i18n="nav.services" href="#services">Хизматҳо</a>
+        <a data-i18n="nav.portfolio" href="#portfolio">Портфолио</a>
+        <a data-i18n="nav.pricing" href="#pricing">Тарифҳо</a>
+        <a data-i18n="nav.faq" href="#faq">FAQ</a>
+        <a data-i18n="nav.contact" href="#contact">Тамос</a>
+      </div>
+      <button class="lang-toggle" id="langToggle">RU</button>
+      <a class="nav-cta" data-i18n="nav.cta" href="#contact">Фармоиш диҳед</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 1. HERO -->
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="hero-pill glass"><span class="dot">●</span> <span data-i18n="hero.pill">Веб-студияи фардӣ</span></div>
+      <h1 data-i18n="hero.title">Сомонае, ки <span class="hi">бизнеси шуморо</span> ба сатҳи нав мебарорад</h1>
+      <p class="lead" data-i18n="hero.lead">WebPro — тарҳрезӣ ва сохтани сомонаҳои муосир, зуд ва мутобиқ бо ҳар дастгоҳ.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" data-i18n="hero.ctaPrimary" href="#contact">Фармоиш диҳед</a>
+        <a class="btn btn-ghost" data-i18n="hero.ctaGhost" href="#portfolio">Корҳои мо</a>
+      </div>
+    </div>
+    <div class="blueprint glass" data-animate>
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <svg viewBox="0 0 320 240" fill="none">
+        <rect class="bp-line" x="20" y="20" width="280" height="200" rx="8"/>
+        <line class="bp-line" x1="20" y1="56" x2="300" y2="56"/>
+        <circle class="bp-line" cx="36" cy="38" r="4"/><circle class="bp-line" cx="50" cy="38" r="4"/><circle class="bp-line" cx="64" cy="38" r="4"/>
+        <rect class="bp-block" style="animation-delay:1.6s" x="36" y="76" width="248" height="34" rx="6"/>
+        <rect class="bp-block" style="animation-delay:1.9s" x="36" y="122" width="118" height="76" rx="6"/>
+        <rect class="bp-block" style="animation-delay:2.1s" x="166" y="122" width="118" height="34" rx="6"/>
+        <rect class="bp-block" style="animation-delay:2.3s" x="166" y="164" width="118" height="34" rx="6"/>
+      </svg>
+    </div>
+  </section>
+</div>
+
+<!-- 2. WHY US — BENTO -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head center" data-animate>
+      <div class="eyebrow" data-i18n="why.eyebrow" style="margin:0 auto 16px;justify-content:center;">Бартариҳо</div>
+      <h2 data-i18n="why.title">Чаро WebPro-ро интихоб мекунанд</h2>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card bento-1 glass spot" data-animate>
+        <div class="glow-orb" aria-hidden="true"></div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div><h3 data-i18n="why.i1.title">Дизайни муосир</h3><p data-i18n="why.i1.desc">Тарҳи фардӣ, на қолаби тайёр — ҳар сомона бо услуби худ сохта мешавад.</p></div>
+      </div>
+      <div class="bento-card bento-2 glass spot" data-animate>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3 data-i18n="why.i4.title">Оптимизатсияи SEO</h3><p data-i18n="why.i4.desc">Дар Google осонтар пайдо мешавед.</p>
+      </div>
+      <div class="bento-card bento-3 glass spot" data-animate>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h3 data-i18n="why.i2.title">Мутобиқ бо телефон</h3><p data-i18n="why.i2.desc">Дуруст кор мекунад дар ҳар экран.</p>
+      </div>
+      <div class="bento-card bento-4 glass spot" data-animate>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
+        <h3 data-i18n="why.i3.title">Боркунии тез</h3><p data-i18n="why.i3.desc">Сомона зуд кушода мешавад.</p>
+      </div>
+      <div class="bento-card bento-5 glass spot" data-animate>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18v-2a4 4 0 0 1 4-4h1M21 18v-2a4 4 0 0 0-4-4h-1M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></div>
+        <h3 data-i18n="why.i5.title">Дастгирӣ пас аз оғоз</h3><p data-i18n="why.i5.desc">Ба танҳоӣ намемонед.</p>
+      </div>
+      <div class="bento-card bento-6 glass spot" data-animate>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.6 12.6 12 21.2.8 10-.6 1.4 8 0l12.6 12.6Z"/><circle cx="5" cy="5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <h3 data-i18n="why.i6.title">Нархи дастрас</h3><p data-i18n="why.i6.desc">Мутобиқ бо буҷаи шумо.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head" data-animate>
+      <div class="eyebrow" data-i18n="services.eyebrow">Хизматҳо</div>
+      <h2 data-i18n="services.title">Барои кадом соҳа месозам</h2>
+      <p data-i18n="services.desc">Ҳар сомона мутобиқи мақсади бизнес тарҳрезӣ мешавад — на аз рӯи қолаби тайёр.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="service-card glass spot" data-animate>
+        <div class="mini-browser"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene business"><div class="growth"></div><div class="growth"></div><div class="growth"></div><div class="growth"></div></div></div>
+        <h3 data-i18n="services.landing.title">Лендинг</h3><p data-i18n="services.landing.desc">Саҳифаи фурӯш барои як маҳсулот ё хизмат.</p>
+      </div>
+      <div class="service-card glass spot" data-animate>
+        <div class="mini-browser"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene card"><div class="avatar"></div><div class="lines"><span></span><span></span></div></div></div>
+        <h3 data-i18n="services.card.title">Сайт-визитка</h3><p data-i18n="services.card.desc">Сомонаи содда бо иттилооти асосии шумо.</p>
+      </div>
+      <div class="service-card glass spot" data-animate>
+        <div class="mini-browser"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene company"><div class="bar-block"></div><div class="bar-block"></div><div class="bar-block"></div></div></div>
+        <h3 data-i18n="services.corp.title">Корпоративный сайт</h3><p data-i18n="services.corp.desc">Сомонаи расмии ширкат бо тамоми қисматҳо.</p>
+      </div>
+      <div class="service-card glass spot" data-animate>
+        <div class="mini-browser"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene store"><span class="price-tag">-20%</span><div class="card-block"></div><div class="card-block"></div><div class="card-block"></div></div></div>
+        <h3 data-i18n="services.store.title">Интернет-магазин</h3><p data-i18n="services.store.desc">Феҳристи маҳсулот, сабад ва пардохти онлайн.</p>
+      </div>
+      <div class="service-card glass spot" data-animate>
+        <div class="mini-browser"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene restaurant"><div class="receipt"><span class="rline"></span><span class="rline"></span><span class="rline"></span><span class="rcheck">Фармоиш ✓</span></div></div></div>
+        <h3 data-i18n="services.rest.title">Ресторан / Меню</h3><p data-i18n="services.rest.desc">Менюи рақамӣ, фармоиш ва брон кардани миз.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PORTFOLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head" data-animate>
+      <div class="eyebrow" data-i18n="portfolio.eyebrow">Портфолио</div>
+      <h2 data-i18n="portfolio.title">Намунаи тарҳҳо</h2>
+      <p data-i18n="portfolio.desc">Чанд мисоли услуб — ҳар лоиҳаи воқеӣ мутобиқи бизнеси шумо сохта мешавад.</p>
+    </div>
+    <div class="cards-grid" id="portfolioGrid">
+      <div class="service-card portfolio-card glass spot" data-animate>
+        <div class="mini-browser big"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene business"><div class="growth"></div><div class="growth"></div><div class="growth"></div><div class="growth"></div></div></div>
+        <div class="portfolio-body"><h3 data-i18n="portfolio.landing">Намунаи лендинг</h3><button class="view-btn" data-type="landing" data-i18n="portfolio.view">Дидан</button></div>
+      </div>
+      <div class="service-card portfolio-card glass spot" data-animate>
+        <div class="mini-browser big"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene card"><div class="avatar"></div><div class="lines"><span></span><span></span></div></div></div>
+        <div class="portfolio-body"><h3 data-i18n="portfolio.card">Намунаи сайт-визитка</h3><button class="view-btn" data-type="card" data-i18n="portfolio.view">Дидан</button></div>
+      </div>
+      <div class="service-card portfolio-card glass spot" data-animate>
+        <div class="mini-browser big"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene company"><div class="bar-block"></div><div class="bar-block"></div><div class="bar-block"></div></div></div>
+        <div class="portfolio-body"><h3 data-i18n="portfolio.corp">Намунаи сомонаи ширкат</h3><button class="view-btn" data-type="corp" data-i18n="portfolio.view">Дидан</button></div>
+      </div>
+      <div class="service-card portfolio-card glass spot" data-animate>
+        <div class="mini-browser big"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene store"><span class="price-tag">-20%</span><div class="card-block"></div><div class="card-block"></div><div class="card-block"></div></div></div>
+        <div class="portfolio-body"><h3 data-i18n="portfolio.store">Намунаи мағозаи онлайн</h3><button class="view-btn" data-type="store" data-i18n="portfolio.view">Дидан</button></div>
+      </div>
+      <div class="service-card portfolio-card glass spot" data-animate>
+        <div class="mini-browser big"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="scene restaurant"><div class="receipt"><span class="rline"></span><span class="rline"></span><span class="rline"></span><span class="rcheck">Фармоиш ✓</span></div></div></div>
+        <div class="portfolio-body"><h3 data-i18n="portfolio.rest">Намунаи сайти тарабхона</h3><button class="view-btn" data-type="rest" data-i18n="portfolio.view">Дидан</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head center" data-animate>
+      <div class="eyebrow" data-i18n="pricing.eyebrow" style="margin:0 auto 16px;justify-content:center;">Тарифҳо</div>
+      <h2 data-i18n="pricing.title">Тарифи мувофиқи худро интихоб кунед</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card glass spot" data-animate>
+        <h3 data-i18n="pricing.base.title">Базовый</h3>
+        <div class="price">от 400 смн</div>
+        <ul class="price-list">
+          <li data-i18n="pricing.base.f1">1 саҳифа (лендинг ё визитка)</li>
+          <li data-i18n="pricing.base.f2">Дизайни мутобиқ бо телефон</li>
+          <li data-i18n="pricing.base.f3">Форма барои тамос</li>
+          <li data-i18n="pricing.base.f4">Мӯҳлат: 3–5 рӯз</li>
+        </ul>
+        <a class="btn btn-ghost" data-i18n="pricing.cta" href="#contact">Фармоиш диҳед</a>
+      </div>
+      <div class="price-card glass popular spot" data-animate>
+        <span class="price-badge" data-i18n="pricing.popular">Маъмултарин</span>
+        <h3 data-i18n="pricing.std.title">Стандарт</h3>
+        <div class="price">от 900 смн</div>
+        <ul class="price-list">
+          <li data-i18n="pricing.std.f1">То 5 саҳифа (корпоративӣ)</li>
+          <li data-i18n="pricing.std.f2">Оптимизатсияи SEO асосӣ</li>
+          <li data-i18n="pricing.std.f3">Пайвасти шабакаҳои иҷтимоӣ</li>
+          <li data-i18n="pricing.std.f4">Мӯҳлат: 7–10 рӯз</li>
+        </ul>
+        <a class="btn btn-primary" data-i18n="pricing.cta" href="#contact">Фармоиш диҳед</a>
+      </div>
+      <div class="price-card glass spot" data-animate>
+        <h3 data-i18n="pricing.prem.title">Премиум</h3>
+        <div class="price">от 1800 смн</div>
+        <ul class="price-list">
+          <li data-i18n="pricing.prem.f1">Мағозаи онлайн / сомонаи мураккаб</li>
+          <li data-i18n="pricing.prem.f2">Дизайни фардӣ</li>
+          <li data-i18n="pricing.prem.f3">SEO + дастгирии дарозмуддат</li>
+          <li data-i18n="pricing.prem.f4">Мӯҳлат: аз 14 рӯз</li>
+        </ul>
+        <a class="btn btn-ghost" data-i18n="pricing.cta" href="#contact">Фармоиш диҳед</a>
+      </div>
+    </div>
+    <p class="price-note" data-i18n="pricing.note">* Нархҳо намунавӣ — лутфан бо нархи воқеии худ иваз кунед.</p>
+  </div>
+</section>
+
+<!-- 6. PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head" data-animate>
+      <div class="eyebrow" data-i18n="process.eyebrow">Раванди кор</div>
+      <h2 data-i18n="process.title">Аз дархост то оғози сомона</h2>
+    </div>
+    <div class="timeline" data-animate>
+      <div class="step" data-animate><span class="num">01</span><h3 data-i18n="process.s1.title">Дархост</h3><p data-i18n="process.s1.desc">Шумо дархост мефиристед, мо дар бораи лоиҳа сӯҳбат мекунем.</p></div>
+      <div class="step" data-animate><span class="num">02</span><h3 data-i18n="process.s2.title">Тарҳрезӣ</h3><p data-i18n="process.s2.desc">Дизайни сомона мутобиқи мақсади шумо омода мешавад.</p></div>
+      <div class="step" data-animate><span class="num">03</span><h3 data-i18n="process.s3.title">Сохтан</h3><p data-i18n="process.s3.desc">Коднависӣ ва танзими ҳар қисм — барои телефон, планшет ва компютер.</p></div>
+      <div class="step" data-animate><span class="num">04</span><h3 data-i18n="process.s4.title">Оғоз</h3><p data-i18n="process.s4.desc">Сомона интишор мешавад ва дар сурати зарурат дастгирӣ идома меёбад.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div data-animate>
+      <div class="eyebrow" data-i18n="about.eyebrow">Дар бораи мо</div>
+      <h2 data-i18n="about.title">Дар бораи WebPro</h2>
+      <p class="about-text" data-i18n="about.text">WebPro сомона месозад барои онҳое, ки мехоҳанд дар интернет ҳузур дошта бошанд — аз ширкатҳои хурд то тарабхонаҳо ва мағозаҳои онлайн. Ҳар лоиҳа бо диққат ба тафсилот ва алоқаи мустақим бо шумо анҷом дода мешавад.</p>
+      <div class="about-tags">
+        <span data-i18n="about.t1">Тезкорӣ</span><span data-i18n="about.t2">Сифати кор</span><span data-i18n="about.t3">Гуфтугӯи мустақим</span>
+      </div>
+      <div class="guarantee-badge glass">
+        <span class="ring" aria-hidden="true"></span>
+        <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <p data-i18n="about.guarantee"><strong>Шартнома — 1 сол.</strong> Ҳар мушкилие, ки дар дохили сайт пайдо шавад, бепул бартараф карда мешавад.</p>
+      </div>
+    </div>
+    <div class="about-figure glass" data-animate>
+      <svg viewBox="0 0 200 200">
+        <g class="compass">
+          <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="46" fill="none" stroke="var(--accent-2)" stroke-width="1"/>
+          <line x1="100" y1="30" x2="100" y2="170" stroke="var(--line)" stroke-width="1"/>
+          <line x1="30" y1="100" x2="170" y2="100" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="4" fill="var(--accent)"/><circle cx="146" cy="100" r="3" fill="var(--accent-2)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head" data-animate>
+      <div class="eyebrow" data-i18n="faq.eyebrow">FAQ</div>
+      <h2 data-i18n="faq.title">Саволҳои маъмул</h2>
+    </div>
+    <div class="faq-list" data-animate>
+      <div class="faq-item glass">
+        <button class="faq-q"><span data-i18n="faq.q1">Нархи сомона чанд аст?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-i18n="faq.a1">Вобаста ба навъи сомона аз 400 то 1800+ сомонӣ — тафсилот дар қисми «Тарифҳо».</p></div>
+      </div>
+      <div class="faq-item glass">
+        <button class="faq-q"><span data-i18n="faq.q2">Сохтани сомона чанд вақт мегирад?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-i18n="faq.a2">Аз 3 то 14+ рӯз, вобаста ба мураккабии лоиҳа ва тарифи интихобшуда.</p></div>
+      </div>
+      <div class="faq-item glass">
+        <button class="faq-q"><span data-i18n="faq.q3">Оё дар телефон кор мекунад?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-i18n="faq.a3">Бале, ҳар сомона барои телефон, планшет ва компютер мутобиқ карда мешавад.</p></div>
+      </div>
+      <div class="faq-item glass">
+        <button class="faq-q"><span data-i18n="faq.q4">Оё дастгирӣ ҳаст?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-i18n="faq.a4">Бале, мутобиқи шартнома дар давоми 1 сол мушкилоти дохили сайт бепул бартараф карда мешавад.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head" data-animate>
+      <div class="eyebrow" data-i18n="contact.eyebrow">Тамос</div>
+      <h2 data-i18n="contact.title">Барои фармоиш алоқа кунед</h2>
+      <p data-i18n="contact.desc">Дар бораи лоиҳаи худ нависед — дар давоми як рӯз ҷавоб медиҳам.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-list" data-animate>
+        <a href="https://t.me/webpro" target="_blank" rel="noopener">Telegram: @webpro <span class="arrow">↗</span></a>
+        <a href="https://wa.me/992000000000" target="_blank" rel="noopener">WhatsApp: +992 00 000 0000 <span class="arrow">↗</span></a>
+        <a href="https://instagram.com/webpro" target="_blank" rel="noopener">Instagram: @webpro <span class="arrow">↗</span></a>
+        <a href="mailto:hello@webpro.tj">Email: hello@webpro.tj <span class="arrow">↗</span></a>
+      </div>
+      <form id="contactForm" class="glass" data-animate>
+        <div><label for="name" data-i18n="contact.form.nameLabel">Ном</label>
+          <input id="name" name="name" type="text" data-i18n-placeholder="contact.form.namePh" placeholder="Номи шумо" required></div>
+        <div><label for="contact" data-i18n="contact.form.contactLabel">Telegram / телефон</label>
+          <input id="contact" name="contact" type="text" data-i18n-placeholder="contact.form.contactPh" placeholder="@username ё рақами телефон" required></div>
+        <div><label for="message" data-i18n="contact.form.messageLabel">Тавсифи лоиҳа</label>
+          <textarea id="message" name="message" data-i18n-placeholder="contact.form.messagePh" placeholder="Ба кадом навъи сомона ниёз доред?"></textarea></div>
+        <button class="btn btn-primary" type="submit" data-i18n="contact.form.submit">Дархост фиристодан</button>
+        <span class="form-note" id="formNote" data-i18n="contact.form.note">* Формаро бо хидмате мисли Telegram Bot API ё Formspree пайваст кунед, то дархостҳо воқеан ба шумо расанд.</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FINAL CTA -->
+<section id="finalcta">
+  <div class="wrap">
+    <div class="final-cta glass" data-animate>
+      <h2 data-i18n="final.title">Тайёред, ки барои бизнеси худ сомонаи муосир гиред?</h2>
+      <a class="btn btn-primary btn-lg" data-i18n="final.cta" href="#contact">Фармоиш диҳед</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> WebPro</span>
+    <span data-i18n="footer.tagline">Сохта бо диққат ба ҳар тафсилот</span>
+  </div>
+</footer>
+
+<a class="fab" href="https://t.me/webpro" target="_blank" rel="noopener" aria-label="Ба мо нависед">
+  <span class="ring-ping" aria-hidden="true"></span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 3.2 2.6 10.7c-1 .4-1 1.7.1 2l4.7 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.8 3.6c.7.5 1.7.1 1.9-.7l3.1-15.6c.2-1-.8-1.7-1.4-1.4Zm-4.2 3.6L8.9 13c-.2.2-.3.4-.3.7l-.3 2.6-1.3-4 10.6-6.6c.2-.1.4.1.2.3l-.2.8Z"/></svg>
+</a>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box glass">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="mini-browser big" id="modalPreview"></div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  document.querySelectorAll('.step').forEach((step, i) => { step.style.transitionDelay = (i * 0.12) + 's'; });
+
+  /* spotlight hover */
+  document.querySelectorAll('.spot').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const navPanel = document.getElementById('navPanel');
+  hamburger.addEventListener('click', () => {
+    const open = navPanel.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navPanel.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', false);
+  }));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formNote').textContent = currentLang === 'tj'
+      ? 'Матн омода аст — то пайваст кардани хидмат, лутфан тавассути Telegram ё WhatsApp дар боло нависед.'
+      : 'Сообщение готово — пока форма не подключена, напишите через Telegram или WhatsApp выше.';
+  });
+
+  const portfolioScenes = {
+    landing: '<div class="scene business"><div class="growth"></div><div class="growth"></div><div class="growth"></div><div class="growth"></div></div>',
+    card: '<div class="scene card"><div class="avatar"></div><div class="lines"><span></span><span></span></div></div>',
+    corp: '<div class="scene company"><div class="bar-block"></div><div class="bar-block"></div><div class="bar-block"></div></div>',
+    store: '<div class="scene store"><span class="price-tag">-20%</span><div class="card-block"></div><div class="card-block"></div><div class="card-block"></div></div>',
+    rest: '<div class="scene restaurant"><div class="receipt"><span class="rline"></span><span class="rline"></span><span class="rline"></span><span class="rcheck">Фармоиш ✓</span></div></div>'
+  };
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalPreview = document.getElementById('modalPreview');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.getAttribute('data-type');
+      modalPreview.innerHTML = '<div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>' + portfolioScenes[type];
+      const titleEl = btn.closest('.portfolio-card').querySelector('h3');
+      modalTitle.textContent = titleEl.textContent;
+      modalDesc.textContent = translations[currentLang]['modal.desc'];
+      modalOverlay.classList.add('open');
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click', () => modalOverlay.classList.remove('open'));
+  modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) modalOverlay.classList.remove('open'); });
+
+  const translations = {
+    ru: {
+      'nav.services':'Услуги','nav.portfolio':'Портфолио','nav.pricing':'Тарифы','nav.faq':'FAQ','nav.contact':'Контакты','nav.cta':'Заказать сайт',
+      'hero.pill':'Персональная веб-студия',
+      'hero.title':'Сайт, который выведет <span class="hi">ваш бизнес</span> на новый уровень',
+      'hero.lead':'WebPro — разработка современных, быстрых и адаптивных сайтов под любые устройства.',
+      'hero.ctaPrimary':'Заказать сайт','hero.ctaGhost':'Наши работы',
+      'why.eyebrow':'Преимущества','why.title':'Почему выбирают WebPro',
+      'why.i1.title':'Современный дизайн','why.i1.desc':'Индивидуальный стиль, а не шаблон — каждый сайт создаётся в своей эстетике.',
+      'why.i2.title':'Адаптация под телефон','why.i2.desc':'Корректно работает на любом экране.',
+      'why.i3.title':'Быстрая загрузка','why.i3.desc':'Сайт открывается мгновенно.',
+      'why.i4.title':'SEO оптимизация','why.i4.desc':'Вас проще найти в Google.',
+      'why.i5.title':'Поддержка после запуска','why.i5.desc':'Вы не остаётесь один на один с сайтом.',
+      'why.i6.title':'Доступные цены','why.i6.desc':'Подходит под ваш бюджет.',
+      'services.eyebrow':'Услуги','services.title':'Для каких сфер создаю сайты','services.desc':'Каждый сайт создаётся под цель бизнеса — а не по готовому шаблону.',
+      'services.landing.title':'Лендинг','services.landing.desc':'Продающая страница для одного товара или услуги.',
+      'services.card.title':'Сайт-визитка','services.card.desc':'Простой сайт с основной информацией о вас.',
+      'services.corp.title':'Корпоративный сайт','services.corp.desc':'Официальный сайт компании со всеми разделами.',
+      'services.store.title':'Интернет-магазин','services.store.desc':'Каталог товаров, корзина и онлайн-оплата.',
+      'services.rest.title':'Ресторан / Меню','services.rest.desc':'Цифровое меню, заказ и бронирование стола.',
+      'portfolio.eyebrow':'Портфолио','portfolio.title':'Примеры работ','portfolio.desc':'Несколько примеров стиля — каждый реальный проект создаётся под ваш бизнес.',
+      'portfolio.landing':'Пример лендинга','portfolio.card':'Пример сайта-визитки','portfolio.corp':'Пример сайта компании','portfolio.store':'Пример интернет-магазина','portfolio.rest':'Пример сайта ресторана',
+      'portfolio.view':'Посмотреть','modal.desc':'Пример стиля и структуры — итоговый дизайн подбирается под ваш бренд.',
+      'pricing.eyebrow':'Тарифы','pricing.title':'Выберите подходящий тариф','pricing.popular':'Популярный',
+      'pricing.base.title':'Базовый','pricing.base.f1':'1 страница (лендинг или визитка)','pricing.base.f2':'Адаптивный дизайн','pricing.base.f3':'Форма обратной связи','pricing.base.f4':'Срок: 3–5 дней',
+      'pricing.std.title':'Стандарт','pricing.std.f1':'До 5 страниц (корпоративный)','pricing.std.f2':'Базовая SEO-оптимизация','pricing.std.f3':'Подключение соцсетей','pricing.std.f4':'Срок: 7–10 дней',
+      'pricing.prem.title':'Премиум','pricing.prem.f1':'Интернет-магазин / сложный сайт','pricing.prem.f2':'Индивидуальный дизайн','pricing.prem.f3':'SEO + долгосрочная поддержка','pricing.prem.f4':'Срок: от 14 дней',
+      'pricing.cta':'Заказать сайт','pricing.note':'* Цены примерные — замените на свои реальные цены.',
+      'process.eyebrow':'Как я работаю','process.title':'От заявки до запуска сайта',
+      'process.s1.title':'Заявка','process.s1.desc':'Вы оставляете заявку, мы обсуждаем проект.',
+      'process.s2.title':'Дизайн','process.s2.desc':'Разрабатываю дизайн сайта под цели вашего бизнеса.',
+      'process.s3.title':'Разработка','process.s3.desc':'Пишу код и настраиваю каждый раздел — для телефона, планшета и компьютера.',
+      'process.s4.title':'Запуск','process.s4.desc':'Сайт публикуется, при необходимости оказываю поддержку.',
+      'about.eyebrow':'О нас','about.title':'О WebPro',
+      'about.text':'WebPro создаёт сайты для тех, кто хочет присутствовать в интернете — от небольших компаний до ресторанов и интернет-магазинов. Каждый проект выполняется с вниманием к деталям и в прямом контакте с вами.',
+      'about.t1':'Скорость','about.t2':'Качество работы','about.t3':'Прямое общение',
+      'about.guarantee':'<strong>Договор — на 1 год.</strong> Любая проблема внутри сайта устраняется бесплатно.',
+      'faq.eyebrow':'FAQ','faq.title':'Частые вопросы',
+      'faq.q1':'Сколько стоит сайт?','faq.a1':'В зависимости от типа сайта — от 400 до 1800+ сомони, подробнее в разделе «Тарифы».',
+      'faq.q2':'Сколько времени занимает?','faq.a2':'От 3 до 14+ дней, в зависимости от сложности проекта и выбранного тарифа.',
+      'faq.q3':'Будет ли работать на телефоне?','faq.a3':'Да, каждый сайт адаптируется под телефон, планшет и компьютер.',
+      'faq.q4':'Есть ли поддержка?','faq.a4':'Да, согласно договору в течение 1 года проблемы внутри сайта устраняются бесплатно.',
+      'contact.eyebrow':'Контакты','contact.title':'Свяжитесь, чтобы оформить заказ','contact.desc':'Напишите о своём проекте — отвечу в течение дня.',
+      'contact.form.nameLabel':'Имя','contact.form.namePh':'Ваше имя',
+      'contact.form.contactLabel':'Telegram / телефон','contact.form.contactPh':'@username или номер телефона',
+      'contact.form.messageLabel':'Описание проекта','contact.form.messagePh':'Какой сайт вам нужен?',
+      'contact.form.submit':'Отправить заявку','contact.form.note':'* Подключите форму к сервису вроде Telegram Bot API или Formspree, чтобы заявки реально приходили к вам.',
+      'final.title':'Готовы получить современный сайт для своего бизнеса?','final.cta':'Заказать сайт',
+      'footer.tagline':'Сделано с вниманием к каждой детали'
+    },
+    tj: {
+      'nav.services':'Хизматҳо','nav.portfolio':'Портфолио','nav.pricing':'Тарифҳо','nav.faq':'FAQ','nav.contact':'Тамос','nav.cta':'Фармоиш диҳед',
+      'hero.pill':'Веб-студияи фардӣ',
+      'hero.title':'Сомонае, ки <span class="hi">бизнеси шуморо</span> ба сатҳи нав мебарорад',
+      'hero.lead':'WebPro — тарҳрезӣ ва сохтани сомонаҳои муосир, зуд ва мутобиқ бо ҳар дастгоҳ.',
+      'hero.ctaPrimary':'Фармоиш диҳед','hero.ctaGhost':'Корҳои мо',
+      'why.eyebrow':'Бартариҳо','why.title':'Чаро WebPro-ро интихоб мекунанд',
+      'why.i1.title':'Дизайни муосир','why.i1.desc':'Тарҳи фардӣ, на қолаби тайёр — ҳар сомона бо услуби худ сохта мешавад.',
+      'why.i2.title':'Мутобиқ бо телефон','why.i2.desc':'Дуруст кор мекунад дар ҳар экран.',
+      'why.i3.title':'Боркунии тез','why.i3.desc':'Сомона зуд кушода мешавад.',
+      'why.i4.title':'Оптимизатсияи SEO','why.i4.desc':'Дар Google осонтар пайдо мешавед.',
+      'why.i5.title':'Дастгирӣ пас аз оғоз','why.i5.desc':'Ба танҳоӣ намемонед.',
+      'why.i6.title':'Нархи дастрас','why.i6.desc':'Мутобиқ бо буҷаи шумо.',
+      'services.eyebrow':'Хизматҳо','services.title':'Барои кадом соҳа месозам','services.desc':'Ҳар сомона мутобиқи мақсади бизнес тарҳрезӣ мешавад — на аз рӯи қолаби тайёр.',
+      'services.landing.title':'Лендинг','services.landing.desc':'Саҳифаи фурӯш барои як маҳсулот ё хизмат.',
+      'services.card.title':'Сайт-визитка','services.card.desc':'Сомонаи содда бо иттилооти асосии шумо.',
+      'services.corp.title':'Корпоративный сайт','services.corp.desc':'Сомонаи расмии ширкат бо тамоми қисматҳо.',
+      'services.store.title':'Интернет-магазин','services.store.desc':'Феҳристи маҳсулот, сабад ва пардохти онлайн.',
+      'services.rest.title':'Ресторан / Меню','services.rest.desc':'Менюи рақамӣ, фармоиш ва брон кардани миз.',
+      'portfolio.eyebrow':'Портфолио','portfolio.title':'Намунаи тарҳҳо','portfolio.desc':'Чанд мисоли услуб — ҳар лоиҳаи воқеӣ мутобиқи бизнеси шумо сохта мешавад.',
+      'portfolio.landing':'Намунаи лендинг','portfolio.card':'Намунаи сайт-визитка','portfolio.corp':'Намунаи сомонаи ширкат','portfolio.store':'Намунаи мағозаи онлайн','portfolio.rest':'Намунаи сайти тарабхона',
+      'portfolio.view':'Дидан','modal.desc':'Намунаи услуб ва сохтор — дизайни ниҳоӣ мутобиқи бренди шумо интихоб мешавад.',
+      'pricing.eyebrow':'Тарифҳо','pricing.title':'Тарифи мувофиқи худро интихоб кунед','pricing.popular':'Маъмултарин',
+      'pricing.base.title':'Базовый','pricing.base.f1':'1 саҳифа (лендинг ё визитка)','pricing.base.f2':'Дизайни мутобиқ бо телефон','pricing.base.f3':'Форма барои тамос','pricing.base.f4':'Мӯҳлат: 3–5 рӯз',
+      'pricing.std.title':'Стандарт','pricing.std.f1':'То 5 саҳифа (корпоративӣ)','pricing.std.f2':'Оптимизатсияи SEO асосӣ','pricing.std.f3':'Пайвасти шабакаҳои иҷтимоӣ','pricing.std.f4':'Мӯҳлат: 7–10 рӯз',
+      'pricing.prem.title':'Премиум','pricing.prem.f1':'Мағозаи онлайн / сомонаи мураккаб','pricing.prem.f2':'Дизайни фардӣ','pricing.prem.f3':'SEO + дастгирии дарозмуддат','pricing.prem.f4':'Мӯҳлат: аз 14 рӯз',
+      'pricing.cta':'Фармоиш диҳед','pricing.note':'* Нархҳо намунавӣ — лутфан бо нархи воқеии худ иваз кунед.',
+      'process.eyebrow':'Раванди кор','process.title':'Аз дархост то оғози сомона',
+      'process.s1.title':'Дархост','process.s1.desc':'Шумо дархост мефиристед, мо дар бораи лоиҳа сӯҳбат мекунем.',
+      'process.s2.title':'Тарҳрезӣ','process.s2.desc':'Дизайни сомона мутобиқи мақсади шумо омода мешавад.',
+      'process.s3.title':'Сохтан','process.s3.desc':'Коднависӣ ва танзими ҳар қисм — барои телефон, планшет ва компютер.',
+      'process.s4.title':'Оғоз','process.s4.desc':'Сомона интишор мешавад ва дар сурати зарурат дастгирӣ идома меёбад.',
+      'about.eyebrow':'Дар бораи мо','about.title':'Дар бораи WebPro',
+      'about.text':'WebPro сомона месозад барои онҳое, ки мехоҳанд дар интернет ҳузур дошта бошанд — аз ширкатҳои хурд то тарабхонаҳо ва мағозаҳои онлайн. Ҳар лоиҳа бо диққат ба тафсилот ва алоқаи мустақим бо шумо анҷом дода мешавад.',
+      'about.t1':'Тезкорӣ','about.t2':'Сифати кор','about.t3':'Гуфтугӯи мустақим',
+      'about.guarantee':'<strong>Шартнома — 1 сол.</strong> Ҳар мушкилие, ки дар дохили сайт пайдо шавад, бепул бартараф карда мешавад.',
+      'faq.eyebrow':'FAQ','faq.title':'Саволҳои маъмул',
+      'faq.q1':'Нархи сомона чанд аст?','faq.a1':'Вобаста ба навъи сомона аз 400 то 1800+ сомонӣ — тафсилот дар қисми «Тарифҳо».',
+      'faq.q2':'Сохтани сомона чанд вақт мегирад?','faq.a2':'Аз 3 то 14+ рӯз, вобаста ба мураккабии лоиҳа ва тарифи интихобшуда.',
+      'faq.q3':'Оё дар телефон кор мекунад?','faq.a3':'Бале, ҳар сомона барои телефон, планшет ва компютер мутобиқ карда мешавад.',
+      'faq.q4':'Оё дастгирӣ ҳаст?','faq.a4':'Бале, мутобиқи шартнома дар давоми 1 сол мушкилоти дохили сайт бепул бартараф карда мешавад.',
+      'contact.eyebrow':'Тамос','contact.title':'Барои фармоиш алоқа кунед','contact.desc':'Дар бораи лоиҳаи худ нависед — дар давоми як рӯз ҷавоб медиҳам.',
+      'contact.form.nameLabel':'Ном','contact.form.namePh':'Номи шумо',
+      'contact.form.contactLabel':'Telegram / телефон','contact.form.contactPh':'@username ё рақами телефон',
+      'contact.form.messageLabel':'Тавсифи лоиҳа','contact.form.messagePh':'Ба кадом навъи сомона ниёз доред?',
+      'contact.form.submit':'Дархост фиристодан','contact.form.note':'* Формаро бо хидмате мисли Telegram Bot API ё Formspree пайваст кунед, то дархостҳо воқеан ба шумо расанд.',
+      'final.title':'Тайёред, ки барои бизнеси худ сомонаи муосир гиред?','final.cta':'Фармоиш диҳед',
+      'footer.tagline':'Сохта бо диққат ба ҳар тафсилот'
+    }
+  };
+
+  let currentLang = 'tj';
+  function applyLang(lang){
+    document.documentElement.lang = lang === 'ru' ? 'ru' : 'tg';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = translations[lang][key];
+      if(val !== undefined) el.innerHTML = val;
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const val = translations[lang][key];
+      if(val !== undefined) el.setAttribute('placeholder', val);
+    });
+    document.getElementById('langToggle').textContent = lang === 'tj' ? 'RU' : 'ТҶ';
+    currentLang = lang;
+  }
+  document.getElementById('langToggle').addEventListener('click', () => applyLang(currentLang === 'tj' ? 'ru' : 'tj'));
+</script>
+
+</body>
+</html>
